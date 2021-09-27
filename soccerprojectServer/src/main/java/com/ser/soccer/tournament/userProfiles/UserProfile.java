@@ -1,4 +1,15 @@
-package com.ser.soccer.tournament;
+package com.ser.soccer.tournament.userProfiles;
+import com.ser.soccer.tournament.userRole.*;
+import java.util.*;
+
+import org.springframework.data.mongodb.core.mapping.Document;
+/**
+ * 
+ * @author Jayasai Kalyan Reddy
+ *
+ */
+
+@Document(collection="userRole")
 public class UserProfile {
 
     private String firstName;
@@ -8,10 +19,16 @@ public class UserProfile {
     private String date_of_birth;
     private String address;
     private String mobile_no;
-    private userRole userRole;
+    private UserRole role;
+	private UserRole id;
+    private UserRole createdOn;
+    private UserRole modifiedOn;
+    private UserRole userId;
 
-    public UserProfile(String firstName, String lastName, String email, String username, String date_of_birth, String address,String mobile_no;) {
-
+    
+    
+    public UserProfile(String firstName, String lastName, String email, String username, String date_of_birth, String address,String mobile_no, UserRole role,UserRole id, UserRole userId, UserRole createdOn, UserRole modifiedOn) {
+    	super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -19,7 +36,56 @@ public class UserProfile {
         this.date_of_birth = date_of_birth;
         this.address = address;
         this.mobile_no = mobile_no;
+        this.role = role;
+        this.id = id;
+        this.modifiedOn = modifiedOn;
+        this.createdOn = createdOn;
+        this.userId = userId;
     }
+    
+    public UserRole getRole() {
+		return role;
+	}
+
+	public void setRole(UserRole role) {
+		this.role = role;
+	}
+
+	public UserRole getId() {
+		return id;
+	}
+
+	public void setId(UserRole id) {
+		this.id = id;
+	}
+
+	public UserRole getCreatedOn() {
+		return createdOn;
+	}
+
+	public void setCreatedOn(UserRole createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	public UserRole getModifiedOn() {
+		return modifiedOn;
+	}
+
+	public void setModifiedOn(UserRole modifiedOn) {
+		this.modifiedOn = modifiedOn;
+	}
+
+	public UserRole getUserId() {
+		return userId;
+	}
+
+	public void setUserId(UserRole userId) {
+		this.userId = userId;
+	}
+
+    
+
+   
 
     public String getfirstName() {
         return firstName;
@@ -81,13 +147,5 @@ public class UserProfile {
 
 
 
-    public userRole getUserRole() {
-        return userRole;
-    }
-
-
-    public void setUserRole(userRole userRole) {
-        this.userRole = userRole;
-    }
-
+   
 }
