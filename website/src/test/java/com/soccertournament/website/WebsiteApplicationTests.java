@@ -1,10 +1,10 @@
-package com.ser.soccer.tournament;
+package com.soccertournament.website;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SoccerprojectServerApplicationTests {
+class WebsiteApplicationTests {
 
 	@Test
 	void contextLoads() {
