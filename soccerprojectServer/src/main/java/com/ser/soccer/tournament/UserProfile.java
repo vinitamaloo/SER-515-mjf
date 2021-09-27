@@ -7,7 +7,7 @@ public class UserProfile {
     private String date_of_birth;
     private String address;
     private String mobile_no;
-    
+    private userRole userRole;
 
     public User(String firstName, String lastName, String email, String username, String date_of_birth, String address,String mobile_no;) {
         
@@ -78,4 +78,15 @@ public class UserProfile {
 
     
    
+
+    
+    public userRole getUserRole() {
+        return userRole;
+    }
+
+    
+    public void setUserRole(userRole userRole) {
+        this.userRole = userRole;
+    }
+
 }
