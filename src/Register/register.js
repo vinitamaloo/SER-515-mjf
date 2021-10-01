@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { Row, Column } from 'react-foundation';
-import { Card } from 'react-bootstrap';
-
+import { Link } from "react-router-dom";
 
 
 export default function Login() {
@@ -72,7 +70,7 @@ export default function Login() {
     return (
         <div className="registerall">
         <Form onSubmit={handleSubmit} >
-            <h1> Get started with today! Create your account by filling the information below</h1>
+            {/* <h1> Get started with today! Create your account by filling the information below</h1> */}
             <Form.Group className="mb-3" controlId="User">
                 <Form.Label>Full Name</Form.Label>
                 <Form.Control 
@@ -122,7 +120,7 @@ export default function Login() {
                 <option value="Team Director">Team Director</option>
             </Form.Select>
             <Button variant="primary" type="submit">Register</Button>
-            <span className="form-input-login">Already have an account? Login <a href="#">here</a></span>
+            <span className="form-input-login">Already have an account?<Link to={"/sign-in"}>Sign In</Link></span>
             </Form>
             </div>
         );
