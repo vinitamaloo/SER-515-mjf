@@ -13,15 +13,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class UserRole {
 	
 	private String id;
-	private String userId;
 	private ROLE role;
 	private Date createdOn;
 	private Date modifiedOn;
 	
-	public UserRole(String id, String userId, ROLE role, Date createdOn, Date modifiedOn) {
+	public UserRole(String id, ROLE role, Date createdOn, Date modifiedOn) {
 		super();
 		this.id = id;
-		this.userId = userId;
 		this.role = role;
 		this.createdOn = createdOn;
 		this.modifiedOn = modifiedOn;
@@ -33,12 +31,7 @@ public class UserRole {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+	
 	public ROLE getRole() {
 		return role;
 	}
