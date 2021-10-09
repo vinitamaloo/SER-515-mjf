@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 
@@ -63,9 +64,9 @@ export default function Login() {
     return (
         <div className="registerall">
         <Form onSubmit={handleSubmit} >
-            {/* <h1> Get started with today! Create your account by filling the information below</h1> */}
-            <Form.Group className="mb-3" controlId="Fname">
-                <Form.Label>First Name</Form.Label>
+        <Row className="mb-3">
+            <Form.Group as={Col} className="mb-3" controlId="Fname">
+                <Form.Label>First Name<label className="text-danger">*</label></Form.Label>
                 <Form.Control 
                     required
                     autoFocus 
@@ -74,8 +75,8 @@ export default function Login() {
                     value={Firstname}
                     onChange={(e) => setFirstName(e.target.value)}/>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="Lname">
-                <Form.Label>Last Name</Form.Label>
+            <Form.Group as={Col} className="mb-3" controlId="Lname">
+                <Form.Label>Last Name<label className="text-danger">*</label></Form.Label>
                 <Form.Control
                     required
                     autoFocus 
@@ -84,19 +85,20 @@ export default function Login() {
                     value={Lastname}
                     onChange={(e) => setLastName(e.target.value)}/>
             </Form.Group>
+        </Row>
             <Form.Group className="mb-3" controlId="Email">
-                <Form.Label>Email Address</Form.Label>
+                <Form.Label>Email Address<label className="text-danger">*</label></Form.Label>
                 <Form.Control 
                     required
                     type="email" 
                     placeholder="Enter Your email" 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}/>
+                <Form.Text className="text-muted">Please make sure that the email is correct.This is the email address at which you will receive official communications.</Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="USSF">
                 <Form.Label>USSF Number</Form.Label>
                 <Form.Control 
-                    required
                     autoFocus 
                     type="text" 
                     placeholder="Enter Your USSF Number"  
@@ -104,7 +106,7 @@ export default function Login() {
                     onChange={(e) => setUSSF(e.target.value)}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="Address">
-                <Form.Label>Address</Form.Label>
+                <Form.Label>Address<label className="text-danger">*</label></Form.Label>
                 <Form.Control 
                     required
                     autoFocus 
@@ -113,8 +115,9 @@ export default function Login() {
                     value={Address}
                     onChange={(e) => setAddress(e.target.value)}/>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="Country">
-                <Form.Label>Country</Form.Label>
+            <Row className="mb-3">
+            <Form.Group as={Col} className="mb-3" controlId="Country">
+                <Form.Label>Country<label className="text-danger">*</label></Form.Label>
                 <Form.Control 
                     required
                     autoFocus 
@@ -122,8 +125,8 @@ export default function Login() {
                     value={Country}
                     onChange={(e) => setCountry(e.target.value)}/>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="State">
-                <Form.Label>State</Form.Label>
+            <Form.Group as={Col} className="mb-3" controlId="State">
+                <Form.Label>State<label className="text-danger">*</label></Form.Label>
                 <Form.Control 
                     required
                     autoFocus 
@@ -131,8 +134,8 @@ export default function Login() {
                     value={State}
                     onChange={(e) => setState(e.target.value)}/>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="City">
-                <Form.Label>City</Form.Label>
+            <Form.Group as={Col} className="mb-3" controlId="City">
+                <Form.Label>City<label className="text-danger">*</label></Form.Label>
                 <Form.Control
                     required 
                     autoFocus 
@@ -140,8 +143,9 @@ export default function Login() {
                     value={City}
                     onChange={(e) => setCity(e.target.value)}/>
             </Form.Group>
+            </Row>
             <Form.Group className="mb-3" controlId="Pincode">
-                <Form.Label>Pincode</Form.Label>
+                <Form.Label>Pincode<label className="text-danger">*</label></Form.Label>
                 <Form.Control 
                     required
                     autoFocus 
@@ -150,7 +154,7 @@ export default function Login() {
                     onChange={(e) => setPincode(e.target.value)}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="Phone">
-                <Form.Label>Phone</Form.Label>
+                <Form.Label>Phone<label className="text-danger">*</label></Form.Label>
                 <Form.Control 
                     required
                     autoFocus 
@@ -160,8 +164,10 @@ export default function Login() {
                     onChange={(e) => setPhone(e.target.value)}/>
                 <div className="text-danger">{Phoneerror}</div>
             </Form.Group>
-            <div>Experience & Availability</div>
-            <Form.Label>Referee Grade</Form.Label>
+            <br></br>
+            <div style={{fontSize:"25px"}}>Experience & Availability</div>
+            <br></br>
+            <Form.Label>Referee Grade<label className="text-danger">*</label></Form.Label>
             <Form.Select aria-label="grade" required value={Grade} onChange={(e) => setGrade(e.target.value)}  >
                 <option value="Select an option">Select an option</option>
                 <option value="1">1</option>
@@ -181,9 +187,10 @@ export default function Login() {
                 <option value="15">15</option>
                 <option value="16">16</option>
             </Form.Select>
+            <br></br>
             <Form.Group className="mb-3" controlId="Experience">
                 <Form.Label>Number of years of experience</Form.Label>
-                <Form.Select aria-label="exp" required value={Experience} onChange={(e) => setExperience(e.target.value)}  >
+                <Form.Select aria-label="exp" value={Experience} onChange={(e) => setExperience(e.target.value)}  >
                 <option value="Select an option">Select an option</option>
                 <option value="0">No experience</option>
                 <option value="1">less than 5 years</option>
@@ -192,7 +199,7 @@ export default function Login() {
             </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3" controlId="Age">
-                <Form.Label>Age</Form.Label>
+                <Form.Label>Age<label className="text-danger">*</label></Form.Label>
                 <Form.Control 
                     required
                     autoFocus 
@@ -201,31 +208,37 @@ export default function Login() {
                     onChange={(e) => setAge(e.target.value)}/>
                 <div className="text-danger">{Ageerror}</div>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="Availability">
-                <Form.Label>Availability</Form.Label>
+            <Row className="mb-3">
+            <Form.Label>Availability<label className="text-danger">*</label></Form.Label>
+            <Form.Group as={Col} className="mb-3" controlId="Availability">
                 <Form.Select aria-label="available" required value={Availability} onChange={(e) => setAvailability(e.target.value)}  >
-                <option value="Select an option">Select an option</option>
-                <option value="Friday">Friday</option>
-                <option value="Saturday">Saturday</option>
-                <option value="Sunday">Sunday</option>
-            </Form.Select>
-            <Form.Select aria-label="time" required value={Time} onChange={(e) => setTime(e.target.value)}  >
-                <option value="Select an option">Select an option</option>
-                <option value="Morning">Morning</option>
-                <option value="Afternoon">Afternoon</option>
-                <option value="Night">Night</option>
-            </Form.Select>
+                    <option value="Select an option">Select an option</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                </Form.Select>
             </Form.Group>
+            <Form.Group as={Col} className="mb-3" controlId="Availability">
+                <Form.Select aria-label="time" required value={Time} onChange={(e) => setTime(e.target.value)}  >
+                    <option value="Select an option">Select an option</option>
+                    <option value="Morning">Morning</option>
+                    <option value="Afternoon">Afternoon</option>
+                    <option value="Night">Night</option>
+                </Form.Select>
+            </Form.Group>
+            </Row>
             <Form.Group className="mb-3" controlId="Profile">
                 <Form.Label>Profile</Form.Label>
                 <Form.Control 
+                    as="textarea"
                     autoFocus 
-                    type="textbox" 
+                    placeholder = "Tell us more about your yourself."
                     value={Profile}
                     onChange={(e) => setProfile(e.target.value)}/>
+                <Form.Text className="text-muted">Include your past experience about how many games you have officiated and when, any trainings that you might have done, your comfort level with certain ages, etc. The more we know about you, the more accurately we can assign you to games.</Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="Gender">
-                <Form.Label>Gender</Form.Label>
+                <Form.Label>Gender<label className="text-danger">*</label></Form.Label>
                 <Form.Select aria-label="available" required value={Gender} onChange={(e) => setGender(e.target.value)}  >
                 <option value="Select an option">Select an option</option>
                 <option value="Female">Female</option>
@@ -233,7 +246,7 @@ export default function Login() {
             </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3" controlId="AgeGroup">
-                <Form.Label>Age Group</Form.Label>
+                <Form.Label>Age Group<label className="text-danger">*</label></Form.Label>
                 <Form.Select aria-label="available" required value={AgeGroup} onChange={(e) => setAgeGroup(e.target.value)}  >
                 <option value="Select an option">Select an option</option>
                 <option value="U08">U08</option>
@@ -249,6 +262,13 @@ export default function Login() {
                 <option value="U18">U18</option>
                 <option value="U19">U19</option>
             </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="Terms and Condition">
+                <Form.Check
+                    required
+                    label="Agree to terms and conditions"
+                    type = "checkbox"
+                    autoFocus/>
             </Form.Group>
             <Button variant="primary" type="submit">Submit application</Button>
             </Form>
