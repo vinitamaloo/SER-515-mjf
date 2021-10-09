@@ -5,17 +5,21 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./login.css";
+import { getPostsData } from "../api/services";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function validateForm() {
-    return email.length > 0 && password.length > 0;
+  async function getPosts() {
+    const posts = await getPostsData();
+    console.log(posts);
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+    console.log(email+" "+password);
+    await getPosts();
   }
 
   return (
@@ -27,6 +31,7 @@ export default function Login() {
                 <Form.Control 
                     type="email" 
                     placeholder="Enter Your email" 
+                    onChange={e => setEmail(e.target.value)}
                    />
             </Form.Group>
             <Form.Group className="mb-3" controlId="Password">
@@ -34,6 +39,7 @@ export default function Login() {
                 <Form.Control 
                     type="password" 
                     placeholder="Enter Your Password"
+                    onChange = {e => setPassword(e.target.value)}
                     />
             </Form.Group>
             
