@@ -29,14 +29,6 @@ export default function Login() {
           <Form onSubmit={handleSubmit}>
             <h3>Sign In</h3>
             <Form.Group className="mb-3" controlId="Email">
-            <Form.Select aria-label="Default select example">
-              <option>Please select</option>
-              <option value="1">Piyush Rewatkar</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </Form.Select>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="Email">
               <Form.Label>Email Address</Form.Label>
               <Form.Control
                 type="email"

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { Row, Col, Card, Container} from "react-bootstrap";
 import "./tournaments.css";
+import MatchCard from "./match-card";
 
 export default function Tournament() {
     return(
@@ -9,110 +10,26 @@ export default function Tournament() {
             <Container>
                 <Row>
                     <Col>
-                        <Card className="card">
-                            <Card.Body>
-                                <Card.Title className="title">Card Title</Card.Title>
-                                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                <Card.Text>
-                                    Some quick example text to build on the card title and make up the bulk of
-                                    the card's content.
-                                </Card.Text>
-                                <div className="cardLink">
-                                    <Card.Link><Link to={"/sign-in"}>Schedule</Link></Card.Link>
-                                    <Card.Link><Link to={"/sign-in"}>Standing</Link></Card.Link>
-                                    <Card.Link><Link to={"/sign-in"}>Results</Link></Card.Link>
-                                </div>
-                            </Card.Body>
-                        </Card>
+                        <MatchCard title="title" subtitle="subtitle"/>
                     </Col>
                     <Col>
-                        <Card className="card">
-                            <Card.Body>
-                                <Card.Title className="title">Card Title</Card.Title >
-                                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                <Card.Text>
-                                    Some quick example text to build on the card title and make up the bulk of
-                                    the card's content.
-                                </Card.Text>
-                                <div className="cardLink">
-                                    <Card.Link><Link to={"/sign-in"}>Schedule</Link></Card.Link>
-                                    <Card.Link><Link to={"/sign-in"}>Standing</Link></Card.Link>
-                                    <Card.Link><Link to={"/sign-in"}>Results</Link></Card.Link>
-                                </div>
-                            </Card.Body>
-                        </Card>
+                        <MatchCard title="title" subtitle="subtitle"/>
                     </Col>
                     <Col>
-                        <Card className="card">
-                            <Card.Body>
-                                <Card.Title className="title">Card Title</Card.Title>
-                                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                <Card.Text>
-                                    Some quick example text to build on the card title and make up the bulk of
-                                    the card's content.
-                                </Card.Text>
-                                <div className="cardLink">
-                                    <Card.Link><Link to={"/sign-in"}>Schedule</Link></Card.Link>
-                                    <Card.Link><Link to={"/sign-in"}>Standing</Link></Card.Link>
-                                    <Card.Link><Link to={"/sign-in"}>Results</Link></Card.Link>
-                                </div>
-                            </Card.Body>
-                        </Card>
+                       <MatchCard title="title" subtitle="subtitle"/>
                     </Col>
                 </Row>
-                <Row>
+                 <Row>
                     <Col>
-                        <Card className="card">
-                            <Card.Body>
-                                <Card.Title className="title">Card Title</Card.Title>
-                                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                <Card.Text>
-                                    Some quick example text to build on the card title and make up the bulk of
-                                    the card's content.
-                                </Card.Text>
-                                <div className="cardLink">
-                                    <Card.Link><Link to={"/sign-in"}>Schedule</Link></Card.Link>
-                                    <Card.Link><Link to={"/sign-in"}>Standing</Link></Card.Link>
-                                    <Card.Link><Link to={"/sign-in"}>Results</Link></Card.Link>
-                                </div>
-                            </Card.Body>
-                        </Card>
+                        <MatchCard title="title" subtitle="subtitle"/>
                     </Col>
                     <Col>
-                        <Card className="card">
-                            <Card.Body>
-                                <Card.Title className="title">Card Title</Card.Title >
-                                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                <Card.Text>
-                                    Some quick example text to build on the card title and make up the bulk of
-                                    the card's content.
-                                </Card.Text>
-                                <div className="cardLink">
-                                    <Card.Link><Link to={"/sign-in"}>Schedule</Link></Card.Link>
-                                    <Card.Link><Link to={"/sign-in"}>Standing</Link></Card.Link>
-                                    <Card.Link><Link to={"/sign-in"}>Results</Link></Card.Link>
-                                </div>
-                            </Card.Body>
-                        </Card>
+                        <MatchCard title="title" subtitle="subtitle"/>
                     </Col>
                     <Col>
-                        <Card className="card">
-                            <Card.Body>
-                                <Card.Title className="title">Card Title</Card.Title >
-                                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                <Card.Text>
-                                    Some quick example text to build on the card title and make up the bulk of
-                                    the card's content.
-                                </Card.Text>
-                                <div className="cardLink">
-                                    <Card.Link><Link to={"/sign-in"}>Schedule</Link></Card.Link>
-                                    <Card.Link><Link to={"/sign-in"}>Standing</Link></Card.Link>
-                                    <Card.Link><Link to={"/sign-in"}>Results</Link></Card.Link>
-                                </div>
-                            </Card.Body>
-                        </Card>
+                        <MatchCard title="title" subtitle="subtitle"/>
                     </Col>
-                </Row>
+                </Row> 
             </Container>
         </div>
     )

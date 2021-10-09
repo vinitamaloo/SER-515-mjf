@@ -1,15 +1,6 @@
-.cardLink{
-    display: flex;
-}
-.card{
-    width: 25rem;
-    margin-top: 20px;
-    border-radius: 10px;
-    background-color: whitesmoke;
-    border-color: gray;
-}
+
 .title{
-    background-color: black;
+    background-image: linear-gradient(to right,#d32c30, #3671b6);
     border-radius: 10px;
     color: white;
     text-align: center;
