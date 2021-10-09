@@ -24,30 +24,38 @@ export default function Login() {
     const [Profile, setProfile] = useState("");
     const [Gender, setGender] = useState("");
     const [AgeGroup, setAgeGroup] = useState("");
-    const [Emailerror, setEmailError] = useState("");
+    const [Phoneerror, setPhoneError] = useState("");
+    const [Ageerror, setAgeError] = useState("");
     const [isValid, setValid] = useState(false);
 
     function handleSubmit(event) {
 
         if(validate()) {
-            alert('Demo Form is submited');
+            alert('Registration Form is submited');
         }
         else {
-            alert('Demo Form  is not submited');
+            alert('Form  is not submited');
             event.preventDefault();
         }
-
     }
 
     function validate() {
 
-        if(email.length < 1) {
-            setEmailError("Email cannot be empty!!");
+        var pattern = new RegExp(/^[0-9\b]+$/);
+        setPhoneError("");
+        setAgeError("");
+
+        if(Phone.length < 10 || !pattern.test(Phone)) {
+            setPhoneError("Please enter a valid Phone Number!!");
             setValid(false);
             return isValid;
         }
-        else 
-            setEmailError("");
+
+        if(Age < 12) {
+            setAgeError("Age needs to be greater than 12 to register!!");
+            setValid(false);
+            return isValid;
+        }
 
         return true;
     }
@@ -59,6 +67,7 @@ export default function Login() {
             <Form.Group className="mb-3" controlId="Fname">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control 
+                    required
                     autoFocus 
                     type="name" 
                     placeholder="Enter Your first name"  
@@ -68,6 +77,7 @@ export default function Login() {
             <Form.Group className="mb-3" controlId="Lname">
                 <Form.Label>Last Name</Form.Label>
                 <Form.Control
+                    required
                     autoFocus 
                     type="name" 
                     placeholder="Enter Your Last name"  
@@ -77,15 +87,16 @@ export default function Login() {
             <Form.Group className="mb-3" controlId="Email">
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control 
+                    required
                     type="email" 
                     placeholder="Enter Your email" 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}/>
-                <div className="text-danger">{Emailerror}</div>
             </Form.Group>
             <Form.Group className="mb-3" controlId="USSF">
                 <Form.Label>USSF Number</Form.Label>
                 <Form.Control 
+                    required
                     autoFocus 
                     type="text" 
                     placeholder="Enter Your USSF Number"  
@@ -95,6 +106,7 @@ export default function Login() {
             <Form.Group className="mb-3" controlId="Address">
                 <Form.Label>Address</Form.Label>
                 <Form.Control 
+                    required
                     autoFocus 
                     type="text" 
                     placeholder="Enter Your address"  
@@ -104,6 +116,7 @@ export default function Login() {
             <Form.Group className="mb-3" controlId="Country">
                 <Form.Label>Country</Form.Label>
                 <Form.Control 
+                    required
                     autoFocus 
                     type="text" 
                     value={Country}
@@ -112,6 +125,7 @@ export default function Login() {
             <Form.Group className="mb-3" controlId="State">
                 <Form.Label>State</Form.Label>
                 <Form.Control 
+                    required
                     autoFocus 
                     type="text" 
                     value={State}
@@ -119,7 +133,8 @@ export default function Login() {
             </Form.Group>
             <Form.Group className="mb-3" controlId="City">
                 <Form.Label>City</Form.Label>
-                <Form.Control 
+                <Form.Control
+                    required 
                     autoFocus 
                     type="text" 
                     value={City}
@@ -128,6 +143,7 @@ export default function Login() {
             <Form.Group className="mb-3" controlId="Pincode">
                 <Form.Label>Pincode</Form.Label>
                 <Form.Control 
+                    required
                     autoFocus 
                     type="text" 
                     value={Pincode}
@@ -136,15 +152,17 @@ export default function Login() {
             <Form.Group className="mb-3" controlId="Phone">
                 <Form.Label>Phone</Form.Label>
                 <Form.Control 
+                    required
                     autoFocus 
-                    type="phone" 
+                    type="text" 
                     placeholder="Enter Your Phone"  
                     value={Phone}
                     onChange={(e) => setPhone(e.target.value)}/>
+                <div className="text-danger">{Phoneerror}</div>
             </Form.Group>
             <div>Experience & Availability</div>
             <Form.Label>Referee Grade</Form.Label>
-            <Form.Select aria-label="grade" value={Grade} onChange={(e) => setGrade(e.target.value)}  >
+            <Form.Select aria-label="grade" required value={Grade} onChange={(e) => setGrade(e.target.value)}  >
                 <option value="Select an option">Select an option</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -165,8 +183,9 @@ export default function Login() {
             </Form.Select>
             <Form.Group className="mb-3" controlId="Experience">
                 <Form.Label>Number of years of experience</Form.Label>
-                <Form.Select aria-label="exp" value={Experience} onChange={(e) => setExperience(e.target.value)}  >
+                <Form.Select aria-label="exp" required value={Experience} onChange={(e) => setExperience(e.target.value)}  >
                 <option value="Select an option">Select an option</option>
+                <option value="0">No experience</option>
                 <option value="1">less than 5 years</option>
                 <option value="2">5 to 10 years</option>
                 <option value="3">more than 10 years</option>
@@ -175,20 +194,22 @@ export default function Login() {
             <Form.Group className="mb-3" controlId="Age">
                 <Form.Label>Age</Form.Label>
                 <Form.Control 
+                    required
                     autoFocus 
                     type="number" 
                     value={Age}
                     onChange={(e) => setAge(e.target.value)}/>
+                <div className="text-danger">{Ageerror}</div>
             </Form.Group>
             <Form.Group className="mb-3" controlId="Availability">
                 <Form.Label>Availability</Form.Label>
-                <Form.Select aria-label="available" value={Availability} onChange={(e) => setAvailability(e.target.value)}  >
+                <Form.Select aria-label="available" required value={Availability} onChange={(e) => setAvailability(e.target.value)}  >
                 <option value="Select an option">Select an option</option>
                 <option value="Friday">Friday</option>
                 <option value="Saturday">Saturday</option>
                 <option value="Sunday">Sunday</option>
             </Form.Select>
-            <Form.Select aria-label="time" value={Time} onChange={(e) => setTime(e.target.value)}  >
+            <Form.Select aria-label="time" required value={Time} onChange={(e) => setTime(e.target.value)}  >
                 <option value="Select an option">Select an option</option>
                 <option value="Morning">Morning</option>
                 <option value="Afternoon">Afternoon</option>
@@ -205,7 +226,7 @@ export default function Login() {
             </Form.Group>
             <Form.Group className="mb-3" controlId="Gender">
                 <Form.Label>Gender</Form.Label>
-                <Form.Select aria-label="available" value={Gender} onChange={(e) => setGender(e.target.value)}  >
+                <Form.Select aria-label="available" required value={Gender} onChange={(e) => setGender(e.target.value)}  >
                 <option value="Select an option">Select an option</option>
                 <option value="Female">Female</option>
                 <option value="Male">Male</option>
@@ -213,7 +234,7 @@ export default function Login() {
             </Form.Group>
             <Form.Group className="mb-3" controlId="AgeGroup">
                 <Form.Label>Age Group</Form.Label>
-                <Form.Select aria-label="available" value={AgeGroup} onChange={(e) => setAgeGroup(e.target.value)}  >
+                <Form.Select aria-label="available" required value={AgeGroup} onChange={(e) => setAgeGroup(e.target.value)}  >
                 <option value="Select an option">Select an option</option>
                 <option value="U08">U08</option>
                 <option value="U09">U09</option>
