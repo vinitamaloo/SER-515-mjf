@@ -1,0 +1,16 @@
+.navbar{
+    background-color: rgba(13,49,95,255) !important;
+    color: white;
+    font-weight: 500;
+    font-size: 50;
+}
+.nav-link{
+    color: white !important;
+}
+.nav-link:focus {
+    color: rgb(255, 49, 49) !important; 
+}
+
+a:hover {
+    color: green !important;
+}
