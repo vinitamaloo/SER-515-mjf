@@ -6,6 +6,8 @@ import Login from './Login/login';
 import Register from './Register/register';
 import Tournament from './Tournaments/tournaments.js';
 import Home from './Home/home.js';
+import TeamRegister from './Team_registration/team_register';
+import TermsConditions from './Team_registration/terms_conditions';
 
 function App() {
   return (
@@ -21,7 +23,7 @@ function App() {
                 <Link className="nav-link" to={"/"}>Home</Link>
               </li>
             <li className="nav-item">
-                <Link className="nav-link" to={"/tournament"}>Apply</Link>
+                <Link className="nav-link" to={"/team-registration"}>Team registration</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to={"/sign-in"}>Login</Link>
@@ -43,9 +45,9 @@ function App() {
             <Route path="/sign-in" component={Login} />
             <Route path="/sign-up" component={Register} />
             <Route path="/tournament" component={Tournament} />
+            <Route path="/team-registration" component={TeamRegister} />
+            <Route path="/terms_conditions" component={TermsConditions} />
           </Switch>
-        {/* </div>
-      </div> */}
     </div>
     </Router>
   );
