@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { postReferee } from '../api/services';
 
 
 export default function Login() {
@@ -19,7 +20,7 @@ export default function Login() {
     const [Phone, setPhone] = useState("");
     const [Grade, setGrade] = useState("");
     const [Experience, setExperience] = useState("");
-    const [Age, setAge] = useState("");
+    const [Age, setAge] = useState(0);
     const [Availability, setAvailability] = useState("");
     const [Time, setTime] = useState("");
     const [Profile, setProfile] = useState("");
@@ -29,10 +30,32 @@ export default function Login() {
     const [Ageerror, setAgeError] = useState("");
     const [isValid, setValid] = useState(false);
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
 
         if(validate()) {
             alert('Registration Form is submited');
+            let referee = {
+                "firstname": Firstname,
+                "lastname" : Lastname,
+                "email" : email,
+                "ussf" : USSF,
+                "address" : Address,
+                "country" : Country,
+                "city" : City,
+                "state" : State,
+                "zipcode" : Pincode,
+                "phone" : Phone,
+                "grade" : Grade,
+                "experience" : Experience,
+                "age" : Age,
+                "availability" : Availability,
+                "time" : Time,
+                "profile" :Profile,
+                "gender" : Gender,
+                "agegroup" : AgeGroup
+            }
+            let x=await postReferee(referee);
+            console.log(x);
         }
         else {
             alert('Form  is not submited');
@@ -44,7 +67,7 @@ export default function Login() {
 
         var pattern = new RegExp(/^[0-9\b]+$/);
         setPhoneError("");
-        setAgeError("");
+        setAgeError(0);
 
         if(Phone.length < 10 || !pattern.test(Phone)) {
             setPhoneError("Please enter a valid Phone Number!!");
@@ -62,7 +85,7 @@ export default function Login() {
     }
 
     return (
-        <div className="registerall">
+        <div style={{marginTop:60}} className="registerall">
         <Form onSubmit={handleSubmit} >
         <Row className="mb-3">
             <Form.Group as={Col} className="mb-3" controlId="Fname">
@@ -192,10 +215,10 @@ export default function Login() {
                 <Form.Label>Number of years of experience</Form.Label>
                 <Form.Select aria-label="exp" value={Experience} onChange={(e) => setExperience(e.target.value)}  >
                 <option value="Select an option">Select an option</option>
-                <option value="0">No experience</option>
-                <option value="1">less than 5 years</option>
-                <option value="2">5 to 10 years</option>
-                <option value="3">more than 10 years</option>
+                <option value="No experience">No experience</option>
+                <option value="less than 5 years">less than 5 years</option>
+                <option value="5 to 10 years">5 to 10 years</option>
+                <option value="more than 10 years">more than 10 years</option>
             </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3" controlId="Age">
