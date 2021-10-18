@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Link, Redirect } from "react-router-dom";
+import { postTeamData } from '../api/services';
 import "./team_register.css";
 
 export default function TeamRegistration() {
@@ -31,15 +32,48 @@ export default function TeamRegistration() {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
 
-    const [tc, setTC] = useState("");
-
     /*Errors*/
 //    const [phoneError, setPhoneError] = useState("");
 //    const [isValid, setValid] = useState(false);
 
-   function handleSubmit(event) {
+   async function handleSubmit(event) {
         event.preventDefault();
+
+        let teamData = {
+            "applicationGroup": applicationGroup,
+            "teamName" : teamName,
+            "teamCity" : teamCity,
+            "teamState" : teamState,
+            "leagueAge" : leagueAge,
+            "leagueGender" : leagueGender,
+            "coachName" : coachName,
+            "clubName" : clubName,
+            "association" : association,
+            "league" : league,
+            "level" : level,
+            "priJerseyClr" : priJerseyClr,
+            "altJerseyClr" : altJerseyClr,
+            "firstName" : firstName,
+            "lastName" : lastName,
+            "phone" :phone,
+            "email" : email,
+            "address" : address,
+            "city" : city,
+            "state" : state,
+            "zip" : zip
+        }
+
+        let x = await postTeamData(teamData);
+        console.log(x);
     }
+//    useEffect(() => {
+//        setAppState({ loading: true });
+//        fetch()
+//          .then((res) => res.json())
+//          .then((repos) => {
+//            setAppState({ loading: false, repos: repos });
+//          });
+//    }, [setAppState]);
 
 
 //    function validate() {
@@ -295,9 +329,7 @@ export default function TeamRegistration() {
                     onChange={(e) => setZip(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="t&c">
-                    <Form.Check required type="checkbox" label="Agree to the terms & conditions of the tournament"
-                     value={tc}
-                     onChange={(e) => setTC(e.target.value)} />
+                    <Form.Check required type="checkbox" label="Agree to the terms & conditions of the tournament"/>
                 </Form.Group>
                 <div className='central_heading'>
                     <Button variant="primary" type="Submit" className='btn-primary'>Register</Button>
