@@ -117,24 +117,15 @@ export default function TeamRegistration() {
                     </Form.Select>
 
                     <Form.Label className='formLabelDouble'>Gender*</Form.Label>
-                    <div key={`inline-radio`} className="mb-3">
-                          <Form.Check
-                            inline
-                            className='formControl'
-                            type='radio'
-                            id='male'
-                            value={leagueGender}
-                            onChange={(e) => setLeagueGender(e.target.value)}
-                            label='Male'/>
-                          <Form.Check
-                            inline
-                            className='formControl'
-                            type='radio'
-                            label='Female'
-                            value={leagueGender}
-                            onChange={(e) => setLeagueGender(e.target.value)}
-                            id='female'/>
-                    </div>
+                    <Form.Select aria-label="gender"
+                        required as="select"
+                        className='formControl'
+                        value={leagueGender}
+                        onChange={(e) => setLeagueGender(e.target.value)}>
+                        <option value=""></option>
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                    </Form.Select>
                 </Form.Group>
                  <Form.Group className="d-flex" controlId="coach_name">
                     <Form.Label className='formLabel'>Coach Name*</Form.Label>
