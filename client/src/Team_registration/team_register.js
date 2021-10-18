@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import "./team_register.css";
 
-export default function Login() {
+export default function TeamRegistration() {
 
     const [applicationGroup, setApplicationGroup] = useState("");
     const [teamName, setTeamName] = useState("");
@@ -33,52 +33,23 @@ export default function Login() {
 
     const [tc, setTC] = useState("");
 
+    /*Errors*/
+//    const [phoneError, setPhoneError] = useState("");
+//    const [isValid, setValid] = useState(false);
+
    function handleSubmit(event) {
-//
-//        if(validate()) {
-//            alert('Demo Form is submited');
-//        }
-//        else {
-//            alert('Demo Form  is not submited');
-//            event.preventDefault();
-//        }
-//
+        alert('Team is registered!');
     }
 
+
 //    function validate() {
-//
-//        console.log(usertype);
-//
-//        if(name.length < 2 ) {
-//            setNameError("Name cannot be less than 2 characters!!");
+//        var pattern = new RegExp(/^[0-9\b]+$/);
+//        setPhoneError("");
+//        if(phone.length < 10 || !pattern.test(phone)) {
+//            setPhoneError("Please enter a valid Phone Number!!");
 //            setValid(false);
 //            return isValid;
 //        }
-//        else
-//            setNameError("");
-//
-//        if(email.length < 1) {
-//            setEmailError("Email cannot be empty!!");
-//            setValid(false);
-//        }
-//        else
-//            setEmailError("");
-//
-//        if(password.length < 8) {
-//            setPasswordError("Password cannot be less than 8 characters");
-//            setValid(false);
-//            return isValid;
-//        }
-//        else
-//            setPasswordError("");
-//
-//        if(password !== cpassword) {
-//            setCpasswordError("Password and Confrim Password doesn't match!!");
-//            setValid(false);
-//            return isValid;
-//        }
-//        else
-//            setCpasswordError("");
 //
 //        return true;
 //    }
@@ -87,17 +58,16 @@ export default function Login() {
         <body>
           <div className="registration-inner">
             <h6 className='central_heading'>Apply for team registration!</h6>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Form.Group className="d-flex" controlId="application_group">
                     <Form.Label className='formLabel'>Application Group*</Form.Label>
                     <Form.Select aria-label="ApplicationGroup"
                         value={applicationGroup}
                         className="formControl"
-                        //padding=10
                         autoFocus
-                        required
+                        required as="select"
                         onChange={(e) => setApplicationGroup(e.target.value)}>
-                        <option value="Select an option">Select an option</option>
+                        <option value=""></option>
                         <option value="boysU08">BoysU08</option>
                         <option value="boysU09">BoysU09</option>
                         <option value="girlsU08">GirlsU08</option>
@@ -136,11 +106,11 @@ export default function Login() {
                 <Form.Group className="d-flex" controlId="age_group">
                     <Form.Label className='formLabel'>Age group*</Form.Label>
                     <Form.Select aria-label="leagueAge"
-                        required
+                        required as="select"
                         className='formControl'
                         value={leagueAge}
                         onChange={(e) => setLeagueAge(e.target.value)}>
-                        <option value="Select an option">Select an option</option>
+                        <option value=""></option>
                         <option value="U08">U08</option>
                         <option value="U09">U09</option>
                         <option value="U10">U10</option>
@@ -180,11 +150,11 @@ export default function Login() {
                 <Form.Group className="d-flex" controlId="club_name">
                     <Form.Label className='formLabel'>Club Name*</Form.Label>
                     <Form.Select aria-label="clubName"
-                        required
+                        required as="select"
                         className='formControl'
                         value={clubName}
                         onChange={(e) => setClubName(e.target.value)}>
-                        <option value="Select an option"></option>
+                        <option value=""></option>
                         <option value="Arizona state club">Arizona state club</option>
                         <option value="Cincinati State club">Cincinati State club</option>
                     </Form.Select>
@@ -194,10 +164,10 @@ export default function Login() {
                     <Form.Label className='formLabel'>Association*</Form.Label>
                     <Form.Select aria-label="association"
                         value={association}
-                        required
+                        required as="select"
                         className='formControl'
                         onChange={(e) => setAssociation(e.target.value)}>
-                        <option value="Select an option"></option>
+                        <option value=""></option>
                         <option value="Arizona">Arizona</option>
                         <option value="Cincinati">Cincinati</option>
                         <option value="Alkansa">Alkansa</option>
@@ -205,11 +175,11 @@ export default function Login() {
 
                     <Form.Label className='formLabelDouble'>League*</Form.Label>
                     <Form.Select aria-label="league"
-                        required
+                        required as="select"
                         value={league}
                         className='formControl'
                         onChange={(e) => setLeague(e.target.value)}>
-                        <option value="Select an option"></option>
+                        <option value=""></option>
                         <option value="BPL">BPL</option>
                         <option value="BPYSL">BPYSL</option>
                         <option value="Buckeye premier league">Buckeye premier league</option>
@@ -219,11 +189,11 @@ export default function Login() {
                 <Form.Group className="d-flex" controlId="Play_level">
                     <Form.Label className='formLabel'>Level*</Form.Label>
                     <Form.Select aria-label="Level"
-                        required
+                        required as="select"
                         value={level}
                         className='formControl'
                         onChange={(e) => setLevel(e.target.value)}>
-                        <option value="Select an option"></option>
+                        <option value=""></option>
                         <option value="Upper">Upper</option>
                         <option value="Lower">Lower</option>
                     </Form.Select>
@@ -231,22 +201,22 @@ export default function Login() {
                 <Form.Group className="d-flex" controlId="primary_jersey">
                     <Form.Label className='formLabel'>Primary jersey Color*</Form.Label>
                     <Form.Select aria-label="primaryColor"
-                        required
+                        required as="select"
                         value={priJerseyClr}
                         className='formControl'
                         onChange={(e) => setPriJerseyClr(e.target.value)}>
-                        <option value="Select an option"></option>
+                        <option value=""></option>
                         <option value="red">Red</option>
                         <option value="orange">Orange</option>
                     </Form.Select>
 
                     <Form.Label className='formLabelDouble'>Alt jersey Color*</Form.Label>
                         <Form.Select aria-label="altColor"
-                            required
+                            required as="select"
                             value={altJerseyClr}
                             className='formControl'
                             onChange={(e) => setAltJerseyClr(e.target.value)}>
-                            <option value="Select an option"></option>
+                            <option value=""></option>
                             <option value="red">Red</option>
                             <option value="orange">Orange</option>
                         </Form.Select>
@@ -262,7 +232,7 @@ export default function Login() {
                      value={firstName}
                      onChange={(e) => setFirstName(e.target.value)}/>
 
-                     <Form.Label className='formLabel'>Last Name*</Form.Label>
+                     <Form.Label className='formLabelDouble'>Last Name*</Form.Label>
                      <Form.Control
                       required
                       className='formControl'
@@ -277,16 +247,16 @@ export default function Login() {
                    <Form.Control
                       required
                       className='formControl'
-                      type="text"
+                      type="number"
                       aria-label="phone"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}/>
-
-                  <Form.Label className='formLabel'>Email*</Form.Label>
+                  <Form.Label className='formLabelDouble'>Email*</Form.Label>
                   <Form.Control
+                    placeHolder="email@example.com"
                     required
                     className='formControl'
-                    type="text"
+                    type="email"
                     aria-label="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}/>
@@ -313,7 +283,7 @@ export default function Login() {
                     value={city}
                     onChange={(e) => setCity(e.target.value)}/>
 
-                  <Form.Label className='formLabel'>State*</Form.Label>
+                  <Form.Label className='formLabelDouble'>State*</Form.Label>
                   <Form.Control
                     required
                     className='formControl'
@@ -328,7 +298,7 @@ export default function Login() {
                   <Form.Control
                     required
                     className='formControl'
-                    type="text"
+                    type="number"
                     aria-label="zip"
                     value={zip}
                     onChange={(e) => setZip(e.target.value)}/>
