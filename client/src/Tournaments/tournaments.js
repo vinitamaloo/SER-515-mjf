@@ -10,24 +10,24 @@ export default function Tournament() {
             <Container>
                 <Row>
                     <Col>
-                        <MatchCard title="title" subtitle="subtitle"/>
+                        <MatchCard title="U17 Girls" subtitle="United (7v7)"/>
                     </Col>
                     <Col>
-                        <MatchCard title="title" subtitle="subtitle"/>
+                        <MatchCard title="U17 Boys" subtitle="United (7v7)"/>
                     </Col>
                     <Col>
-                       <MatchCard title="title" subtitle="subtitle"/>
+                       <MatchCard title="U14 Boys" subtitle="Green"/>
                     </Col>
                 </Row>
                  <Row>
                     <Col>
-                        <MatchCard title="title" subtitle="subtitle"/>
+                        <MatchCard title="U15" subtitle="United U15"/>
                     </Col>
                     <Col>
-                        <MatchCard title="title" subtitle="subtitle"/>
+                        <MatchCard title="U16" subtitle="United U16"/>
                     </Col>
                     <Col>
-                        <MatchCard title="title" subtitle="subtitle"/>
+                        <MatchCard title="U11" subtitle="United (9v9)"/>
                     </Col>
                 </Row> 
             </Container>

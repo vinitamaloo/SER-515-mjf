@@ -3,23 +3,28 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./login.css";
-import { getPostsData , getData} from "../api/services";
+import { getUser} from "../api/services";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function getPosts() {
-    const posts = await getPostsData();
-    console.log(posts);
-    const data = await getData();
-    console.log(data);
+  async function getUserData(user) {
+    // const posts = await getPostsData();
+    // console.log(posts);
+    const res = await getUser(user);
+    if(res.data.status == 200) alert("login successfull");
+    else alert("incorrect email or password");
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
     console.log(email+" "+password);
-    await getPosts();
+    const user = {
+      "email": email,
+      "password": password
+    }
+    await getUserData(user);
   }
 
   return (
