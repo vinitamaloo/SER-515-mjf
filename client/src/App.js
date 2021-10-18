@@ -8,6 +8,7 @@ import Tournament from './Tournaments/tournaments.js';
 import Home from './Home/home.js';
 import TeamRegister from './Team_registration/team_register';
 import TermsConditions from './Team_registration/terms_conditions';
+import PostTeamRegistration from './Team_registration/post_team_registration';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
             <Route path="/tournament" component={Tournament} />
             <Route path="/team-registration" component={TeamRegister} />
             <Route path="/terms_conditions" component={TermsConditions} />
+            <Route path="/team" component={PostTeamRegistration} />
           </Switch>
     </div>
     </Router>

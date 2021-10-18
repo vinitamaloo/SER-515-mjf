@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "./team_register.css";
 
 export default function TeamRegistration() {
@@ -38,7 +38,7 @@ export default function TeamRegistration() {
 //    const [isValid, setValid] = useState(false);
 
    function handleSubmit(event) {
-        alert('Team is registered!');
+        event.preventDefault();
     }
 
 
