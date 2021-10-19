@@ -6,3 +6,6 @@ export const getPostsData = () => { return axios.get("https://jsonplaceholder.ty
 export const getData = () => { return axios.get(serverUrl + 'userProfile/getData')};
 export const postTeamData = (teamData) => { return axios.post(serverUrl + 'teamRegister', teamData)};
 export const getUser = (user) => { return axios.post(serverUrl + 'admin/getUser', user)};
+export const postReferee = (referee) => {
+        return axios.post(serverUrl + 'referee/add_referee',referee);
+}
