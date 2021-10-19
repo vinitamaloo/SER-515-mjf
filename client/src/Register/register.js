@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { postReferee } from '../api/services';
+import "./register.css";
 
 
 export default function Login() {
@@ -85,7 +86,9 @@ export default function Login() {
     }
 
     return (
-        <div style={{marginTop:60}} className="registerall">
+        <body>
+        <div style={{marginTop:60}} className="registerreferee">
+        <h6 className='central_heading'>Application form for Referee!!</h6>
         <Form onSubmit={handleSubmit} >
         <Row className="mb-3">
             <Form.Group as={Col} className="mb-3" controlId="Fname">
@@ -293,9 +296,12 @@ export default function Login() {
                     type = "checkbox"
                     autoFocus/>
             </Form.Group>
-            <Button variant="primary" type="submit">Submit application</Button>
+            <div className='central_heading'>
+            <Button variant="primary" type="submit" className='btn-primary'>Submit application</Button>
+            </div>
             </Form>
             </div>
+            </body>
         );
 }
 
