@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link ,useHistory} from "react-router-dom";
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -8,12 +8,17 @@ import { getUser} from "../api/services";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   async function getUserData(user) {
     // const posts = await getPostsData();
     // console.log(posts);
     const res = await getUser(user);
-    if(res.data.status == 200) alert("login successfull");
+    if(res.data.status == 200) {
+      console.log("login successfull");
+      history.push("/");
+      
+    }
     else alert("incorrect email or password");
   }
 
