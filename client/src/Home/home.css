@@ -1,0 +1,20 @@
+.buttonstyle{
+    
+     padding-left: 45%; 
+     margin-bottom: 10px;
+}
+.bg{
+    background-color:black;
+}
+.text{
+    color:rgb(233, 227, 227);
+}
+.imagestyling{
+    margin: 50px;
+}
+.headingStyle{
+    font-family: cursive;
+    font-size: 80px;
+    font-style: Italic;
+    text-align: center;
+}
