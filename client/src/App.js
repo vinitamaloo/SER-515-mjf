@@ -32,9 +32,9 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" to={"/sign-up"}>Referee</Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link className="nav-link" to={"/sign-up"}>View Schedule </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link className="nav-link" to={"/tournament"}>Tournaments</Link>
               </li>
