@@ -14,8 +14,8 @@ export default function Login() {
     // const posts = await getPostsData();
     // console.log(posts);
     const res = await getUser(user);
-    if(res.data.status === 200) {
-      console.log("login successfull");
+    if(res.data !== "") {
+      console.log("Role", res.data.role);
       history.push("/");
       
     }
