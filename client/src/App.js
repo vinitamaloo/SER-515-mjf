@@ -14,7 +14,7 @@ function App() {
   return (
     <Router>
     <div className="App">
-      <nav className="navbar navbar-expand-lg fixed-top">
+      <nav className="navbar navbar-expand-lg sticky">
         <div className="container">
           {/* <Link className="navbar-brand" to={"/sign-in"}>xyz</Link> */}
          
@@ -30,8 +30,11 @@ function App() {
                 <Link className="nav-link" to={"/sign-in"}>Login</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to={"/sign-up"}>Sign up</Link>
+                <Link className="nav-link" to={"/sign-up"}>Referee</Link>
               </li>
+              {/* <li className="nav-item">
+                <Link className="nav-link" to={"/sign-up"}>View Schedule </Link>
+              </li> */}
               <li className="nav-item">
                 <Link className="nav-link" to={"/tournament"}>Tournaments</Link>
               </li>

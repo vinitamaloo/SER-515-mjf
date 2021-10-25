@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { postReferee } from '../api/services';
 import "./register.css";
 
