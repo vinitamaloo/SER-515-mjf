@@ -9,6 +9,7 @@ import Home from './Home/home.js';
 import TeamRegister from './Team_registration/team_register';
 import TermsConditions from './Team_registration/terms_conditions';
 import PostTeamRegistration from './Team_registration/post_team_registration';
+import SetScores from './Scores/set_scores'
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
             <Route path="/team-registration" component={TeamRegister} />
             <Route path="/terms_conditions" component={TermsConditions} />
             <Route path="/team" component={PostTeamRegistration} />
+            <Route path="/set-scores" component={SetScores}/>
           </Switch>
     </div>
     </Router>
