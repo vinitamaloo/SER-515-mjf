@@ -28,10 +28,11 @@ public class Referee {
     private String profile;
     private String gender;
     private String agegroup;
+	private String application;
 
     public Referee(String firstname, String lastname, String email, String ussf, String address, String country,
 			String city, String state, String zipcode, String phone, String grade, String experience, int age,
-			String availability, String time, String profile, String gender, String agegroup) {
+			String availability, String time, String profile, String gender, String agegroup, String application) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -51,8 +52,16 @@ public class Referee {
 		this.profile = profile;
 		this.gender = gender;
 		this.agegroup = agegroup;
-		
-		
+		this.application = application;		
+	}
+
+
+	public String getApplication() {
+		return application;
+	}
+
+	public void setApplication(String application) {
+		this.application = application;
 	}
 
 
