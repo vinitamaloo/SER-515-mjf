@@ -9,6 +9,7 @@ import Home from './Home/home.js';
 import TeamRegister from './Team_registration/team_register';
 import TermsConditions from './Team_registration/terms_conditions';
 import PostTeamRegistration from './Team_registration/post_team_registration';
+import RefereeList from './RefereeList/refereelist.js';
 
 function App() {
   return (
@@ -38,6 +39,9 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" to={"/tournament"}>Tournaments</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={"/refereelist"}>RefereeList</Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -52,6 +56,7 @@ function App() {
             <Route path="/team-registration" component={TeamRegister} />
             <Route path="/terms_conditions" component={TermsConditions} />
             <Route path="/team" component={PostTeamRegistration} />
+            <Route path="/refereelist" component={RefereeList} />
           </Switch>
     </div>
     </Router>
