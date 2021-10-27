@@ -1,13 +1,28 @@
-import { referee } from "./refereelist.js";
 import React, { useState } from 'react'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Col, Row } from "react-bootstrap";
 import './refereeinfo.css';
+import { getRefereeInfo } from '../api/services';
 
 export default function RefereeList() {
 
-    console.log(referee);
+    const [referee, setRefereeData] = useState({});
+    const [email,setemail] = useState({
+        'email' : localStorage.getItem('email')
+    });
+    const [flag, setflag] = useState(true);
+
+    if(flag) {
+        getrefereeinfo();
+    }
+
+    async function getrefereeinfo() {
+        const x = await getRefereeInfo(email);
+        setRefereeData(x.data);
+        console.log(referee);
+        setflag(false);
+    }
 
 
     return (

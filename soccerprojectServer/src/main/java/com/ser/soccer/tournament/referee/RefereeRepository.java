@@ -27,5 +27,12 @@ public class RefereeRepository {
 		query.addCriteria(Criteria.where("application").is(application));
 		return mongoTemplate.find(query, Referee.class);
 	}
+
+	public Referee getByEmail(String email) {
+
+		Query query=new Query();
+		query.addCriteria(Criteria.where("email").is(email));
+		return mongoTemplate.findOne(query, Referee.class);
+	}
     
 }
