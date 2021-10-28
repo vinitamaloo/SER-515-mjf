@@ -24,6 +24,9 @@ public class RefereeUsecase {
 		return refereeRepo.getByEmail(email);
 	}
 
+	public void UpdateRefereeByEmail(ApplicationStatus application) {
+		refereeRepo.updateByEmail(application);
+	}
 }
 
 

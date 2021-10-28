@@ -36,6 +36,12 @@ public class RefereeRepository {
 		return mongoTemplate.findOne(query, Referee.class);
 	}
 
-
+	public void updateByEmail(ApplicationStatus application) {
+		Query query=new Query();
+		query.addCriteria(Criteria.where("email").is(application.getEmail()));
+		Update update = new Update();
+		update.set("application", application.getApplication());
+		mongoTemplate.updateFirst(query, update, Referee.class);
+	}
     
 }

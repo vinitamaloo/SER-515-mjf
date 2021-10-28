@@ -33,5 +33,8 @@ public class RefereeController {
 		return refereeUsecase.getRefereeByEmail(email.getEmail());
 	}
 
-    
+	@PostMapping("/updateappstatus")
+	public void UpdateRefereeByEmail(@RequestBody ApplicationStatus application) {
+		refereeUsecase.UpdateRefereeByEmail(application);
+	}
 }

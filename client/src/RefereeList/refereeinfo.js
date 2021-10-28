@@ -56,8 +56,18 @@ export default function RefereeList() {
         
     }
 
+    async function update() {
 
-    async function handleSubmit(event) {
+        const refstatus = {
+            "application" : status,
+            "email" : email.email
+        };
+        
+        let x = await setApplicationStatus(refstatus);
+    }
+
+
+    function handleClick(event) {
 
         if(status.length === 0) {
             alert('Please accept or reject the application before submitting!!');
@@ -69,15 +79,8 @@ export default function RefereeList() {
             else
                 alert( "Application is "+ status + "d")
 
-            console.log(status);
-            console.log(email);
-            const refstatus = {
-                "application" : status,
-                "email" : email
-            };
+            update();
 
-            console.log(refstatus);
-            let x = await setApplicationStatus(refstatus);
             history.push("/refereelist");
         }
     }
@@ -87,7 +90,7 @@ export default function RefereeList() {
         <body>
         <div style={{marginTop:60}} className="refereeinfo">
         <h6 className='central_heading'>Referee Application Information Page!!</h6>
-        <Form onSubmit={handleSubmit}>
+        <Form>
         <Row className="mb-3">
             <Form.Group as={Col} className="mb-3" controlId="Fname">
                 <Form.Label>First Name</Form.Label>
@@ -226,7 +229,7 @@ export default function RefereeList() {
                 </label>
             </div>
             <div className='central_heading'>
-            <Button variant="primary" type="submit" className='btn-primary'>Submit</Button>
+            <Button variant="primary" type="submit" className='btn-primary' onClick={() => handleClick()}>Submit</Button>
             </div>
             </Form>
             </div>
