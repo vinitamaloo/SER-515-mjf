@@ -4,6 +4,9 @@ import Button from "react-bootstrap/Button";
 import { Col, Row } from "react-bootstrap";
 import './refereeinfo.css';
 import { getRefereeInfo } from '../api/services';
+import { Link ,useHistory} from "react-router-dom";
+import { setApplicationStatus } from '../api/services';
+
 
 export default function RefereeList() {
 
@@ -12,6 +15,10 @@ export default function RefereeList() {
         'email' : localStorage.getItem('email')
     });
     const [flag, setflag] = useState(true);
+    const [status , setStatus] = useState("");
+    const [acceptstatus, setaccept] = useState(true);
+    const [declinestatus, setdecline] = useState(true);
+    const history = useHistory();
 
     if(flag) {
         getrefereeinfo();
@@ -20,8 +27,59 @@ export default function RefereeList() {
     async function getrefereeinfo() {
         const x = await getRefereeInfo(email);
         setRefereeData(x.data);
-        console.log(referee);
         setflag(false);
+    }
+
+    function handleInputChange(event) {
+        const target = event.target;
+        var value = target.value;
+        
+        if(target.checked) {
+            if(value === "Accept") {
+                setdecline(false);
+                setStatus("Accept");
+            }
+            else {
+                setaccept(false);
+                setStatus("Decline");
+            }
+        }
+        else {
+            setStatus("");
+            if(value === "Accept") {
+                setdecline(true);
+            }
+            else {
+                setaccept(true);
+            }
+        }
+        
+    }
+
+
+    async function handleSubmit(event) {
+
+        if(status.length === 0) {
+            alert('Please accept or reject the application before submitting!!');
+            event.preventDefault();
+        }
+        else {
+            if( status === "Accept")
+                alert( "Application is "+ status + "ed");
+            else
+                alert( "Application is "+ status + "d")
+
+            console.log(status);
+            console.log(email);
+            const refstatus = {
+                "application" : status,
+                "email" : email
+            };
+
+            console.log(refstatus);
+            let x = await setApplicationStatus(refstatus);
+            history.push("/refereelist");
+        }
     }
 
 
@@ -29,7 +87,7 @@ export default function RefereeList() {
         <body>
         <div style={{marginTop:60}} className="refereeinfo">
         <h6 className='central_heading'>Referee Application Information Page!!</h6>
-        <Form>
+        <Form onSubmit={handleSubmit}>
         <Row className="mb-3">
             <Form.Group as={Col} className="mb-3" controlId="Fname">
                 <Form.Label>First Name</Form.Label>
@@ -146,16 +204,27 @@ export default function RefereeList() {
                     placeholder= {referee.agegroup}  
                     readOnly />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="Status">
-                <Form.Check
-                    required
-                    label="Accept"
-                    type = "checkbox"/>
-                <Form.Check
-                    required
+            <div className="radio">
+                <label> 
+                    <input
+                    value = "Accept"
+                    disabled = {!acceptstatus}
+                    type = "checkbox"
+                    onChange={handleInputChange} />
+                    Accept Application
+                </label>
+            </div>
+            <div className="radio">
+                <label> 
+                    <input
                     label="Decline"
-                    type = "checkbox"/>
-            </Form.Group>
+                    value = "Decline"
+                    disabled = {!declinestatus}
+                    type = "checkbox"
+                    onChange={handleInputChange} />
+                    Decline Application
+                </label>
+            </div>
             <div className='central_heading'>
             <Button variant="primary" type="submit" className='btn-primary'>Submit</Button>
             </div>

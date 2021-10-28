@@ -23,6 +23,7 @@ public class RefereeUsecase {
 	public Referee getRefereeByEmail(String email) {
 		return refereeRepo.getByEmail(email);
 	}
+
 }
 
 

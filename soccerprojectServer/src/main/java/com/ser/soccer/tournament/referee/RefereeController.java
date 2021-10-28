@@ -32,5 +32,6 @@ public class RefereeController {
 	public Referee getRefereeByEmail(@RequestBody ApplicationStatus email) {
 		return refereeUsecase.getRefereeByEmail(email.getEmail());
 	}
+
     
 }
