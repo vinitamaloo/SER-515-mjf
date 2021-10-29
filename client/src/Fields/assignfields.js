@@ -49,6 +49,7 @@ export default function AssignFields() {
                             </Form.Select>
                         </Form.Group>
                     </Row>
+                    <button type="button" class="btn btn-primary">Submit</button>
                 </Form>
             </div>
         )
