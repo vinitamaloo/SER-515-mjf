@@ -33,6 +33,7 @@ export default function TeamRegistration() {
     const [phone, setPhone] = useState("");
 
     const history = useHistory();
+
     function getRandomInt(max) {
       return Math.floor(Math.random() * max);
     }
@@ -68,6 +69,7 @@ export default function TeamRegistration() {
         //let x = await postTeamData(teamData);
 
         localStorage.setItem('teamId', teamId)
+        let x = await postTeamData(teamData);
         history.push("/team");
     }
 
