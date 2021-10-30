@@ -1,5 +1,3 @@
-
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Col, Row } from "react-bootstrap";
@@ -25,6 +23,7 @@ export default function AssignFields() {
     async function getlist() {
         const x = await getAcceptedList(applicationstatus);
         setTableData(x.data);
+        console.log(tableData);
         setflag(false);
     }
     function AssignFieldsView() {
@@ -56,7 +55,7 @@ export default function AssignFields() {
                             <Form.Select aria-label="available" required value={referee} onChange={(e) => setReferee(e.target.value)}  >
                                 <option value="Select an option">Select an option</option>
                                 {tableData.map((d,index) => (
-                                    <option value = {d.firstname}>{d.firstname}</option>
+                                    <option value = {d.firstname}>{d.firstname +" " + d.lastname}</option>
                                 ))}
                             </Form.Select>
                         </Form.Group>
