@@ -10,4 +10,6 @@ export const getUser = (user) => { return axios.post(serverUrl + 'admin/getUser'
 export const postReferee = (referee) => {
         return axios.post(serverUrl + 'referee/add_referee',referee);
 }
+export const getTeamDateById = (teamId) => {return axios.get(serverUrl+"get_team_data/"+teamId)}
+export const changeTeamStatus = (applicationStatus) => {return axios.post(serverUrl+"change_team_status/", applicationStatus)}
 
