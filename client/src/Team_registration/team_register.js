@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-// import { Link, Redirect } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import { postTeamData } from '../api/services';
 import "./team_register.css";
 
@@ -32,9 +32,7 @@ export default function TeamRegistration() {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
 
-    /*Errors*/
-//    const [phoneError, setPhoneError] = useState("");
-//    const [isValid, setValid] = useState(false);
+    const history = useHistory();
 
    async function handleSubmit(event) {
         event.preventDefault();
@@ -64,29 +62,8 @@ export default function TeamRegistration() {
         }
 
         let x = await postTeamData(teamData);
-        console.log(x);
+        history.push("/team");
     }
-//    useEffect(() => {
-//        setAppState({ loading: true });
-//        fetch()
-//          .then((res) => res.json())
-//          .then((repos) => {
-//            setAppState({ loading: false, repos: repos });
-//          });
-//    }, [setAppState]);
-
-
-//    function validate() {
-//        var pattern = new RegExp(/^[0-9\b]+$/);
-//        setPhoneError("");
-//        if(phone.length < 10 || !pattern.test(phone)) {
-//            setPhoneError("Please enter a valid Phone Number!!");
-//            setValid(false);
-//            return isValid;
-//        }
-//
-//        return true;
-//    }
 
     return (
         <body>
@@ -174,15 +151,13 @@ export default function TeamRegistration() {
                 </Form.Group>
                 <Form.Group className="d-flex" controlId="club_name">
                     <Form.Label className='formLabel'>Club Name*</Form.Label>
-                    <Form.Select aria-label="clubName"
-                        required as="select"
+                    <Form.Control aria-label="clubName"
+                        required
                         className='formControl'
+                        type="text"
+                        aria-label="clubName"
                         value={clubName}
-                        onChange={(e) => setClubName(e.target.value)}>
-                        <option value=""></option>
-                        <option value="Arizona state club">Arizona state club</option>
-                        <option value="Cincinati State club">Cincinati State club</option>
-                    </Form.Select>
+                        onChange={(e) => setClubName(e.target.value)}/>
                 </Form.Group>
 
                 <Form.Group className="d-flex" controlId="league_details">
