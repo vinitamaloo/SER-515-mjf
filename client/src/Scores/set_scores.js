@@ -8,7 +8,8 @@ import "./set_scores.css";
 
 export default function SetScores() {
 
-    const [score, setScore] = useState("");
+    const [scoreA, setScoreA] = useState("");
+    const [scoreB, setScoreB] = useState("");
     const [match, selectMatch] = useState("");
 
     function SetScoresView(){
@@ -31,17 +32,40 @@ export default function SetScores() {
                 </Row>
 
                 <Row className="mb-3">
-                                    <Form.Group as={Col} className="mb-3" controlId="Fname">
-                                        <Form.Label>Set Score: <label className="text-danger">*</label></Form.Label>
-                                        <Form.Control
-                                            required
-                                            autoFocus
-                                            type="name"
-                                            placeholder="Enter Your first name"
-                                            value={score}
-                                            onChange={(e) => setScore(e.target.value)}/>
-                            </Form.Group>
-                            </Row>
+                    <Form.Group as={Col} className="mb-3" controlId="teamAScore">
+                        <Form.Label>Team A Score: <label className="text-danger">*</label></Form.Label>
+                        <Form.Control
+                            required
+                            autoFocus
+                            type="name"
+                            placeholder="Score"
+                            value={scoreA}
+                            onChange={(e) => setScoreA(e.target.value)}/>
+                    </Form.Group>
+                </Row>
+                <Row className="mb-3">
+                    <Form.Group as={Col} className="mb-3" controlId="score">
+                        <Form.Label>Team B Score: <label className="text-danger">*</label></Form.Label>
+                        <Form.Control
+                            required
+                            autoFocus
+                            type="name"
+                            placeholder="Score"
+                            value={scoreB}
+                            onChange={
+                            (e) => setScoreB(e.target.value)
+
+
+//                             if value is not blank, then test the regex
+
+//                            if (e.target.value === '' || re.test(e.target.value)) {
+//                               this.setState({value: e.target.value})
+//                            }
+                            }/>
+                    </Form.Group>
+                </Row>
+                <p>Final Score is: {scoreA + "-" + scoreB}</p>
+                <button type="button" class="btn btn-primary">Submit</button>
             </Form>
         </div>
     )
