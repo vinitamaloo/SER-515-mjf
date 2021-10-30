@@ -1,16 +1,32 @@
 
 
-import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Col, Row } from "react-bootstrap";
 import "./assignfields.css";
+import { getAcceptedList } from '../api/services.js';
+import React, { useState } from 'react';
+import {Table} from 'react-bootstrap';
+import { Link ,useHistory} from "react-router-dom";
+
+
 
 export default function AssignFields() {
 
     const [field, setField] = useState("");
     const [referee, setReferee] = useState("");
+    const [applicationstatus, setapplication] = useState({"application": "Accept"});
+    const [tableData, setTableData] = useState([{}]);
+    const [flag, setflag] = useState(true);
+    if(flag) {
+        getlist();
+    }
 
+    async function getlist() {
+        const x = await getAcceptedList(applicationstatus);
+        setTableData(x.data);
+        setflag(false);
+    }
     function AssignFieldsView() {
         return (
             <div className='bg-cont'>
@@ -39,13 +55,9 @@ export default function AssignFields() {
                             <Form.Label>Select Referee<label className="text-danger">*</label></Form.Label>
                             <Form.Select aria-label="available" required value={referee} onChange={(e) => setReferee(e.target.value)}  >
                                 <option value="Select an option">Select an option</option>
-                                <option value="option 1">Referee1</option>
-                                <option value="option 2">Referee2</option>
-                                <option value="option 1">Referee3</option>
-                                <option value="option 2">Referee4</option>
-                                <option value="option 1">Referee5</option>
-                                <option value="option 2">Referee6</option>
-
+                                {tableData.map((d,index) => (
+                                    <option value = {d.firstname}>{d.firstname}</option>
+                                ))}
                             </Form.Select>
                         </Form.Group>
                     </Row>

@@ -11,3 +11,7 @@ export const postReferee = (referee) => {
         return axios.post(serverUrl + 'referee/add_referee',referee);
 }
 
+export const getRefereeList = (application) => {return axios.post(serverUrl + 'referee/get_all_in_progress',application);}
+export const getRefereeInfo = (email) => {return axios.post(serverUrl + 'referee/particularreferee',email);}
+export const setApplicationStatus = (refstatus) => {return axios.post(serverUrl + 'referee/updateappstatus', refstatus);}
+export const getAcceptedList = (application) => {return axios.post(serverUrl + 'referee/get_accepted',application);}
