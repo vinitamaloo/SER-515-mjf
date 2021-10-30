@@ -16,10 +16,10 @@ function App() {
     if (localStorage.getItem('userRole') != null && role === "")
         setRole(localStorage.getItem('userRole'))
 
-//    function logout() {
-//        localStorage.removeItem('userRole')
-//        setRole("")
-//    }
+    function logout() {
+        localStorage.removeItem('userRole')
+        setRole("")
+    }
   return (
     <Router>
     <div className="App">
@@ -67,6 +67,11 @@ function App() {
               {role === 'Field Director' &&
                 <li className="nav-item">
                     <Link className="nav-link" to={"/publish-scores"}>Publish scores</Link>
+                </li>
+              }
+              {role != "" &&
+                <li className="nav-item">
+                    <Link onClick={logout} className="nav-link" to={"/"}>Logout</Link>
                 </li>
               }
             </ul>
