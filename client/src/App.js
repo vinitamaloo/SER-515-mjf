@@ -12,6 +12,7 @@ import PostTeamRegistration from './Team_registration/post_team_registration';
 import { useState } from 'react'
 import assignFields from './Fields/assignfields';
 
+
 function App() {
     const [role, setRole] = useState("")
     if (localStorage.getItem('userRole') != null && role === "")
@@ -92,7 +93,9 @@ function App() {
             <Route path="/publish-scores" component={PostTeamRegistration} />
             <Route path="/assign-fields" component={PostTeamRegistration} />
             <Route path="/referee-applications" component={PostTeamRegistration} />
+
             <Route path="/fields" component={assignFields} />
+
 
           </Switch>
     </div>
