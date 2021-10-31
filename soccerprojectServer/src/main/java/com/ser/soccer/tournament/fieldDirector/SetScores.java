@@ -9,10 +9,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Document(collection="scores")
 public class SetScores {
+    String match;
     String teamAScore;
     String teamBScore;
 
-    public SetScores(String teamAScore, String teamBScore) {
+    public SetScores(String match, String teamAScore, String teamBScore) {
+        super();
+        this.match = match;
         this.teamAScore = teamAScore;
         this.teamBScore = teamBScore;
     }

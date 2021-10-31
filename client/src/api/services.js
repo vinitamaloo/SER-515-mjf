@@ -10,4 +10,7 @@ export const getUser = (user) => { return axios.post(serverUrl + 'admin/getUser'
 export const postReferee = (referee) => {
         return axios.post(serverUrl + 'referee/add_referee',referee);
 }
+export const postSetScores = (setScores) => {
+        return axios.post(serverUrl + 'setScores/add_set_scores',setScores);
+}
 

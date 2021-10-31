@@ -1,74 +1,104 @@
-import React, { useState } from "react";
-import Table from "react-bootstrap/Table";
-import { TextInput, required } from 'react';
+import React, { useState } from 'react'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Col, Row } from "react-bootstrap";
+import { postSetScores } from '../api/services';
 import "./set_scores.css";
 
-export default function SetScores() {
 
+export default function Login() {
+
+    const [match, setMatch] = useState("");
     const [scoreA, setScoreA] = useState("");
     const [scoreB, setScoreB] = useState("");
-    const [match, selectMatch] = useState("");
-
-    function SetScoresView(){
-    return (
-        <div className='fragment'>
-            <div className='central_heading'>Set Scores</div>
-
-            <Form>
-
-            <Row>
-                <Form.Group className="mb-3" controlId="SelectGame">
-                                <Form.Label>Select Game<label className="text-danger">*</label></Form.Label>
-                                <Form.Select aria-label="available" required value={match} onChange={(e) => selectMatch(e.target.value)}  >
-                                <option value="Select an option">Select an option</option>
-                                <option value="Game1">ASU vs UoA</option>
-                                <option value="Game2">ASU vs MIT</option>
-
-                            </Form.Select>
-                            </Form.Group>
-                </Row>
-
-                <Row className="mb-3">
-                    <Form.Group as={Col} className="mb-3" controlId="teamAScore">
-                        <Form.Label>Team A Score: <label className="text-danger">*</label></Form.Label>
-                        <Form.Control
-                            required
-                            autoFocus
-                            type="name"
-                            placeholder="Score"
-                            value={scoreA}
-                            onChange={(e) => setScoreA(e.target.value)}/>
-                    </Form.Group>
-                </Row>
-                <Row className="mb-3">
-                    <Form.Group as={Col} className="mb-3" controlId="score">
-                        <Form.Label>Team B Score: <label className="text-danger">*</label></Form.Label>
-                        <Form.Control
-                            required
-                            autoFocus
-                            type="name"
-                            placeholder="Score"
-                            value={scoreB}
-                            onChange={
-                            (e) => setScoreB(e.target.value)
+    const [scoreAError, setScoreAError] = useState("");
+    const [scoreBError, setScoreBError] = useState("");
+    const [isValid, setValid] = useState(false);
 
 
-//                             if value is not blank, then test the regex
+    async function handleSubmit(event) {
 
-//                            if (e.target.value === '' || re.test(e.target.value)) {
-//                               this.setState({value: e.target.value})
-//                            }
-                            }/>
-                    </Form.Group>
-                </Row>
-                <p>Final Score is: {scoreA + "-" + scoreB}</p>
-                <button type="button" class="btn btn-primary">Submit</button>
-            </Form>
-        </div>
-    )
+        if(validate()) {
+
+            alert('Form is submited');
+            let referee = {
+                "match": match,
+                "scoreA" : scoreA,
+                "scoreB" : scoreB,
+
+            }
+            let x=await postSetScores(referee);
+            console.log(x);
+        }
+        else {
+            alert('Form  is not submited');
+            event.preventDefault();
+        }
     }
-    return SetScoresView();
+
+    function validate() {
+
+        var pattern = new RegExp(/^[0-9\b]+$/);
+
+        if(!pattern.test(scoreA)) {
+            setScoreAError("Please enter a valid Phone Number!!");
+            setValid(false);
+            return isValid;
+        }
+        if(!pattern.test(scoreB)) {
+            setScoreBError("Please enter a valid Phone Number!!");
+            setValid(false);
+            return isValid;
+        }
+
+        return true;
+    }
+
+    return (
+        <body>
+        <div style={{marginTop:60}} className="registerreferee">
+        <h6 className='central_heading'>Application form for Referee!!</h6>
+        <Form onSubmit={handleSubmit} >
+        <Row className="mb-3">
+            <Form.Group className="mb-3" controlId="Gender">
+                            <Form.Label>Match<label className="text-danger">*</label></Form.Label>
+                            <Form.Select aria-label="available" onChange={(e) => setMatch(e.target.value)}  >
+                            <option value="Select an option">Select an option</option>
+                            <option value={match}>ASU vs MIT</option>
+                            <option value={match}>ASU vs CMU</option>
+                        </Form.Select>
+                        </Form.Group>
+        </Row>
+        <Row>
+            <Form.Group as={Col} className="mb-3" controlId="Fname">
+                <Form.Label>Team A Score<label className="text-danger">*</label></Form.Label>
+                <Form.Control
+                    required
+                    autoFocus
+                    type="name"
+                    placeholder="Score"
+                    value={scoreA}
+                    onChange={(e) => setScoreA(e.target.value)}/>
+            </Form.Group>
+        </Row>
+        <Row>
+            <Form.Group as={Col} className="mb-3" controlId="Lname">
+                <Form.Label>Last Name<label className="text-danger">*</label></Form.Label>
+                <Form.Control
+                    required
+                    autoFocus
+                    type="name"
+                    placeholder="Score"
+                    value={scoreB}
+                    onChange={(e) => setScoreB(e.target.value)}/>
+            </Form.Group>
+        </Row>
+            <div className='central_heading'>
+            <Button variant="primary" type="submit" className='btn-primary'>Submit application</Button>
+            </div>
+            </Form>
+            </div>
+            </body>
+        );
 }
+

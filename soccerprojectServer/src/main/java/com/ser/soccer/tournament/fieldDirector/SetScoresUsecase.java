@@ -1,7 +1,5 @@
 package com.ser.soccer.tournament.fieldDirector;
 
-import com.ser.soccer.tournament.referee.Referee;
-import com.ser.soccer.tournament.referee.RefereeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
