@@ -28,7 +28,7 @@ public class Controller {
 		String tournamentName = "Soccer Tournament";
 		int totalTeams = 4;
 		int totVenues = 3;
-		String category = "U16W";
+		String category = "U19M";
 		Date date=null;
 		try {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
@@ -51,7 +51,7 @@ public class Controller {
 		}
 		
 		Tournament tournament = new Tournament (tournamentName,totalTeams, totVenues, date, category); 
-		List<TeamPojo> teamslist = teamsService.getTeams("U19M");
+		List<TeamPojo> teamslist = teamsService.getTeams(category);
 		for(TeamPojo t:teamslist) {
 			tournament.addTeam(t.getName());
 		}
