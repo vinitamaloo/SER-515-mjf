@@ -66,10 +66,8 @@ export default function TeamRegistration() {
             "zip" : zip
         }
 
-        //let x = await postTeamData(teamData);
-
-        localStorage.setItem('teamId', teamId)
         let x = await postTeamData(teamData);
+        localStorage.setItem('teamId', teamId)
         history.push("/team");
     }
 
@@ -87,9 +85,30 @@ export default function TeamRegistration() {
                         required as="select"
                         onChange={(e) => setApplicationGroup(e.target.value)}>
                         <option value=""></option>
-                        <option value="boysU08">BoysU08</option>
-                        <option value="boysU09">BoysU09</option>
-                        <option value="girlsU08">GirlsU08</option>
+                        <option value="boysU08">boysU08</option>
+                        <option value="boysU09">boysU09</option>
+                        <option value="boysU10">boysU10</option>
+                        <option value="boysU11">boysU11</option>
+                        <option value="boysU12">boysU12</option>
+                        <option value="boysU13">boysU13</option>
+                        <option value="boysU14">boysU14</option>
+                        <option value="boysU15">boysU15</option>
+                        <option value="boysU16">boysU16</option>
+                        <option value="boysU17">boysU17</option>
+                        <option value="boysU18">boysU18</option>
+                        <option value="boysU19">boysU19</option>
+                        <option value="girlsU08">girlsU08</option>
+                        <option value="girlsU09">girlsU09</option>
+                        <option value="girlsU10">girlsU10</option>
+                        <option value="girlsU11">girlsU11</option>
+                        <option value="girlsU12">girlsU12</option>
+                        <option value="girlsU13">girlsU13</option>
+                        <option value="girlsU14">girlsU14</option>
+                        <option value="girlsU15">girlsU15</option>
+                        <option value="girlsU16">girlsU16</option>
+                        <option value="girlsU17">girlsU17</option>
+                        <option value="girlsU18">girlsU18</option>
+                        <option value="girlsU19">girlsU19</option>
                     </Form.Select>
                 </Form.Group>
                  <Form.Group className="d-flex" controlId="team_name">
