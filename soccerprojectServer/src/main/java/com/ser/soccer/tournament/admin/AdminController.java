@@ -19,13 +19,14 @@ public class AdminController {
 
 	@RequestMapping(value = "/getUser")
 	@ResponseBody
-	public ResponseEntity getUser(@RequestBody Admin admin) {
+	public Admin getUser(@RequestBody Admin admin) {
 		
 		Admin a = adminUsecase.getByUsername(admin);
-		if (a == null)
-			return new ResponseEntity(ResponseStatus.STATUS_NO_DATA, "Invalid User");
+		return a;
+		// if (a == null)
+		// 	return new ResponseEntity(ResponseStatus.STATUS_NO_DATA, "Invalid User");
 		
-		return new ResponseEntity(ResponseStatus.STATUS_OK, "Successfull Login");
+		// return new ResponseEntity(ResponseStatus.STATUS_OK, "Successfull Login");
 	}
 
 }

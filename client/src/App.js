@@ -9,9 +9,21 @@ import Home from './Home/home.js';
 import TeamRegister from './Team_registration/team_register';
 import TermsConditions from './Team_registration/terms_conditions';
 import PostTeamRegistration from './Team_registration/post_team_registration';
+
 import SetScores from './Scores/set_scores'
 
+import { useState } from 'react'
+
+
 function App() {
+    const [role, setRole] = useState("")
+    if (localStorage.getItem('userRole') != null && role === "")
+        setRole(localStorage.getItem('userRole'))
+
+    function logout() {
+        localStorage.removeItem('userRole')
+        setRole("")
+    }
   return (
     <Router>
     <div className="App">
@@ -27,9 +39,11 @@ function App() {
             <li className="nav-item">
                 <Link className="nav-link" to={"/team-registration"}>Team registration</Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to={"/sign-in"}>Login</Link>
-              </li>
+              {role === "" &&
+                  <li className="nav-item">
+                    <Link className="nav-link" to={"/sign-in"}>Login</Link>
+                  </li>
+              }
               <li className="nav-item">
                 <Link className="nav-link" to={"/sign-up"}>Referee</Link>
               </li>
@@ -39,6 +53,31 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" to={"/tournament"}>Tournaments</Link>
               </li>
+              {role === 'Admin' &&
+                <li className="nav-item">
+                  <Link className="nav-link" to={"/add-users"}>Add users</Link>
+                </li>
+              }
+              {role === 'Referee Director' &&
+                  <li className="nav-item">
+                    <Link className="nav-link" to={"/referee-applications"}>View Referee Applications</Link>
+                  </li>
+              }
+              {role === 'Field Director' &&
+                  <li className="nav-item">
+                    <Link className="nav-link" to={"/assign-fields"}>Assign Fields</Link>
+                  </li>
+              }
+              {role === 'Field Director' &&
+                <li className="nav-item">
+                    <Link className="nav-link" to={"/publish-scores"}>Publish scores</Link>
+                </li>
+              }
+              {role != "" &&
+                <li className="nav-item">
+                    <Link onClick={logout} className="nav-link" to={"/"}>Logout</Link>
+                </li>
+              }
             </ul>
           </div>
         </div>
@@ -53,7 +92,13 @@ function App() {
             <Route path="/team-registration" component={TeamRegister} />
             <Route path="/terms_conditions" component={TermsConditions} />
             <Route path="/team" component={PostTeamRegistration} />
+
             <Route path="/set-scores" component={SetScores}/>
+
+            <Route path="/publish-scores" component={PostTeamRegistration} />
+            <Route path="/assign-fields" component={PostTeamRegistration} />
+            <Route path="/referee-applications" component={PostTeamRegistration} />
+
           </Switch>
     </div>
     </Router>
