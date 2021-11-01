@@ -10,6 +10,8 @@ import TeamRegister from './Team_registration/team_register';
 import TermsConditions from './Team_registration/terms_conditions';
 import PostTeamRegistration from './Team_registration/post_team_registration';
 import { useState } from 'react'
+import assignFields from './Fields/assignfields';
+
 
 function App() {
     const [role, setRole] = useState("")
@@ -91,6 +93,10 @@ function App() {
             <Route path="/publish-scores" component={PostTeamRegistration} />
             <Route path="/assign-fields" component={PostTeamRegistration} />
             <Route path="/referee-applications" component={PostTeamRegistration} />
+
+            <Route path="/fields" component={assignFields} />
+
+
           </Switch>
     </div>
     </Router>
