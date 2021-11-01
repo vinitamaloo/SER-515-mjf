@@ -29,4 +29,11 @@ public class FieldRepository {
         Query query=new Query();
         return mongoTemplate.find(query,Fields.class);
     }
+
+    public Fields add(Fields field) {
+		if(field == null)
+			return null;
+
+		return mongoTemplate.save(field);
+	}
 }

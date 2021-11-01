@@ -18,9 +18,10 @@ public class FieldController {
     public FieldRepository fieldRepo;
     @Autowired
     private FieldUsecase fieldUsecase = new FieldUsecase();
+
     @PostMapping("/add_field")
-    public Fields addField(@RequestBody Fields f) {
-        return fieldRepo.addField(f);
+    public Fields addField(@RequestBody Fields field) {
+        return fieldUsecase.addField(field);
     }
 
     @GetMapping("/get_unassigned_field")

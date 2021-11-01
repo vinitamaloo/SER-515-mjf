@@ -2,7 +2,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Col, Row } from "react-bootstrap";
 import "./assignfields.css";
-import { getAcceptedList, getUnassignedFields } from '../api/services.js';
+import { getAcceptedList, getUnassignedFields, postField } from '../api/services.js';
 import React, { useEffect, useState } from 'react';
 import {Table} from 'react-bootstrap';
 import { Link ,useHistory} from "react-router-dom";
@@ -15,6 +15,8 @@ export default function AssignFields() {
     const [tableData, setTableData] = useState([{}]);
     const [flag, setflag] = useState(true);
     const [fieldlist,setfieldlist] = useState([{}]);
+    const [Fieldname, setFieldName] = useState("");
+    const [Refereename, setRefereeName] = useState("");
     
     if(flag) {
         getlist();
@@ -33,6 +35,14 @@ export default function AssignFields() {
     setflag(false);
 
     }
+    async function handleSubmit(event) {
+        let field = {
+            "fieldname": Fieldname,
+            "refereename": Refereename
+        }
+        let f = await postField(field);
+        console.log(f);
+    }
 
     function AssignFieldsView() {
         function submit(e){
@@ -46,7 +56,7 @@ export default function AssignFields() {
             <div className='bg-cont'>
                 <div className='main_heading'>Assign Fields to Referee</div>
 
-                <Form>
+                <Form onSubmit={handleSubmit} >
 
                     <Row>
                         <Form.Group className="mb-3" controlId="selectField">
@@ -57,6 +67,8 @@ export default function AssignFields() {
                                     <option value = {d.field}>{d.field}</option>
                                 ))}
                             </Form.Select>
+                            <Form.Control
+                            onChange={(m) => setFieldName(m.target.value)}/>
                         </Form.Group>
                     </Row>
 
@@ -69,9 +81,11 @@ export default function AssignFields() {
                                     <option value = {d}>{d.firstname +" " + d.lastname}</option>
                                 ))}
                             </Form.Select>
+                            <Form.Control
+                            onChange={(m) => setRefereeName(m.target.value)}/>
                         </Form.Group>
                     </Row>
-                    <button type="button" class="btn btn-primary" onClick = {submit}>Submit</button>
+                    <button type="submit" class="btn btn-primary" onClick = {submit}>Submit</button>
                 </Form>
             </div>
         )

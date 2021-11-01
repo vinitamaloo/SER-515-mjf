@@ -19,4 +19,8 @@ public class FieldUsecase {
         return fieldRepo.getUnassignedFields();
     }
 
+    public Fields addField(Fields field) {
+		return fieldRepo.add(field);
+	}
+
 }
