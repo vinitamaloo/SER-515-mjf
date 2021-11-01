@@ -23,6 +23,7 @@ public class RefereeUsecase {
 	public List<Referee> getRefereeByApplication(String application) {
 		return refereeRepo.getByApplication(application);
 	}
+
 	public List<Referee> getRefereeByApplicationd(String application) {
 		return refereeRepo.getByApplication(ACCEPT);
 	}
