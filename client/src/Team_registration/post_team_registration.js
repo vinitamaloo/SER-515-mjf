@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import "./post_team_registration.css";
@@ -17,6 +18,20 @@ export default function PostTeamRegistration() {
     function handleSubmit(event) {
         event.preventDefault();
         setTeamStatus('REGISTERED')
+    }
+
+    function postTeamSuccessfulPaymentView() {
+        return (
+           <div className='fragment'>
+             <div className='central_heading'>Congratulations!</div>
+             <div className='central_heading'>Your team is now Registered!!</div>
+             <div className='central_heading'>
+                <Button variant="primary" onClick={handleSubmit} className='btn-primary'>
+                    <Link to={'/'} style={{color: "white",textDecoration: 'none'}}>Go to home</Link>
+                </Button>
+             </div>
+           </div>
+        )
     }
 
     function postTeamSuccessfulRegistrationView() {
@@ -53,7 +68,7 @@ export default function PostTeamRegistration() {
                  </tr>
                  <tr>
                    <td>Team Status</td>
-                   <td><Button variant="primary" type="Submit" className='btn-primary'>Pay Now</Button></td>
+                   <td><Button variant="primary" type="Submit" onClick={handleSubmit} className='btn-primary'>Pay Now</Button></td>
                  </tr>
                </tbody>
              </Table>
@@ -61,5 +76,8 @@ export default function PostTeamRegistration() {
         )
     }
 
-    return postTeamSuccessfulRegistrationView();
+    if (teamStatus === 'APPLIED')
+        return postTeamSuccessfulRegistrationView();
+    else
+        return postTeamSuccessfulPaymentView();
 }
