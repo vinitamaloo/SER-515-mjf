@@ -67,12 +67,12 @@ function App() {
               }
               {role === 'Field Director' &&
                   <li className="nav-item">
-                    <Link className="nav-link" to={"/assign-fields"}>Assign Fields</Link>
+                    <Link className="nav-link" to={"/fields"}>Assign Fields</Link>
                   </li>
               }
               {role === 'Field Director' &&
                 <li className="nav-item">
-                    <Link className="nav-link" to={"/publish-scores"}>Publish scores</Link>
+                    <Link className="nav-link" to={"/set-scores"}>Publish scores</Link>
                 </li>
               }
               {role != "" &&
