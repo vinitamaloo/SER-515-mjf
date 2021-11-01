@@ -67,12 +67,12 @@ function App() {
               }
               {role === 'Field Director' &&
                   <li className="nav-item">
-                    <Link className="nav-link" to={"/assign-fields"}>Assign Fields</Link>
+                    <Link className="nav-link" to={"/fields"}>Assign Fields</Link>
                   </li>
               }
               {role === 'Field Director' &&
                 <li className="nav-item">
-                    <Link className="nav-link" to={"/publish-scores"}>Publish scores</Link>
+                    <Link className="nav-link" to={"/set-scores"}>Publish scores</Link>
                 </li>
               }
               {role != "" &&
@@ -100,7 +100,6 @@ function App() {
             <Route path="/assign-fields" component={PostTeamRegistration} />
             <Route path="/set-scores" component={SetScores}/>
             <Route path="/publish-scores" component={PostTeamRegistration} />
-            <Route path="/assign-fields" component={PostTeamRegistration} />
             <Route path="/fields" component={assignFields} />
 
 
