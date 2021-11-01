@@ -14,4 +14,7 @@ export const postReferee = (referee) => {
 export const getRefereeList = (application) => {return axios.post(serverUrl + 'referee/get_all_in_progress',application);}
 export const getRefereeInfo = (email) => {return axios.post(serverUrl + 'referee/particularreferee',email);}
 export const setApplicationStatus = (refstatus) => {return axios.post(serverUrl + 'referee/updateappstatus', refstatus);}
-export const getAcceptedList = (application) => {return axios.post(serverUrl + 'referee/get_accepted',application);}
+export const getAcceptedList = () => {return axios.get(serverUrl + 'referee/get_accepted');}
+export const getUnassignedFields = () => {return axios.get(serverUrl + 'field/get_unassigned_field');}
+export const postField = (f) => {
+        return axios.post(serverUrl + 'referee/add_field',f);}
