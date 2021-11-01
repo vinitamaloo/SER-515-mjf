@@ -16,8 +16,9 @@ export default function Login() {
     const res = await getUser(user);
     if(res.data !== "") {
       console.log("Role", res.data.role);
+      localStorage.setItem('userRole', res.data.role);
       history.push("/");
-      
+      window.location.reload();
     }
     else alert("incorrect email or password");
   }
