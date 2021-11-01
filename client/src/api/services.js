@@ -14,3 +14,7 @@ export const postSetScores = (setScores) => {
         return axios.post(serverUrl + 'setScores/add_set_scores',setScores);
 }
 
+export const getRefereeList = (application) => {return axios.post(serverUrl + 'referee/get_all_in_progress',application);}
+export const getRefereeInfo = (email) => {return axios.post(serverUrl + 'referee/particularreferee',email);}
+export const setApplicationStatus = (refstatus) => {return axios.post(serverUrl + 'referee/updateappstatus', refstatus);}
+export const getAcceptedList = (application) => {return axios.post(serverUrl + 'referee/get_accepted',application);}
