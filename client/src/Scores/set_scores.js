@@ -6,7 +6,7 @@ import { postSetScores } from '../api/services';
 import "./set_scores.css";
 
 
-export default function Login() {
+export default function SetScores() {
 
     const [match, setMatch] = useState("");
     const [scoreA, setScoreA] = useState("");
@@ -20,18 +20,19 @@ export default function Login() {
 
         if(validate()) {
 
-            alert('Form is submited');
-            let referee = {
+            alert('Scores are submitted');
+            let setScores = {
                 "match": match,
                 "scoreA" : scoreA,
                 "scoreB" : scoreB,
 
             }
-            let x=await postSetScores(referee);
+            let x=await postSetScores(setScores);
+            console.log(scoreA);
             console.log(x);
         }
         else {
-            alert('Form  is not submited');
+            alert('Please Enter Valid Scores');
             event.preventDefault();
         }
     }
@@ -56,11 +57,11 @@ export default function Login() {
 
     return (
         <body>
-        <div style={{marginTop:60}} className="registerreferee">
-        <h6 className='central_heading'>Application form for Referee!!</h6>
+        <div style={{marginTop:60}} className="setscores">
+        <h6 className='central_heading'>Set Scores</h6>
         <Form onSubmit={handleSubmit} >
         <Row className="mb-3">
-            <Form.Group className="mb-3" controlId="Gender">
+            <Form.Group className="mb-3" controlId="Matches">
                             <Form.Label>Match<label className="text-danger">*</label></Form.Label>
                             <Form.Select aria-label="available" onChange={(e) => setMatch(e.target.value)}  >
                             <option value="Select an option">Select an option</option>
@@ -70,7 +71,7 @@ export default function Login() {
                         </Form.Group>
         </Row>
         <Row>
-            <Form.Group as={Col} className="mb-3" controlId="Fname">
+            <Form.Group as={Col} className="mb-3" controlId="TeamAScore">
                 <Form.Label>Team A Score<label className="text-danger">*</label></Form.Label>
                 <Form.Control
                     required
@@ -82,8 +83,8 @@ export default function Login() {
             </Form.Group>
         </Row>
         <Row>
-            <Form.Group as={Col} className="mb-3" controlId="Lname">
-                <Form.Label>Last Name<label className="text-danger">*</label></Form.Label>
+            <Form.Group as={Col} className="mb-3" controlId="TeamBScore">
+                <Form.Label>Team B Score<label className="text-danger">*</label></Form.Label>
                 <Form.Control
                     required
                     autoFocus
@@ -94,11 +95,18 @@ export default function Login() {
             </Form.Group>
         </Row>
             <div className='central_heading'>
-            <Button variant="primary" type="submit" className='btn-primary'>Submit application</Button>
+            <Row>
+            <p>Final Score is: {scoreA + "-" + scoreB}</p>
+            </Row>
+            <Row>
+
+            </Row>
+            </div>
+            <div className='submitbutton'>
+            <Button variant="primary" type="submit" className='btn-primary'>Submit</Button>
             </div>
             </Form>
             </div>
             </body>
         );
 }
-
