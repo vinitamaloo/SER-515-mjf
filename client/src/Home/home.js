@@ -11,6 +11,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import styled from 'styled-components';
 import "./home.css"
 import Button from 'react-bootstrap/Button';
+import { Link } from "react-router-dom";
 
 // const textStyle = styled.div`
 // background-color:"#000080";
@@ -24,13 +25,14 @@ function Home() {
   return (
     <div style={{backgroundColor: "lightblue"}}>
       <h1 className = "headingStyle">Soccer Tournament</h1>
-       <div className="buttonstyle" >
-       <Button variant="primary" size="lg" active>
-    Apply
-  </Button>
+      <div className='central_heading'>
+        <Button variant="primary" size='lg' className='btn-primary'>
+            <Link to='/team-registration' style={{color: "white",textDecoration: 'none'}}>
+                Apply For Team Registration today!
+            </Link>
+        </Button>
+      </div>
 
-         </div>
-  
       <Carousel fade>
         <Carousel.Item>
           <img
