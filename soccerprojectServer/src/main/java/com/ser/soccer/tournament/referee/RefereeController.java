@@ -27,6 +27,11 @@ public class RefereeController {
 	public List<Referee> getRefereeByApplication(@RequestBody ApplicationStatus application) {
 		return refereeUsecase.getRefereeByApplication(application.getApplication());
 	}
+	
+	@PostMapping("/get_accepted")
+	public List<Referee> getRefereeByApplicationd(@RequestBody ApplicationStatus application) {
+		return refereeUsecase.getRefereeByApplication(application.getApplication());
+	}
 
 	@PostMapping("/particularreferee")
 	public Referee getRefereeByEmail(@RequestBody ApplicationStatus email) {

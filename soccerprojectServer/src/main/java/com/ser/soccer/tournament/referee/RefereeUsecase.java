@@ -8,7 +8,11 @@ import org.springframework.stereotype.Service;
 @Service("refereeUsecase")
 public class RefereeUsecase {
     
-    @Autowired
+    /**
+	 *
+	 */
+	private static final String ACCEPT = "Accept";
+	@Autowired
 	private RefereeRepository refereeRepo;
 
     public Referee addReferee(Referee referee) {
@@ -20,6 +24,9 @@ public class RefereeUsecase {
 		return refereeRepo.getByApplication(application);
 	}
 
+	public List<Referee> getRefereeByApplicationd(String application) {
+		return refereeRepo.getByApplication(ACCEPT);
+	}
 	public Referee getRefereeByEmail(String email) {
 		return refereeRepo.getByEmail(email);
 	}

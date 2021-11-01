@@ -2,21 +2,31 @@ import React, { useState } from 'react'
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import "./post_team_registration.css";
+import { getTeamDateById, changeTeamStatus} from '../api/services';
 
 export default function PostTeamRegistration() {
     const [teamName, setTeamName] = useState("TEAM 1");
-    const [teamId, setTeamId] = useState("adsakfhsfd21123");
     const [teamStatus, setTeamStatus] = useState("APPLIED");
     const [email, setEmail] = useState("email@example.com");
     const [phone, setPhone] = useState("234-232-2323");
     const [fullName, setFullName] = useState("Mark M. Hennings");
+    const [teamId, setTeamId] = useState(localStorage.getItem('teamId'));
 
-//  if (teamStatus === 'REGISTERED')
-//      TODO: redirect to team home page
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        setTeamStatus('REGISTERED')
+    async function get_team_data() {
+        const team_data = await getTeamDateById(teamId);
+        //  if (teamStatus === 'REGISTERED')
+        //      TODO: redirect to team home page
+    }
+
+    async function handlePayment() {
+        let applicationStatus = {
+            "teamId" : teamId,
+            "applicationStatus": 'REGISTERED'
+        }
+        const resp = await changeTeamStatus(applicationStatus);
+        //if (resp == 200)
+            //      TODO: redirect to team home page
     }
 
     function postTeamSuccessfulRegistrationView() {
@@ -53,7 +63,7 @@ export default function PostTeamRegistration() {
                  </tr>
                  <tr>
                    <td>Team Status</td>
-                   <td><Button variant="primary" type="Submit" className='btn-primary'>Pay Now</Button></td>
+                   <td><Button variant="primary" type="Submit" onClick={handlePayment} className='btn-primary'>Pay Now</Button></td>
                  </tr>
                </tbody>
              </Table>

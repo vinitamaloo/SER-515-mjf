@@ -11,7 +11,11 @@ import TermsConditions from './Team_registration/terms_conditions';
 import PostTeamRegistration from './Team_registration/post_team_registration';
 import RefereeList from './RefereeList/refereelist.js';
 import RefereeInfo from './RefereeList/refereeinfo.js';
+import SetScores from './Scores/set_scores'
 import { useState } from 'react'
+import assignFields from './Fields/assignfields';
+
+
 
 function App() {
     const [role, setRole] = useState("")
@@ -94,6 +98,13 @@ function App() {
             <Route path="/refereeinfo" component={RefereeInfo} />
             <Route path="/publish-scores" component={PostTeamRegistration} />
             <Route path="/assign-fields" component={PostTeamRegistration} />
+            <Route path="/set-scores" component={SetScores}/>
+            <Route path="/publish-scores" component={PostTeamRegistration} />
+            <Route path="/assign-fields" component={PostTeamRegistration} />
+            <Route path="/fields" component={assignFields} />
+
+
+
           </Switch>
     </div>
     </Router>
