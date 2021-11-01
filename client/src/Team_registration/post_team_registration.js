@@ -3,21 +3,30 @@ import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import "./post_team_registration.css";
+import { getTeamDateById, changeTeamStatus} from '../api/services';
 
 export default function PostTeamRegistration() {
     const [teamName, setTeamName] = useState("TEAM 1");
-    const [teamId, setTeamId] = useState("adsakfhsfd21123");
     const [teamStatus, setTeamStatus] = useState("APPLIED");
     const [email, setEmail] = useState("email@example.com");
     const [phone, setPhone] = useState("234-232-2323");
     const [fullName, setFullName] = useState("Mark M. Hennings");
+    const [teamId, setTeamId] = useState(localStorage.getItem('teamId'));
 
-//  if (teamStatus === 'REGISTERED')
-//      TODO: redirect to team home page
 
-    function handleSubmit(event) {
-        event.preventDefault();
+    async function get_team_data() {
+        const team_data = await getTeamDateById(teamId);
+        //  if (teamStatus === 'REGISTERED')
+        //      TODO: redirect to team home page
+    }
+
+    async function handlePayment() {
+        let applicationStatus = {
+            "teamId" : teamId,
+            "applicationStatus": 'REGISTERED'
+        }
         setTeamStatus('REGISTERED')
+        const resp = await changeTeamStatus(applicationStatus);
     }
 
     function postTeamSuccessfulPaymentView() {
@@ -26,7 +35,7 @@ export default function PostTeamRegistration() {
              <div className='central_heading'>Congratulations!</div>
              <div className='central_heading'>Your team is now Registered!!</div>
              <div className='central_heading'>
-                <Button variant="primary" onClick={handleSubmit} className='btn-primary'>
+                <Button variant="primary" className='btn-primary'>
                     <Link to={'/'} style={{color: "white",textDecoration: 'none'}}>Go to home</Link>
                 </Button>
              </div>
@@ -68,7 +77,7 @@ export default function PostTeamRegistration() {
                  </tr>
                  <tr>
                    <td>Team Status</td>
-                   <td><Button variant="primary" type="Submit" onClick={handleSubmit} className='btn-primary'>Pay Now</Button></td>
+                   <td><Button variant="primary" type="Submit" onClick={handlePayment} className='btn-primary'>Pay Now</Button></td>
                  </tr>
                </tbody>
              </Table>
