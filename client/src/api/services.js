@@ -13,8 +13,8 @@ export const getRefereeList = (application) => {return axios.post(serverUrl + 'r
 export const getRefereeInfo = (email) => {return axios.post(serverUrl + 'referee/particularreferee',email);}
 export const setApplicationStatus = (refstatus) => {return axios.post(serverUrl + 'referee/updateappstatus', refstatus);}
 
-export const getTeamDateById = (teamId) => {return axios.get(serverUrl+"get_team_data/"+teamId)}
-export const changeTeamStatus = (applicationStatus) => {return axios.post(serverUrl+"change_team_status/", applicationStatus)}
+export const getTeamDateById = (teamId) => {return axios.get(serverUrl+"teamRegistration/get_team_data"+teamId)}
+export const changeTeamStatus = (applicationStatus) => {return axios.post(serverUrl+'teamRegistration/change_team_status', applicationStatus)}
 export const postSetScores = (setScores) => {
         return axios.post(serverUrl + 'setScores/add_set_scores',setScores);
 }
