@@ -25,7 +25,7 @@ public class FieldController {
     }
 
     @GetMapping("/get_unassigned_field")
-    public List<Fields> getUnassignedFields( ) {
+    public List<Fields> getUnassignedFields() {
         return fieldUsecase.getUnassignedFields();
     }
 }

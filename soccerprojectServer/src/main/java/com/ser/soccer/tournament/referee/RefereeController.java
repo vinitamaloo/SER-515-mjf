@@ -25,7 +25,10 @@ public class RefereeController {
 	
 	@GetMapping("/get_accepted")
 	public List<Referee> get() {
-		return refereeUsecase.getAccepted("Accept");
+//		if (referee.getIsAssigned() == "False" ){
+			return refereeUsecase.getAccepted("Accept");
+//		}
+//		return null;
 	}
 
 	@PostMapping("/particularreferee")

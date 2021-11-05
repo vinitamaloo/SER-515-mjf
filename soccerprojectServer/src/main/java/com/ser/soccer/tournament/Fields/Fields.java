@@ -13,6 +13,7 @@ public class Fields {
 
     private String field;
     private String refEmail;
+    private String category;
 
     public Fields(String field, String refEmail) {
         super();
@@ -34,5 +35,13 @@ public class Fields {
 
     public void setRefemail(String refEmail) {
         this.refEmail = refEmail;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String refEmail) {
+        this.category = category;
     }
 }

@@ -8,7 +8,7 @@ import {Table} from 'react-bootstrap';
 import { Link ,useHistory} from "react-router-dom";
 import axios from "axios";
 export default function AssignFields() {
-
+    const [FilteredReferees, setFilteredReferees] = useState([{}]);
     const [field, setField] = useState();
     const [referee, setReferee] = useState();
     const [applicationstatus, setapplication] = useState({"application": "Accept"});
@@ -22,6 +22,19 @@ export default function AssignFields() {
         getlist();
         getFieldLists();
     }
+
+    function getReferees(category){
+        var filreferees=[];
+        tableData.forEach((referee) => {
+            if(referee.agegroup==category &&  referee.isAssigned=="False")
+            {
+                filreferees.push(referee);    
+            }
+            setFilteredReferees(filreferees);
+        });
+    }
+
+
 
     async function getlist() {
         const x = await getAcceptedList(applicationstatus);
@@ -61,14 +74,20 @@ export default function AssignFields() {
                     <Row>
                         <Form.Group className="mb-3" controlId="selectField">
                             <Form.Label>Select Field<label className="text-danger">*</label></Form.Label>
-                            <Form.Select aria-label="available" required value={field} onChange={(e) => setField(e.target.value)}  >
+                            <Form.Select aria-label="available" required value={field} onChange={(e) => {
+                                setField(e.target.value);
+                                getReferees(e.target.value);
+                            }}  >
                                 <option value="Select an option">Select an option</option>
+
                                 {fieldlist.map((d,index) => (
-                                    <option value = {d.field}>{d.field}</option>
+                                    <option value = {d.category}>{d.field+" "+d.category}</option>
                                 ))}
+
                             </Form.Select>
                             <Form.Control
-                            onChange={(m) => setFieldName(m.target.value)}/>
+                            onChange={(m) => setFieldName(m.target.value)}
+                            />
                         </Form.Group>
                     </Row>
 
@@ -77,12 +96,13 @@ export default function AssignFields() {
                             <Form.Label>Select Referee<label className="text-danger">*</label></Form.Label>
                             <Form.Select aria-label="available" required value={referee} onChange={(e) => setReferee(e.target.value)}  >
                                 <option value="Select an option">Select an option</option>
-                                {tableData.map((d,index) => (
+                                {FilteredReferees.map((d,index) => (
                                     <option value = {d}>{d.firstname +" " + d.lastname}</option>
                                 ))}
                             </Form.Select>
                             <Form.Control
-                            onChange={(m) => setRefereeName(m.target.value)}/>
+                            onChange={(m) => setRefereeName(m.target.value)}
+                            />
                         </Form.Group>
                     </Row>
                     <button type="submit" class="btn btn-primary" onClick = {submit}>Submit</button>
