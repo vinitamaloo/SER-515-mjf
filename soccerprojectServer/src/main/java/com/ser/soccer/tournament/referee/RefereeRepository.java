@@ -51,4 +51,13 @@ public class RefereeRepository {
 		mongoTemplate.updateFirst(query, update, Referee.class);
 	}
 
+	public void updateStatusByEmail(String refereeEmail) {
+
+		Query query=new Query();
+		query.addCriteria(Criteria.where("email").is(refereeEmail));
+		Update update = new Update();
+		update.set("isAssigned", "True");
+		mongoTemplate.updateFirst(query, update, Referee.class);
+	}
+
 }

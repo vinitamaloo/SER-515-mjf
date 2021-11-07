@@ -12,13 +12,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Fields {
 
     private String field;
-    private String refEmail;
+    private String refereename;
     private String category;
 
-    public Fields(String field, String refEmail) {
+    public Fields(String field, String refereename,String category) {
         super();
         this.field = field;
-        this.refEmail = refEmail;
+        this.refereename = refereename;
+        this.category=category;
     }
 
     public String getField() {
@@ -29,19 +30,19 @@ public class Fields {
         field = field;
     }
 
-    public String getRefemail() {
-        return refEmail;
+    public String getRefName() {
+        return refereename;
     }
 
-    public void setRefemail(String refEmail) {
-        this.refEmail = refEmail;
+    public void setRefName(String refereename) {
+        this.refereename = refereename;
     }
 
     public String getCategory() {
         return category;
     }
 
-    public void setCategory(String refEmail) {
+    public void setCategory(String category) {
         this.category = category;
     }
 }

@@ -22,5 +22,9 @@ public class FieldUsecase {
     public Fields addField(Fields field) {
 		return fieldRepo.add(field);
 	}
+    public void updateRefereeNameandEmail(UpdateReferee updateReferee) {
+        fieldRepo.updateRefereeName(updateReferee);
+        fieldRepo.updateRefereeEmail(updateReferee);
+    }
 
 }

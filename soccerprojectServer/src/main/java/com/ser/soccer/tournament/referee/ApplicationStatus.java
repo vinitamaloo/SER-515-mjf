@@ -5,15 +5,7 @@ public class ApplicationStatus {
     private String application;
     private String email;
 
-    public String getField() {
-        return field;
-    }
 
-    public void setField(String field) {
-        this.field = field;
-    }
-
-    private String field;
 
     public String getApplication() {
         return application;

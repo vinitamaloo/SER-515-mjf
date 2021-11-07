@@ -16,5 +16,9 @@ export const getRefereeInfo = (email) => {return axios.post(serverUrl + 'referee
 export const setApplicationStatus = (refstatus) => {return axios.post(serverUrl + 'referee/updateappstatus', refstatus);}
 export const getAcceptedList = () => {return axios.get(serverUrl + 'referee/get_accepted');}
 export const getUnassignedFields = () => {return axios.get(serverUrl + 'field/get_unassigned_field');}
-export const postField = (field) => {
-        return axios.post(serverUrl + 'field/add_field',field);}
+export const updateRefNameandEmail = (fields) => {
+        // alert(fields.field+" "+fields.refereeName);
+        return axios.post(serverUrl + 'field/update_refname',fields);}
+        export const updateRefStatus = (fields) => {
+                alert("Submitted");
+                return axios.post(serverUrl + 'referee/updaterefereestatus',fields);}

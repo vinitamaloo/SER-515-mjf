@@ -37,6 +37,10 @@ public class RefereeUsecase {
 	public void UpdateRefereeByEmail(ApplicationStatus application) {
 		refereeRepo.updateByEmail(application);
 	}
+
+	public void UpdateStatusByEmail(String refereeEmail) {
+		refereeRepo.updateStatusByEmail(refereeEmail);
+	}
 }
 
 
