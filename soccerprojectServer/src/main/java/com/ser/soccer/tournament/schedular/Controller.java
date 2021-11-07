@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ser.soccer.tournament.team_registration.TeamRegister;
+
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 
@@ -51,6 +53,34 @@ public class Controller {
         HashMap<String, ArrayList<Match>> schedule = new HashMap<String, ArrayList<Match>>();
 
         List<TeamByCategory> list = teamsService.getTeamsByCategory();
+
+        for (TeamByCategory tp : list) {
+            List<Field> fields = venueService.getFields();
+            Tournament tournament = new Tournament(tournamentName, tp.getTeams().size(), fields.size(), date);
+            for (Field f : fields) {
+                tournament.addVenue(f.getField());
+            }
+            for (TeamRegister team : tp.getTeams()) {
+                tournament.addTeam(team.getTeamName());
+            }
+            int totRounds = 2;
+            tournament.setNumberOfRounds(totRounds);
+            ArrayList<Match> matches = tournament.getMatches();
+            schedule.put(tp.getId(), matches);
+            scheduleService.delete(tp.getId());
+            scheduleService.save(new Schedule(tp.getId(), matches));
+            System.out.println("\n****\t" + tournament.getTournamentName() + "\t****\n");
+            System.out.println(tp.getId());
+            System.out.print("Tournament beginning date: ");
+            if (date != null)
+                System.out.println(MyDateParser.toString(date));
+            System.out.println("");
+
+            for (Match m : matches) {
+                System.out.println(m.toString());
+            }
+            // scheduleService.save(schedule);
+        }
 
         return schedule;
 
