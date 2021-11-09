@@ -14,8 +14,7 @@ import RefereeInfo from './RefereeList/refereeinfo.js';
 import SetScores from './Scores/set_scores'
 import { useState } from 'react'
 import assignFields from './Fields/assignfields';
-
-
+import Results from './Results/results';
 
 function App() {
     const [role, setRole] = useState("")
@@ -32,7 +31,7 @@ function App() {
       <nav className="navbar navbar-expand-lg sticky">
         <div className="container">
           {/* <Link className="navbar-brand" to={"/sign-in"}>xyz</Link> */}
-         
+
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul className="navbar-nav ml-auto">
             <li className="nav-item">
@@ -40,7 +39,10 @@ function App() {
               </li>
             <li className="nav-item">
                 <Link className="nav-link" to={"/team-registration"}>Team registration</Link>
-              </li>
+            </li>
+            <li className="nav-item">
+                <Link className="nav-link" to={"/results"}>Results</Link>
+            </li>
               {role === "" &&
                   <li className="nav-item">
                     <Link className="nav-link" to={"/sign-in"}>Login</Link>
@@ -101,9 +103,7 @@ function App() {
             <Route path="/set-scores" component={SetScores}/>
             <Route path="/publish-scores" component={PostTeamRegistration} />
             <Route path="/fields" component={assignFields} />
-
-
-
+            <Route path="/results" component={Results} />
           </Switch>
     </div>
     </Router>
