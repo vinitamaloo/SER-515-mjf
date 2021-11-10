@@ -37,4 +37,9 @@ public class AdminController {
 		return adminUsecase.getAll();
 	}
 
+	@PostMapping("/addAdmin")
+	public Admin addReferee(@RequestBody Admin admin) {
+		return adminUsecase.addAdmin(admin);
+	}
+
 }

@@ -18,5 +18,9 @@ public class AdminUsecase {
 	public List<Admin> getAll() {
 		return adminRepo.getAll();
 	}
+
+	public Admin addAdmin(Admin admin) {
+		return adminRepo.add(admin);
+	}
 	
 }

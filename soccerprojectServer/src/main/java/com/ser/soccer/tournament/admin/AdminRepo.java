@@ -29,4 +29,10 @@ public class AdminRepo {
 		return mongoTemplate.findAll(Admin.class);
 	}
 
+	public Admin add(Admin admin) {
+		if(admin == null)
+			return null;
+
+		return mongoTemplate.save(admin);
+	}
 }
