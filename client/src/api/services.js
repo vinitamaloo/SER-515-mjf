@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useParams } from 'react-router';
 
 const serverUrl = 'http://localhost:8080/'
 
@@ -20,4 +21,5 @@ export const postSetScores = (setScores) => {
 }
 export const getAcceptedList = (application) => {return axios.post(serverUrl + 'referee/get_accepted',application);}
 export const getUsersList = () => {return axios.get(serverUrl + 'admin/getAllUsers');}
+export const addUser = (user) => {return axios.post(serverUrl + 'admin/addAdmin',user);}
 

@@ -20,6 +20,10 @@ export default function Login() {
         setTableData(x.data);
         setflag(false);
     }
+
+    function handleClick() {
+        history.push("/adduserform");
+    }
     
     return (
         <div className="users">
@@ -41,6 +45,7 @@ export default function Login() {
                 ))}
             </tbody>
         </Table>
+        <Button className="btn-primary" onClick={() => handleClick()}>Add User</Button>
     </div>
   );
 }
