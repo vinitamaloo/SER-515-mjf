@@ -19,3 +19,5 @@ export const postSetScores = (setScores) => {
         return axios.post(serverUrl + 'setScores/add_set_scores',setScores);
 }
 export const getAcceptedList = (application) => {return axios.post(serverUrl + 'referee/get_accepted',application);}
+export const getUsersList = () => {return axios.get(serverUrl + 'admin/getAllUsers');}
+

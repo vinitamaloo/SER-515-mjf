@@ -1,5 +1,7 @@
 package com.ser.soccer.tournament.admin;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -23,5 +25,8 @@ public class AdminRepo {
 		return mongoTemplate.findOne(query, Admin.class);
 	}
 
+	public List<Admin> getAll() {
+		return mongoTemplate.findAll(Admin.class);
+	}
 
 }

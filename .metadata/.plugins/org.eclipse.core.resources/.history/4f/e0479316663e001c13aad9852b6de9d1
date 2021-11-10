@@ -1,0 +1,37 @@
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+/**
+ * @author Vinita Maloo(vmaloo@asu.edu)
+ * @author Harshita Jain (hjain22@asu.edu)
+ * @author Piyush Rewatkar (@asu.edu)
+ */
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class User {
+    private int id;
+    private String refresh;
+    private String auth_token;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getRefresh() {
+        return refresh;
+    }
+
+    public void setRefresh(String refresh) {
+        this.refresh = refresh;
+    }
+
+    public String getAuth_token() {
+        return auth_token;
+    }
+
+    public void setAuth_token(String auth_token) {
+        this.auth_token = auth_token;
+    }
+}
