@@ -19,7 +19,7 @@ public class Match {
 	private Team winner;
 	private boolean played;
 	private String category;
-	
+
 	public Match()
 	{
 		this.team1 = null;
@@ -29,7 +29,7 @@ public class Match {
 		this.played = false;
 		this.winner = null;
 	}
-	
+
 	public Match(Team team1, Team team2, Venue venue, Date matchDate, String category) {
 		super();
 		this.team1 = team1;
@@ -40,19 +40,19 @@ public class Match {
 		this.category = category;
 		this.winner = null;
 	}
-	
+
 	public Team[] getTeams() {
 		Team[] teams = new Team[2];
 		teams[0]=team1;
 		teams[1]=team2;
 		return teams;
 	}
-	
+
 	public void setTeams(Team team1, Team team2) {
 		this.team1 = team1;
 		this.team2 = team2;
 	}
-	
+
 	public Venue getVenue() {
 		return venue;
 	}
@@ -65,7 +65,7 @@ public class Match {
 		return matchDate;
 	}
 
-	
+
 	public Team getTeam1() {
 		return team1;
 	}
@@ -85,8 +85,8 @@ public class Match {
 	public void setMatchDate(Date matchDate) {
 		this.matchDate = matchDate;
 	}
-	
-	
+
+
 	public boolean isPlayed() {
 		return played;
 	}
