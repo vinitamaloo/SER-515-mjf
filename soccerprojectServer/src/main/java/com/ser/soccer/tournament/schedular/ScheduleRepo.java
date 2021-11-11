@@ -1,5 +1,7 @@
 package com.ser.soccer.tournament.schedular;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -22,6 +24,12 @@ public class ScheduleRepo {
         Query query = new Query();
         query.addCriteria(Criteria.where("category").is(category));
         mongoTemplate.remove(query, Schedule.class);
+    }
+
+    public List<Schedule> getSchedule() {
+        Query query = new Query();
+        List<Schedule> ans = mongoTemplate.find(query, Schedule.class);
+        return ans;
     }
 
 }

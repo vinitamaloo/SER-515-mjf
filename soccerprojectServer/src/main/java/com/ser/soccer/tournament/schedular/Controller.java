@@ -86,4 +86,9 @@ public class Controller {
 
     }
 
+    @RequestMapping(value = "/getSchedule")
+    public List<Schedule> getSchedule() {
+        return scheduleService.getSchedule();
+    }
+
 }

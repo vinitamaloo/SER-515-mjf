@@ -113,7 +113,7 @@ public class Tournament {
         HashSet<Team> tournamentTeamSet = new HashSet<Team>();
 
         for (String teamName : tournamentTeamNames) {
-            tournamentTeamSet.add(new Team(teamName));
+            tournamentTeamSet.add(new Team(teamName, 0, true));
         }
         this.setTournamentTeams(tournamentTeamSet);
     }
@@ -135,7 +135,7 @@ public class Tournament {
         HashSet<Venue> tournamentVenueSet = new HashSet<Venue>();
 
         for (String venueName : tournamentVenueNames) {
-            tournamentVenueSet.add(new Venue(venueName));
+            tournamentVenueSet.add(new Venue(venueName, true));
         }
         this.setTournamentVenues(tournamentVenueSet);
     }
@@ -158,7 +158,7 @@ public class Tournament {
 
     public void addTeam(String teamName) // Exposed Method
     {
-        this.addTeam(new Team(teamName));
+        this.addTeam(new Team(teamName, 0, true));
     }
 
     private boolean removeTeam(Team team) // Hidden Method
@@ -177,7 +177,7 @@ public class Tournament {
 
     public boolean removeTeam(String teamName) // Exposed Method
     {
-        return this.removeTeam(new Team(teamName));
+        return this.removeTeam(new Team(teamName, 0, true));
     }
 
     private void addVenue(Venue venue) // Hidden Method
@@ -190,7 +190,7 @@ public class Tournament {
 
     public void addVenue(String venueName) // Exposed Method
     {
-        this.addVenue(new Venue(venueName));
+        this.addVenue(new Venue(venueName, true));
     }
 
     private boolean removeVenue(Venue venue) // Hidden Method
@@ -209,7 +209,7 @@ public class Tournament {
 
     public boolean removeVenue(String venueName) // Exposed Method
     {
-        return this.removeVenue(new Venue(venueName));
+        return this.removeVenue(new Venue(venueName, true));
     }
 
     public ArrayList<Match> getMatches() {

@@ -7,10 +7,11 @@ class Team {
     private int points;
     private boolean notPlaying;
 
-    public Team(String name) {
-        this.teamName = name;
-        this.points = 0;
-        this.notPlaying = true;
+    public Team(String teamName, int points, boolean notPlaying) {
+        super();
+        this.teamName = teamName;
+        this.points = points;
+        this.notPlaying = notPlaying;
     }
 
     public String getTeamName() {

@@ -1,5 +1,7 @@
 package com.ser.soccer.tournament.schedular;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,9 @@ public class ScheduleService {
 
     public void delete(String category) {
         schRepo.delete(category);
+    }
+
+    public List<Schedule> getSchedule() {
+        return schRepo.getSchedule();
     }
 }
