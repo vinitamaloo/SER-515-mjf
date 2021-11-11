@@ -29,10 +29,17 @@ public class TeamRepository {
         return mongoTemplate.find(query, TeamRegister.class);
     }
 
+    public List<TeamRegister> getAllTeams(TeamStatus teamStatus) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where(teamStatus.getStatus()).is("Registered"));
+        return mongoTemplate.find(query, TeamRegister.class);
+    }
+
     public void changeTeamStatus(TeamRegister teamRegister) {
         Query query = new Query();
         Update update = new Update();
         query.addCriteria(Criteria.where("teamStatus").is(teamRegister.getTeamStatus()));
+        update.set("teamStatus", teamRegister.getTeamStatus());
         mongoTemplate.updateFirst(query, update, TeamRegister.class);
     }
 }

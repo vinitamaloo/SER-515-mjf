@@ -18,6 +18,11 @@ public class TeamUsecase {
         System.out.println("Team Name: "+teamRegister.getTeamName());
         return teamRepo.getTeamById(teamRegister);
     }
+
+    public List<TeamRegister> getAllTeams(TeamStatus teamStatus) {
+        return teamRepo.getAllTeams(teamStatus);
+    }
+
     public void changeTeamStatus(TeamRegister teamRegister) {
         teamRepo.changeTeamStatus(teamRegister);
     }

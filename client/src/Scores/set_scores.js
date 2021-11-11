@@ -2,37 +2,88 @@ import React, { useState } from 'react'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Col, Row } from "react-bootstrap";
+ import { Link } from "react-router-dom";
+import { getAllTeams } from '../api/services';
 import { postSetScores } from '../api/services';
 import "./set_scores.css";
 
 
-export default function SetScores() {
+export default function Login() {
 
-    const [match, setMatch] = useState("");
-    const [scoreA, setScoreA] = useState("");
-    const [scoreB, setScoreB] = useState("");
-    const [scoreAError, setScoreAError] = useState("");
-    const [scoreBError, setScoreBError] = useState("");
+    const [TeamA, setTeamA] = useState("");
+    const [TeamB, setTeamB] = useState("");
+    const [TeamAGoals, setTeamAGoals] = useState("");
+    const [TeamBGoals, setTeamBGoals] = useState("");
+    const [TeamAPossession, setTeamAPossession] = useState("");
+    const [TeamBPossession, setTeamBPossession] = useState("");
+    const [TeamAFouls, setTeamAFouls] = useState("");
+    const [TeamBFouls, setTeamBFouls] = useState("");
+    const [TeamAYellowCards, setTeamAYellowCards] = useState("");
+    const [TeamBYellowCards, setTeamBYellowCards] = useState("");
+    const [TeamARedCards, setTeamARedCards] = useState("");
+    const [TeamBRedCards, setTeamBRedCards] = useState("");
+    const [TeamAOffSides, setTeamAOffSides] = useState("");
+    const [TeamBOffSides, setTeamBOffSides] = useState("");
+    const [TeamACornerKicks, setTeamACornerKicks] = useState("");
+    const [TeamBCornerKicks, setTeamBCornerKicks] = useState("");
+    const [TeamASaves, setTeamASaves] = useState("");
+    const [TeamBSaves, setTeamBSaves] = useState("");
+    const [TeamAResult, setTeamAResult] = useState("");
+    const [TeamBResult, setTeamBResult] = useState("");
+    const [TeamAScore, setTeamAScore] = useState("");
+    const [TeamBScore, setTeamBScore] = useState("");
+    const [Date, setDate] = useState("");
+    const [GameTime, setGameTime] = useState("");
+    const [status, setStatus] = useState({"Team Status": "Registered"})
+    const [tableData, setTableData] = useState([{}]);
+    const [flag, setFlag] = useState(true);
     const [isValid, setValid] = useState(false);
+//    getList();
+
+
+//    async function getList() {
+//        const x = await getAllTeams(status);
+//        setTableData(x.data);
+//        console.log(tableData);
+//        setFlag(false);
+//    }
 
 
     async function handleSubmit(event) {
 
         if(validate()) {
-
-            alert('Scores are submitted');
-            let setScores = {
-                "match": match,
-                "scoreA" : scoreA,
-                "scoreB" : scoreB,
-
+            alert('Match results are submitted');
+            let statistics = {
+                "teamA": TeamA,
+                "teamB" : TeamB,
+                "teamAGoals" : TeamAGoals,
+                "teamBGoals" : TeamBGoals,
+                "teamAPossession" : TeamAPossession,
+                "teamBPossession" : TeamBPossession,
+                "teamAFouls" : TeamAFouls,
+                "teamBFouls" : TeamBFouls,
+                "teamAYellowCards" : TeamAYellowCards,
+                "teamBYellowCards" : TeamBYellowCards,
+                "teamARedCards" : TeamARedCards,
+                "teamBRedCards" : TeamBRedCards,
+                "teamAOffSides" : TeamAOffSides,
+                "teamBOffSides" : TeamBOffSides,
+                "teamACornerKicks" : TeamACornerKicks,
+                "teamBCornerKicks" :TeamBCornerKicks,
+                "teamASaves" : TeamASaves,
+                "teamBSaves" : TeamBSaves,
+                "teamAResult" : TeamAResult,
+                "teamBResult" : TeamBResult,
+                "teamAScore": TeamAScore,
+                "teamBScore": TeamBScore,
+                "date": Date,
+                "gameTime": GameTime
             }
-            let x=await postSetScores(setScores);
-            console.log(scoreA);
+            let x=await postSetScores(statistics);
             console.log(x);
         }
         else {
-            alert('Please Enter Valid Scores');
+            alert('Statistics are not submitted');
             event.preventDefault();
         }
     }
@@ -41,72 +92,316 @@ export default function SetScores() {
 
         var pattern = new RegExp(/^[0-9\b]+$/);
 
-        if(!pattern.test(scoreA)) {
-            setScoreAError("Please enter a valid Phone Number!!");
-            setValid(false);
-            return isValid;
-        }
-        if(!pattern.test(scoreB)) {
-            setScoreBError("Please enter a valid Phone Number!!");
+        if(!pattern.test(TeamAGoals)) {
             setValid(false);
             return isValid;
         }
 
+        if(!pattern.test(TeamBGoals)) {
+            setValid(false);
+            return isValid;
+        }
+
+        if(!pattern.test(TeamAFouls)) {
+                    setValid(false);
+                    return isValid;
+        }
+
+        if(!pattern.test(TeamBFouls)) {
+                    setValid(false);
+                    return isValid;
+        }
+
+        if(!pattern.test(TeamAYellowCards)) {
+                    setValid(false);
+                    return isValid;
+        }
+
+        if(!pattern.test(TeamBYellowCards)) {
+                    setValid(false);
+                    return isValid;
+        }
+
+        if(!pattern.test(TeamARedCards)) {
+                    setValid(false);
+                    return isValid;
+        }
+
+        if(!pattern.test(TeamBRedCards)) {
+                    setValid(false);
+                    return isValid;
+        }
+
+        if(!pattern.test(TeamAOffSides)) {
+                    setValid(false);
+                    return isValid;
+        }
+
+        if(!pattern.test(TeamBOffSides)) {
+                    setValid(false);
+                    return isValid;
+        }
+
+        if(!pattern.test(TeamACornerKicks)) {
+                    setValid(false);
+                    return isValid;
+        }
+
+        if(!pattern.test(TeamBCornerKicks)) {
+                    setValid(false);
+                    return isValid;
+        }
+
+        if(!pattern.test(TeamASaves)) {
+                    setValid(false);
+                    return isValid;
+        }
+
+        if(!pattern.test(TeamBSaves)) {
+                    setValid(false);
+                    return isValid;
+        }
         return true;
     }
 
     return (
         <body>
-        <div style={{marginTop:60}} className="setscores">
-        <h6 className='central_heading'>Set Scores</h6>
-        <Form onSubmit={handleSubmit} >
-        <Row className="mb-3">
-            <Form.Group className="mb-3" controlId="Matches">
-                            <Form.Label>Match<label className="text-danger">*</label></Form.Label>
-                            <Form.Select aria-label="available" onChange={(e) => setMatch(e.target.value)}  >
-                            <option value="Select an option">Select an option</option>
-                            <option value={match}>ASU vs MIT</option>
-                            <option value={match}>ASU vs CMU</option>
-                        </Form.Select>
-                        </Form.Group>
-        </Row>
-        <Row>
-            <Form.Group as={Col} className="mb-3" controlId="TeamAScore">
-                <Form.Label>Team A Score<label className="text-danger">*</label></Form.Label>
-                <Form.Control
-                    required
-                    autoFocus
-                    type="name"
-                    placeholder="Score"
-                    value={scoreA}
-                    onChange={(e) => setScoreA(e.target.value)}/>
-            </Form.Group>
-        </Row>
-        <Row>
-            <Form.Group as={Col} className="mb-3" controlId="TeamBScore">
-                <Form.Label>Team B Score<label className="text-danger">*</label></Form.Label>
-                <Form.Control
-                    required
-                    autoFocus
-                    type="name"
-                    placeholder="Score"
-                    value={scoreB}
-                    onChange={(e) => setScoreB(e.target.value)}/>
-            </Form.Group>
-        </Row>
-            <div className='central_heading'>
-            <Row>
-            <p>Final Score is: {scoreA + "-" + scoreB}</p>
-            </Row>
-            <Row>
+            <div className='bg-cont'>
+                <div className='main_heading'>Enter Match Statistics</div>
 
-            </Row>
+                <Form onSubmit={handleSubmit}>
+                    <Row>
+                        <Col>
+                        <Form.Group className="mb-3" controlId="selectteam">
+                            <Form.Label>Select Team A<label className="text-danger">*</label></Form.Label>
+                            <Form.Select aria-label="available" required value={TeamA} onChange={(e) => setTeamA(e.target.value)}  >
+                                <option value="Select an option">Select an option</option>
+                                <option value="Team AZ">Team AZ</option>
+                                <option value="Sun Devils">Sun Devils</option>
+                                <option value="Sparky">Sparky</option>
+
+                            </Form.Select>
+                        </Form.Group>
+                        </Col>
+                        <Col>
+                        <Form.Group className="mb-3" controlId="selectteam">
+                            <Form.Label>Select Team B<label className="text-danger">*</label></Form.Label>
+                            <Form.Select aria-label="available" required value={TeamB} onChange={(e) => setTeamB(e.target.value)}  >
+                                <option value="Select an option">Select an option</option>
+                                <option value="Team AZ">Team AZ</option>
+                                <option value="Sun Devils">Sun Devils</option>
+                                <option value="Sparky">Sparky</option>
+
+                            </Form.Select>
+                        </Form.Group>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Form.Group as={Col} className="mb-3" controlId="date">
+                            <Form.Label>Date<label className="text-danger">*</label></Form.Label>
+                            <Form.Control
+                                required
+                                type="date"
+                                placeholder="Date"
+                                value={Date}
+                                onChange={(e) => setDate(e.target.value)}/>
+                        </Form.Group>
+                        <Form.Group as={Col} className="mb-3" controlId="gameTime">
+                            <Form.Label>Total Game Time<label className="text-danger">*</label></Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="Total Game Time"
+                                value={GameTime}
+                                onChange={(e) => setGameTime(e.target.value)}/>
+                        </Form.Group>
+                    </Row>
+                    <Row>
+                        <Form.Group as={Col} className="mb-3" controlId="teamAGoals">
+                            <Form.Label>Team A Goals<label className="text-danger">*</label></Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="Goals"
+                                value={TeamAGoals}
+                                onChange={(e) => setTeamAGoals(e.target.value)}/>
+                        </Form.Group>
+                        <Form.Group as={Col} className="mb-3" controlId="teamBGoals">
+                            <Form.Label>Team B Goals<label className="text-danger">*</label></Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="Goals"
+                                value={TeamBGoals}
+                                onChange={(e) => setTeamBGoals(e.target.value)}/>
+                        </Form.Group>
+                    </Row>
+                    <Row>
+                        <Form.Group as={Col} className="mb-3" controlId="teamAPossession">
+                            <Form.Label>Team A Possession<label className="text-danger">*</label></Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="Percentage"
+                                value={TeamAPossession}
+                                onChange={(e) => setTeamAPossession(e.target.value)}/>
+                        </Form.Group>
+                        <Form.Group as={Col} className="mb-3" controlId="teamBPossession">
+                            <Form.Label>Team B Goals<label className="text-danger">*</label></Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="Percentage"
+                                value={TeamBPossession}
+                                onChange={(e) => setTeamBPossession(e.target.value)}/>
+                        </Form.Group>
+                    </Row>
+                    <Row>
+                        <Form.Group as={Col} className="mb-3" controlId="teamAFouls">
+                            <Form.Label>Team A Fouls<label className="text-danger">*</label></Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="Fouls"
+                                value={TeamAFouls}
+                                onChange={(e) => setTeamAFouls(e.target.value)}/>
+                        </Form.Group>
+                        <Form.Group as={Col} className="mb-3" controlId="teamBFouls">
+                            <Form.Label>Team B Fouls<label className="text-danger">*</label></Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="Fouls"
+                                value={TeamBFouls}
+                                onChange={(e) => setTeamBFouls(e.target.value)}/>
+                        </Form.Group>
+                    </Row>
+                    <Row>
+                        <Form.Group as={Col} className="mb-3" controlId="teamAYellowCards">
+                            <Form.Label>Team A Yellow Cards<label className="text-danger">*</label></Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="Yellow Cards"
+                                value={TeamAYellowCards}
+                                onChange={(e) => setTeamAYellowCards(e.target.value)}/>
+                        </Form.Group>
+                        <Form.Group as={Col} className="mb-3" controlId="teamBYellowCards">
+                            <Form.Label>Team B Yellow Cards<label className="text-danger">*</label></Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="Yellow Cards"
+                                value={TeamBYellowCards}
+                                onChange={(e) => setTeamBYellowCards(e.target.value)}/>
+                        </Form.Group>
+                    </Row>
+                    <Row>
+                        <Form.Group as={Col} className="mb-3" controlId="teamARedCards">
+                            <Form.Label>Team A Red Cards<label className="text-danger">*</label></Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="Red Cards"
+                                value={TeamARedCards}
+                                onChange={(e) => setTeamARedCards(e.target.value)}/>
+                        </Form.Group>
+                        <Form.Group as={Col} className="mb-3" controlId="teamBRedCards">
+                            <Form.Label>Team B Red Cards<label className="text-danger">*</label></Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="Red Cards"
+                                value={TeamBRedCards}
+                                onChange={(e) => setTeamBRedCards(e.target.value)}/>
+                        </Form.Group>
+                    </Row>
+                    <Row>
+                        <Form.Group as={Col} className="mb-3" controlId="teamAOffSides">
+                            <Form.Label>Team A Off Sides<label className="text-danger">*</label></Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="Off Sides"
+                                value={TeamAOffSides}
+                                onChange={(e) => setTeamAOffSides(e.target.value)}/>
+                        </Form.Group>
+                        <Form.Group as={Col} className="mb-3" controlId="teamBOffSides">
+                            <Form.Label>Team B Off Sides<label className="text-danger">*</label></Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="Off Sides"
+                                value={TeamBOffSides}
+                                onChange={(e) => setTeamBOffSides(e.target.value)}/>
+                        </Form.Group>
+                    </Row>
+                    <Row>
+                        <Form.Group as={Col} className="mb-3" controlId="teamACornerKicks">
+                            <Form.Label>Team A Corner Kicks<label className="text-danger">*</label></Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="Corner Kicks"
+                                value={TeamACornerKicks}
+                                onChange={(e) => setTeamACornerKicks(e.target.value)}/>
+                        </Form.Group>
+                        <Form.Group as={Col} className="mb-3" controlId="teamBCornerKicks">
+                            <Form.Label>Team B Corner Kicks<label className="text-danger">*</label></Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="Corner Kicks"
+                                value={TeamBCornerKicks}
+                                onChange={(e) => setTeamBCornerKicks(e.target.value)}/>
+                        </Form.Group>
+                    </Row>
+                    <Row>
+                        <Form.Group as={Col} className="mb-3" controlId="teamASaves">
+                            <Form.Label>Team A Saves<label className="text-danger">*</label></Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="Saves"
+                                value={TeamASaves}
+                                onChange={(e) => setTeamASaves(e.target.value)}/>
+                        </Form.Group>
+                        <Form.Group as={Col} className="mb-3" controlId="teamBSaves">
+                            <Form.Label>Team B Saves<label className="text-danger">*</label></Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="Saves"
+                                value={TeamBSaves}
+                                onChange={(e) => setTeamBSaves(e.target.value)}/>
+                        </Form.Group>
+                    </Row>
+                    <Row>
+                        <Form.Group as={Col} className="mb-3" controlId="teamAResult">
+                            <Form.Label>Team A Result<label className="text-danger">*</label></Form.Label>
+                            <Form.Select aria-label="grade" required value={TeamAResult} onChange={(e) => setTeamAResult(e.target.value)}  >
+                                <option value="Select an option">Select an option</option>
+                                <option value="Win">Win</option>
+                                <option value="Lose">Lose</option>
+                                <option value="Draw">Draw</option>
+                            </Form.Select>
+                        </Form.Group>
+                        <Form.Group as={Col} className="mb-3" controlId="teamBResult">
+                            <Form.Label>Team B Result<label className="text-danger">*</label></Form.Label>
+                            <Form.Select aria-label="grade" required value={TeamBResult} onChange={(e) => setTeamBResult(e.target.value)}  >
+                                <option value="Select an option">Select an option</option>
+                                <option value="Win">Win</option>
+                                <option value="Lose">Lose</option>
+                                <option value="Draw">Draw</option>
+                            </Form.Select>
+                        </Form.Group>
+                    </Row>
+                    <br></br>
+                    <Row>
+                        <Button variant="primary" type="submit" className='btn-primary'>Submit Results</Button>
+                    </Row>
+                </Form>
             </div>
-            <div className='submitbutton'>
-            <Button variant="primary" type="submit" className='btn-primary'>Submit</Button>
-            </div>
-            </Form>
-            </div>
-            </body>
-        );
-}
+        </body>
+    );
+ }

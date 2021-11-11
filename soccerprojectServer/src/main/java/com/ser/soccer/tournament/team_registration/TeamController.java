@@ -29,4 +29,10 @@ public class TeamController {
         teamUsecase.changeTeamStatus(teamRegister);
     }
 
+    @GetMapping("/get_all_data")
+    public List<TeamRegister> getAllTeams(@RequestBody TeamStatus teamStatus) {
+        System.out.println("Status: "+teamStatus.getStatus());
+        return teamUsecase.getAllTeams(teamStatus);
+    }
+
 }
