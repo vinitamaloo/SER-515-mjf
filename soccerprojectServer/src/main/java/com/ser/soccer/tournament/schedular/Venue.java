@@ -12,10 +12,10 @@ class Venue {
     private String venueName;
     private boolean occupied;
 
-    public Venue(String venueName, boolean occupied) {
+    public Venue(String venueName) {
         super();
         this.venueName = venueName;
-        this.occupied = occupied;
+        this.occupied = false;
     }
 
     public String getVenueName() {
