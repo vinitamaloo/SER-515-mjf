@@ -10,7 +10,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "teams")
 public class TeamRegister {
-    
+
+    private String teamId;
+
     private String applicationGroup;
     private String teamName;
     private String teamCity;
@@ -32,14 +34,16 @@ public class TeamRegister {
     private String city;
     private String state;
     private String zip;
+    private String teamStatus;
 
-    public TeamRegister(String applicationGroup, String teamName, String teamCity,
+    public TeamRegister(String teamId, String applicationGroup, String teamName, String teamCity,
                         String teamState, String leagueAge, String leagueGender,
                         String coachName, String clubName, String association,
                         String league, String level, String priJerseyClr,
                         String altJerseyClr, String firstName, String lastName,
                         String phone, String email, String address,
                         String city, String state, String zip) {
+        this.teamId = teamId;
         this.applicationGroup = applicationGroup;
         this.teamName = teamName;
         this.teamCity = teamCity;
@@ -61,6 +65,15 @@ public class TeamRegister {
         this.city = city;
         this.state = state;
         this.zip = zip;
+        this.teamStatus = "Not Registered";
+    }
+
+    public String getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(String teamId) {
+        this.teamId = teamId;
     }
 
     public String getApplicationGroup() {
@@ -229,5 +242,13 @@ public class TeamRegister {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    public String getTeamStatus() {
+        return teamStatus;
+    }
+
+    public void setTeamStatus(String teamStatus) {
+        this.teamStatus = teamStatus;
     }
 }
