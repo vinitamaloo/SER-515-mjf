@@ -2,11 +2,13 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Col, Row } from "react-bootstrap";
 import "./assignfields.css";
+import MapContainer from "./MapContainer";
 import { getAcceptedList, getUnassignedFields, updateRefNameandEmail,updateRefStatus } from '../api/services.js';
 import React, { useEffect, useState } from 'react';
 import {Table} from 'react-bootstrap';
 import { Link ,useHistory} from "react-router-dom";
 import axios from "axios";
+
 export default function AssignFields() {
     const [FilteredReferees, setFilteredReferees] = useState([{}]);
     const [field, setField] = useState();
@@ -48,7 +50,7 @@ export default function AssignFields() {
 
     async function handleSubmit(event) {    
         var refereeEmail = "";
-        // alert(Refereename);
+        alert("Submitted");
         tableData.forEach(element => {
             if(element.firstname == Refereename.split(' ')[0]){
                 refereeEmail = element.email;        
@@ -60,8 +62,9 @@ export default function AssignFields() {
             "refereeName": Refereename,
             "refereeEmail": refereeEmail
         }
+        alert("Assigning Fileds");
         let f = await updateRefNameandEmail(fields);
-        setTimeout(() => { }, 5000);
+        // setTimeout(() => { }, 5000);
         let r =  await updateRefStatus(fields);
     }
 
@@ -108,6 +111,16 @@ export default function AssignFields() {
                     </Row>
                     <Button variant="primary" type="submit" className='btn-primary'>Submit</Button>
                 </Form>
+                <br/>
+                <br/>                    
+                <MapContainer /> 
+
+
+
+
+
+
+
             </div>
         )
     }

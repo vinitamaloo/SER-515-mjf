@@ -20,5 +20,5 @@ export const updateRefNameandEmail = (fields) => {
         // alert(fields.field+" "+fields.refereeName);
         return axios.post(serverUrl + 'field/update_refname',fields);}
         export const updateRefStatus = (fields) => {
-                alert("Submitted");
+                // alert("Submitted");
                 return axios.post(serverUrl + 'referee/updaterefereestatus',fields);}
