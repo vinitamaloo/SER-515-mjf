@@ -35,4 +35,11 @@ public class AdminRepo {
 
 		return mongoTemplate.save(admin);
 	}
+
+	public void remove(Admin admin) {
+
+		Query query = new Query();
+		query.addCriteria(Criteria.where("email").is(admin.getEmail()));
+		mongoTemplate.remove(query, Admin.class);
+	}
 }

@@ -3,6 +3,7 @@ import { getUsersList } from '../api/services.js';
 import React, { useState } from 'react';
 import {Table} from 'react-bootstrap';
 import { Link ,useHistory} from "react-router-dom";
+import { removeAdmin } from '../api/services.js';
 
 
 export default function Login() {
@@ -24,6 +25,12 @@ export default function Login() {
     function handleClick() {
         history.push("/adduserform");
     }
+
+    async function removeUser(email) {
+        const e = {"email" : email};
+        await removeAdmin(e);
+        window.location.reload(false);
+    }
     
     return (
         <div className="users">
@@ -33,6 +40,7 @@ export default function Login() {
                 <th>ID</th>
                 <th>Email</th>
                 <th>Role</th>
+                <th>Remove User</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,7 +48,8 @@ export default function Login() {
                     <tr key={index}> 
                     <td key={index}>{index}</td>
                     <td key={index}>{d.email}</td>
-                    <td key={index}>{d.role}</td>"
+                    <td key={index}>{d.role}</td>
+                    <td key={index}><Button className="btn-primary" onClick={() => removeUser(d.email)}>Remove</Button></td>
                     </tr>
                 ))}
             </tbody>

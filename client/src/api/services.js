@@ -22,4 +22,4 @@ export const postSetScores = (setScores) => {
 export const getAcceptedList = (application) => {return axios.post(serverUrl + 'referee/get_accepted',application);}
 export const getUsersList = () => {return axios.get(serverUrl + 'admin/getAllUsers');}
 export const addUser = (user) => {return axios.post(serverUrl + 'admin/addAdmin',user);}
-
+export const removeAdmin = (email) => {return axios.post(serverUrl + 'admin/removeAdmin', email);}

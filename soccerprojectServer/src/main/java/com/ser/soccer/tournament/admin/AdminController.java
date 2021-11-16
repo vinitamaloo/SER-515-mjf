@@ -42,4 +42,9 @@ public class AdminController {
 		return adminUsecase.addAdmin(admin);
 	}
 
+	@PostMapping("/removeAdmin")
+	public void removeAdmin(@RequestBody Admin admin) {
+		adminUsecase.removeAdmins(admin);
+	}
+
 }

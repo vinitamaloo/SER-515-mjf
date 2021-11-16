@@ -22,5 +22,9 @@ public class AdminUsecase {
 	public Admin addAdmin(Admin admin) {
 		return adminRepo.add(admin);
 	}
+
+	public void removeAdmins(Admin admin) {
+		adminRepo.remove(admin);
+	}
 	
 }

@@ -22,9 +22,7 @@ export default function AddUserForm() {
             "password" : password
         }
 
-        console.log(user);
         let x=await addUser(user);
-        console.log(x);
         history.push("/add-users");
 
     }
