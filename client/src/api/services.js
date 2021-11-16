@@ -14,8 +14,8 @@ export const getRefereeList = (application) => {return axios.post(serverUrl + 'r
 export const getRefereeInfo = (email) => {return axios.post(serverUrl + 'referee/particularreferee',email);}
 export const setApplicationStatus = (refstatus) => {return axios.post(serverUrl + 'referee/updateappstatus', refstatus);}
 
-export const getTeamDateById = (teamId) => {return axios.get(serverUrl+"get_team_data/"+teamId)}
-export const changeTeamStatus = (applicationStatus) => {return axios.post(serverUrl+"change_team_status/", applicationStatus)}
+export const getTeamDateById = (teamId) => {return axios.get(serverUrl+"teamRegistration/get_team_data"+teamId);}
+export const changeTeamStatus = (teamRegister) => {return axios.post(serverUrl+'teamRegistration/change_team_status', teamRegister);}
 export const postSetScores = (setScores) => {
         return axios.post(serverUrl + 'setScores/add_set_scores',setScores);
 }
@@ -23,3 +23,6 @@ export const getAcceptedList = (application) => {return axios.post(serverUrl + '
 export const getUsersList = () => {return axios.get(serverUrl + 'admin/getAllUsers');}
 export const addUser = (user) => {return axios.post(serverUrl + 'admin/addAdmin',user);}
 export const removeAdmin = (email) => {return axios.post(serverUrl + 'admin/removeAdmin', email);}
+export const getAllTeams = (teamRegister) => {return axios.get(serverUrl + 'teamRegistration/get_all_data', teamRegister);}
+
+export const getSchedule = () =>{ return axios.get(serverUrl+ 'getSchedule');}
