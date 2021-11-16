@@ -5,8 +5,6 @@ public class ApplicationStatus {
     private String application;
     private String email;
 
-
-
     public String getApplication() {
         return application;
     }
@@ -22,8 +20,6 @@ public class ApplicationStatus {
     public void setEmail(String email) {
         this.email = email;
     }
-
-
 
     
     
