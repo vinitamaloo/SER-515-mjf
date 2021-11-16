@@ -1,0 +1,204 @@
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
+
+import java.io.*;
+import java.net.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+/**
+ * @author Vinita Maloo(vmaloo@asu.edu)
+ */
+public class TaigaLogin {
+    static String auth_token;
+    static int sprint_id;
+    static Map<String,Integer> members = new HashMap<String,Integer>();
+    public static void main(String args[]) throws IOException {
+        taigaLogin();
+        getProjects();
+        getMilestones();
+    }
+
+    private static void taigaLogin() throws IOException {
+        URL url = new URL("https://api.taiga.io/api/v1/auth");
+        URLConnection con = url.openConnection();
+        HttpURLConnection http = (HttpURLConnection) con;
+        http.setRequestMethod("POST");
+        http.setRequestProperty("Content-Type", "application/json");
+        http.setRequestProperty("Accept", "application/json");
+
+
+        String jsonInputString = "{\"type\": \"normal\", \"username\": \"harshita27apr@gmail.com\", \"password\": \"harshita@27\"}";
+        http.setDoOutput(true);
+
+        try (OutputStream os = http.getOutputStream()) {
+            byte[] input = jsonInputString.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(con.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String responseLine = null;
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+            System.out.println(response.toString());
+            ObjectMapper mapper = new ObjectMapper();
+            User user = mapper.readValue(response.toString(), User.class);
+            auth_token = user.getAuth_token();
+            System.out.println(auth_token);
+        }
+    }
+
+    private static void getProjects() throws IOException {
+        OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        Request request = new Request.Builder()
+                .url("https://api.taiga.io/api/v1/projects/by_slug?slug=vinitamaloo-ser-515-mjf")
+                .method("GET", null)
+                .addHeader("Authorization", "Bearer "+auth_token)
+                .addHeader("Content-Type", "application/json")
+                .build();
+        Response response = client.newCall(request).execute();
+        ObjectMapper mapper = new ObjectMapper();
+        Project project = mapper.readValue(response.body().string(), Project.class);
+        System.out.println("\nProject name: "+project.getName());
+        System.out.println();
+        for (Member member : project.getMembers()) {
+        	members.put(member.getFull_name_display(), 0);
+            System.out.println("Member name: "+member.getFull_name_display()+"|| Member role: "+member.getRole_name());
+        }
+    }
+
+    @SuppressWarnings("resource")
+	private static void getMilestones() throws IOException {
+        System.out.println("\n***Showing all available sprints***\n");
+        OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        Request request = new Request.Builder()
+                .url("https://api.taiga.io/api/v1/milestones?project=420158")
+                .method("GET", null)
+                .addHeader("Authorization", "Bearer " + auth_token)
+                .addHeader("Content-Type", "application/json")
+                .build();
+        Response response = client.newCall(request).execute();
+        ObjectMapper mapper = new ObjectMapper();
+        List<Milestones> milestones = mapper.readValue(response.body().string(), new TypeReference<List<Milestones>>() {
+        });
+        for (Milestones m : milestones) {
+            System.out.println("Sprint name: " + m.getName()+ "\nSprint Start Date: "+m.getEstimated_start()+
+                    "\nSprint End Date: "+m.getEstimated_finish()+" Sprint total points: "
+                    +m.getTotal_points()+"\nSpring finished points: " +m.getClosed_points());
+            System.out.println();
+        }
+
+        Milestones m = null;
+        while (true) {
+            System.out.println("Enter a sprint name(eg:Sprint 1):");
+            Scanner sc = new Scanner(System.in);
+            String sprintName = sc.nextLine();
+
+            m = getSprintData(sprintName, milestones);
+            if (m == null) {
+                System.out.println("Select a valid sprint name");
+                continue;
+            }
+
+            break;
+        }
+
+        System.out.println(m.getName());
+
+        System.out.println("\n***Showing all user stories***\n");
+        List<UserStory> stories = getUserStories(m.getId());
+        for (UserStory story : stories) {
+            System.out.println("User Story name: " + story.getSubject()+ " \nCreated On: "+story.getCreated_date()+
+                    "\nIs User story finished: "+story.isIs_closed()+"\nUser Story moved to sprint on: "
+                    +story.getModified_date());
+            System.out.println();
+        }
+        System.out.println("\n***Showing all the tasks for the selected Sprint***\n");
+        List<Task> tasks = getTasks(sprint_id);
+//        List<Task> lastSprintTasks = getTasks(302998);
+        for (Task task : tasks) {
+        	String name = task.getAssigned_to_extra_info().get("full_name_display");
+        	members.replace(name, members.get(name) + 1);
+            System.out.println("Task name: " + task.getSubject()+ " \nAssigned to: "+name);
+            System.out.println();
+        }
+        
+        System.out.println("***Number of tasks a member is assigned in this sprint***\n");
+        
+//        for (Task task : lastSprintTasks) {
+//        	String name = task.getAssigned_to_extra_info().get("full_name_display");
+//        	members.replace(name, members.get(name) + 1);
+//        }
+        
+        for(Map.Entry<String, Integer> ele: members.entrySet()) {
+        	System.out.println(ele.getKey()+": "+ele.getValue());
+        }
+    }
+
+
+    private static List<UserStory> getUserStories(int sprintId) throws IOException {
+        OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        Request request = new Request.Builder()
+                .url("https://api.taiga.io/api/v1/userstories?project=420158&milestone=" +sprintId)
+                .method("GET", null)
+                .addHeader("Authorization", "Bearer "+auth_token)
+                .addHeader("Content-Type", "application/json")
+                .build();
+
+        Response response = client.newCall(request).execute();
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(response.body().string(), new TypeReference<List<UserStory>>(){});
+    }
+
+    private static Milestones getSprintData(String sprintName, List<Milestones> milestones) throws IOException {
+        
+        for (Milestones m : milestones) {
+            if (m.getName().equals(sprintName)) {
+                sprint_id = m.getId();
+                break;
+            }
+        }
+
+        if (sprint_id == 0)
+            return null;
+
+        OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        Request request = new Request.Builder()
+                .url("https://api.taiga.io/api/v1/milestones/" +sprint_id)
+                .method("GET", null)
+                .addHeader("Authorization", "Bearer "+auth_token)
+                .addHeader("Content-Type", "application/json")
+                .build();
+
+        Response response = client.newCall(request).execute();
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(response.body().string(), Milestones.class);
+    }
+    
+    private static List<Task> getTasks(int milestone) throws IOException {
+        
+        OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        Request request = new Request.Builder()
+                .url("https://api.taiga.io/api/v1/tasks?project=420158&milestone="+milestone)
+                .method("GET", null)
+                .addHeader("Authorization", "Bearer " + auth_token)
+                .addHeader("Content-Type", "application/json")
+                .build();
+        Response response = client.newCall(request).execute(); 
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(response.body().string(), new TypeReference<List<Task>>(){});
+    }
+}

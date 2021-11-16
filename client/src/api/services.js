@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useParams } from 'react-router';
 
 const serverUrl = 'http://localhost:8080/'
 
@@ -19,8 +20,9 @@ export const postSetScores = (setScores) => {
         return axios.post(serverUrl + 'setScores/add_set_scores',setScores);
 }
 export const getAcceptedList = (application) => {return axios.post(serverUrl + 'referee/get_accepted',application);}
-
+export const getUsersList = () => {return axios.get(serverUrl + 'admin/getAllUsers');}
+export const addUser = (user) => {return axios.post(serverUrl + 'admin/addAdmin',user);}
+export const removeAdmin = (email) => {return axios.post(serverUrl + 'admin/removeAdmin', email);}
 export const getAllTeams = (teamRegister) => {return axios.get(serverUrl + 'teamRegistration/get_all_data', teamRegister);}
 
 export const getSchedule = () =>{ return axios.get(serverUrl+ 'getSchedule');}
-

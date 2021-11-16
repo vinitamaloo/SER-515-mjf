@@ -1,0 +1,34 @@
+import java.util.LinkedHashMap;
+
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+/**
+ * @author Vinita Maloo (vmaloo@asu.edu)
+ * @author Harshita Jain (hjain22@asu.edu)
+ * @author Piyush Rewatkar (@asu.edu)
+ */
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Task {
+	private String subject;
+	private LinkedHashMap<String, String> assigned_to_extra_info;
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public LinkedHashMap<String, String> getAssigned_to_extra_info() {
+		return assigned_to_extra_info;
+	}
+
+	public void setAssigned_to_extra_info(LinkedHashMap<String, String> assigned_to_extra_info) {
+		this.assigned_to_extra_info = assigned_to_extra_info;
+	}
+
+	
+
+	
+	
+}
