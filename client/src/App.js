@@ -9,8 +9,13 @@ import Home from './Home/home.js';
 import TeamRegister from './Team_registration/team_register';
 import TermsConditions from './Team_registration/terms_conditions';
 import PostTeamRegistration from './Team_registration/post_team_registration';
+import RefereeList from './RefereeList/refereelist.js';
+import RefereeInfo from './RefereeList/refereeinfo.js';
+import SetScores from './Scores/set_scores'
 import { useState } from 'react'
 import assignFields from './Fields/assignfields';
+import Schedule from './schedule/schedule.js';
+
 
 
 function App() {
@@ -58,17 +63,17 @@ function App() {
               }
               {role === 'Referee Director' &&
                   <li className="nav-item">
-                    <Link className="nav-link" to={"/referee-applications"}>View Referee Applications</Link>
+                    <Link className="nav-link" to={"/refereelist"}>View Referee Applications</Link>
                   </li>
               }
               {role === 'Field Director' &&
                   <li className="nav-item">
-                    <Link className="nav-link" to={"/assign-fields"}>Assign Fields</Link>
+                    <Link className="nav-link" to={"/fields"}>Assign Fields</Link>
                   </li>
               }
               {role === 'Field Director' &&
                 <li className="nav-item">
-                    <Link className="nav-link" to={"/publish-scores"}>Publish scores</Link>
+                    <Link className="nav-link" to={"/set-scores"}>Publish scores</Link>
                 </li>
               }
               {role != "" &&
@@ -90,11 +95,14 @@ function App() {
             <Route path="/team-registration" component={TeamRegister} />
             <Route path="/terms_conditions" component={TermsConditions} />
             <Route path="/team" component={PostTeamRegistration} />
+            <Route path="/refereelist" component={RefereeList} />
+            <Route path="/refereeinfo" component={RefereeInfo} />
             <Route path="/publish-scores" component={PostTeamRegistration} />
             <Route path="/assign-fields" component={PostTeamRegistration} />
-            <Route path="/referee-applications" component={PostTeamRegistration} />
-
+            <Route path="/set-scores" component={SetScores}/>
+            <Route path="/publish-scores" component={PostTeamRegistration} />
             <Route path="/fields" component={assignFields} />
+        <Route path="/schedule" component={Schedule}/>
 
 
           </Switch>

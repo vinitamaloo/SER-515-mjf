@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-// import { Link, Redirect } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import { postTeamData } from '../api/services';
 import "./team_register.css";
 
@@ -32,14 +32,17 @@ export default function TeamRegistration() {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
 
-    /*Errors*/
-//    const [phoneError, setPhoneError] = useState("");
-//    const [isValid, setValid] = useState(false);
+    const history = useHistory();
+
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
 
    async function handleSubmit(event) {
         event.preventDefault();
-
+        let teamId = 'team'+getRandomInt(750)+getRandomInt(750)
         let teamData = {
+            "teamId" : teamId,
             "applicationGroup": applicationGroup,
             "teamName" : teamName,
             "teamCity" : teamCity,
@@ -64,29 +67,9 @@ export default function TeamRegistration() {
         }
 
         let x = await postTeamData(teamData);
-        console.log(x);
+        localStorage.setItem('teamId', teamId)
+        history.push("/team");
     }
-//    useEffect(() => {
-//        setAppState({ loading: true });
-//        fetch()
-//          .then((res) => res.json())
-//          .then((repos) => {
-//            setAppState({ loading: false, repos: repos });
-//          });
-//    }, [setAppState]);
-
-
-//    function validate() {
-//        var pattern = new RegExp(/^[0-9\b]+$/);
-//        setPhoneError("");
-//        if(phone.length < 10 || !pattern.test(phone)) {
-//            setPhoneError("Please enter a valid Phone Number!!");
-//            setValid(false);
-//            return isValid;
-//        }
-//
-//        return true;
-//    }
 
     return (
         <body>
@@ -102,9 +85,30 @@ export default function TeamRegistration() {
                         required as="select"
                         onChange={(e) => setApplicationGroup(e.target.value)}>
                         <option value=""></option>
-                        <option value="boysU08">BoysU08</option>
-                        <option value="boysU09">BoysU09</option>
-                        <option value="girlsU08">GirlsU08</option>
+                        <option value="boysU08">boysU08</option>
+                        <option value="boysU09">boysU09</option>
+                        <option value="boysU10">boysU10</option>
+                        <option value="boysU11">boysU11</option>
+                        <option value="boysU12">boysU12</option>
+                        <option value="boysU13">boysU13</option>
+                        <option value="boysU14">boysU14</option>
+                        <option value="boysU15">boysU15</option>
+                        <option value="boysU16">boysU16</option>
+                        <option value="boysU17">boysU17</option>
+                        <option value="boysU18">boysU18</option>
+                        <option value="boysU19">boysU19</option>
+                        <option value="girlsU08">girlsU08</option>
+                        <option value="girlsU09">girlsU09</option>
+                        <option value="girlsU10">girlsU10</option>
+                        <option value="girlsU11">girlsU11</option>
+                        <option value="girlsU12">girlsU12</option>
+                        <option value="girlsU13">girlsU13</option>
+                        <option value="girlsU14">girlsU14</option>
+                        <option value="girlsU15">girlsU15</option>
+                        <option value="girlsU16">girlsU16</option>
+                        <option value="girlsU17">girlsU17</option>
+                        <option value="girlsU18">girlsU18</option>
+                        <option value="girlsU19">girlsU19</option>
                     </Form.Select>
                 </Form.Group>
                  <Form.Group className="d-flex" controlId="team_name">
@@ -174,15 +178,13 @@ export default function TeamRegistration() {
                 </Form.Group>
                 <Form.Group className="d-flex" controlId="club_name">
                     <Form.Label className='formLabel'>Club Name*</Form.Label>
-                    <Form.Select aria-label="clubName"
-                        required as="select"
+                    <Form.Control aria-label="clubName"
+                        required
                         className='formControl'
+                        type="text"
+                        aria-label="clubName"
                         value={clubName}
-                        onChange={(e) => setClubName(e.target.value)}>
-                        <option value=""></option>
-                        <option value="Arizona state club">Arizona state club</option>
-                        <option value="Cincinati State club">Cincinati State club</option>
-                    </Form.Select>
+                        onChange={(e) => setClubName(e.target.value)}/>
                 </Form.Group>
 
                 <Form.Group className="d-flex" controlId="league_details">
