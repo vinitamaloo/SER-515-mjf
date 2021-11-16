@@ -2,13 +2,10 @@ package com.ser.soccer.tournament.referee;
 
 import java.util.List;
 
+import com.ser.soccer.tournament.Fields.UpdateReferee;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController("refereeController")
@@ -28,9 +25,12 @@ public class RefereeController {
 		return refereeUsecase.getRefereeByApplication(application.getApplication());
 	}
 	
-	@PostMapping("/get_accepted")
-	public List<Referee> getRefereeByApplicationd(@RequestBody ApplicationStatus application) {
-		return refereeUsecase.getRefereeByApplication(application.getApplication());
+	@GetMapping("/get_accepted")
+	public List<Referee> get() {
+//		if (referee.getIsAssigned() == "False" ){
+			return refereeUsecase.getAccepted("Accept");
+//		}
+//		return null;
 	}
 
 	@PostMapping("/particularreferee")
@@ -42,4 +42,14 @@ public class RefereeController {
 	public void UpdateRefereeByEmail(@RequestBody ApplicationStatus application) {
 		refereeUsecase.UpdateRefereeByEmail(application);
 	}
-}
+
+	@PostMapping("/updaterefereestatus")
+	public void UpdateRefereeStatusByName(@RequestBody UpdateReferee updateReferee) {
+		System.out.println("this is referee controller update refereestatus api" + " " + updateReferee.refereeEmail);
+		refereeUsecase.UpdateStatusByEmail(updateReferee.refereeEmail);
+
+	}
+
+
+	}
+
