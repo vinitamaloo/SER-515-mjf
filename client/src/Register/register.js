@@ -95,6 +95,7 @@ export default function Login() {
                 <Form.Label>First Name<label className="text-danger">*</label></Form.Label>
                 <Form.Control 
                     required
+                    autoFocus 
                     type="name" 
                     placeholder="Enter Your first name"  
                     value={Firstname}
@@ -104,6 +105,7 @@ export default function Login() {
                 <Form.Label>Last Name<label className="text-danger">*</label></Form.Label>
                 <Form.Control
                     required
+                    autoFocus 
                     type="name" 
                     placeholder="Enter Your Last name"  
                     value={Lastname}
@@ -123,6 +125,7 @@ export default function Login() {
             <Form.Group className="mb-3" controlId="USSF">
                 <Form.Label>USSF Number</Form.Label>
                 <Form.Control 
+                    autoFocus 
                     type="text" 
                     placeholder="Enter Your USSF Number"  
                     value={USSF}
@@ -132,6 +135,7 @@ export default function Login() {
                 <Form.Label>Address<label className="text-danger">*</label></Form.Label>
                 <Form.Control 
                     required
+                    autoFocus 
                     type="text" 
                     placeholder="Enter Your address"  
                     value={Address}
@@ -142,6 +146,7 @@ export default function Login() {
                 <Form.Label>Country<label className="text-danger">*</label></Form.Label>
                 <Form.Control 
                     required
+                    autoFocus 
                     type="text" 
                     value={Country}
                     onChange={(e) => setCountry(e.target.value)}/>
@@ -150,6 +155,7 @@ export default function Login() {
                 <Form.Label>State<label className="text-danger">*</label></Form.Label>
                 <Form.Control 
                     required
+                    autoFocus 
                     type="text" 
                     value={State}
                     onChange={(e) => setState(e.target.value)}/>
@@ -158,6 +164,7 @@ export default function Login() {
                 <Form.Label>City<label className="text-danger">*</label></Form.Label>
                 <Form.Control
                     required 
+                    autoFocus 
                     type="text" 
                     value={City}
                     onChange={(e) => setCity(e.target.value)}/>
@@ -167,6 +174,7 @@ export default function Login() {
                 <Form.Label>Pincode<label className="text-danger">*</label></Form.Label>
                 <Form.Control 
                     required
+                    autoFocus 
                     type="text" 
                     value={Pincode}
                     onChange={(e) => setPincode(e.target.value)}/>
@@ -175,6 +183,7 @@ export default function Login() {
                 <Form.Label>Phone<label className="text-danger">*</label></Form.Label>
                 <Form.Control 
                     required
+                    autoFocus 
                     type="text" 
                     placeholder="Enter Your Phone"  
                     value={Phone}
@@ -219,6 +228,7 @@ export default function Login() {
                 <Form.Label>Age<label className="text-danger">*</label></Form.Label>
                 <Form.Control 
                     required
+                    autoFocus 
                     type="number" 
                     value={Age}
                     onChange={(e) => setAge(e.target.value)}/>
@@ -247,6 +257,7 @@ export default function Login() {
                 <Form.Label>Profile</Form.Label>
                 <Form.Control 
                     as="textarea"
+                    autoFocus 
                     placeholder = "Tell us more about your yourself."
                     value={Profile}
                     onChange={(e) => setProfile(e.target.value)}/>
@@ -282,7 +293,8 @@ export default function Login() {
                 <Form.Check
                     required
                     label="Agree to terms and conditions"
-                    type = "checkbox"/>
+                    type = "checkbox"
+                    autoFocus/>
             </Form.Group>
             <div className='central_heading'>
             <Button variant="primary" type="submit" className='btn-primary'>Submit application</Button>

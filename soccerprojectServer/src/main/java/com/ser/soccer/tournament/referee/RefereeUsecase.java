@@ -26,11 +26,9 @@ public class RefereeUsecase {
 		return refereeRepo.getByApplication(application);
 	}
 
-
 	public List<Referee> getAccepted(String application) {
 		return refereeRepo.getAccepted(application);
-
-	
+	}
 
 	public Referee getRefereeByEmail(String email) {
 		return refereeRepo.getByEmail(email);
