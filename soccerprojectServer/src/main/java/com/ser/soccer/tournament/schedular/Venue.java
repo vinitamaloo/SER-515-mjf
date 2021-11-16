@@ -9,27 +9,28 @@ package com.ser.soccer.tournament.schedular;
 
 class Venue {
 
-	private String venueName;
-	private boolean occupied;
-	
-	public Venue(String name) {
-		this.venueName = name;
-		this.occupied = false;
-	}
+    private String venueName;
+    private boolean occupied;
 
-	public String getVenueName() {
-		return venueName;
-	}
+    public Venue(String venueName, boolean occupied) {
+        super();
+        this.venueName = venueName;
+        this.occupied = occupied;
+    }
 
-	public void setVenueName(String name) {
-		this.venueName = name;
-	}
+    public String getVenueName() {
+        return venueName;
+    }
 
-	public boolean isOccupied() {
-		return occupied;
-	}
+    public void setVenueName(String name) {
+        this.venueName = name;
+    }
 
-	public void setOccupied(boolean occupied) {
-		this.occupied = occupied;
-	}
+    public boolean isOccupied() {
+        return occupied;
+    }
+
+    public void setOccupied(boolean occupied) {
+        this.occupied = occupied;
+    }
 }

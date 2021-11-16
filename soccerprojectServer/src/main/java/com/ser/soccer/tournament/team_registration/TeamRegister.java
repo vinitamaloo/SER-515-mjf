@@ -6,12 +6,13 @@
 
 package com.ser.soccer.tournament.team_registration;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "teams")
 public class TeamRegister {
+
     private String teamId;
+
     private String applicationGroup;
     private String teamName;
     private String teamCity;

@@ -9,17 +9,17 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository("venueRepo")
-public class VenueRepo {
+public class FieldRepo {
 
 	@Autowired
 	private MongoTemplate mongoTemplate;
 
-	public List<VenuePojo> getVenues() {
+	public List<Field> getFields() {
 //		if(user == null || user.trim().isEmpty())
 //			return null;
 
 		Query query=new Query();
-		return mongoTemplate.find(query, VenuePojo.class);
+		return mongoTemplate.find(query, Field.class);
 	}
 
 

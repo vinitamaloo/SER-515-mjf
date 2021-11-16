@@ -19,4 +19,8 @@ export const postSetScores = (setScores) => {
         return axios.post(serverUrl + 'setScores/add_set_scores',setScores);
 }
 export const getAcceptedList = (application) => {return axios.post(serverUrl + 'referee/get_accepted',application);}
+
 export const getAllTeams = (teamRegister) => {return axios.get(serverUrl + 'teamRegistration/get_all_data', teamRegister);}
+
+export const getSchedule = () =>{ return axios.get(serverUrl+ 'getSchedule');}
+

@@ -6,13 +6,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service("venueService")
-public class VenueService {
+public class FieldService {
 
 	@Autowired
-	private VenueRepo venueRepo;
+	private FieldRepo venueRepo;
 	
-	public List<VenuePojo> getTeams() {
-		return venueRepo.getVenues();
+	public List<Field> getFields() {
+		return venueRepo.getFields();
 	}
 
 	

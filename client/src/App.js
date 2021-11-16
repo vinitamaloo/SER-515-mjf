@@ -14,6 +14,7 @@ import RefereeInfo from './RefereeList/refereeinfo.js';
 import SetScores from './Scores/set_scores'
 import { useState } from 'react'
 import assignFields from './Fields/assignfields';
+import Schedule from './schedule/schedule.js';
 
 
 
@@ -101,7 +102,7 @@ function App() {
             <Route path="/set-scores" component={SetScores}/>
             <Route path="/publish-scores" component={PostTeamRegistration} />
             <Route path="/fields" component={assignFields} />
-
+        <Route path="/schedule" component={Schedule}/>
 
 
           </Switch>
