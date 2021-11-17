@@ -29,6 +29,14 @@ public class RefereeRepository {
 		return mongoTemplate.find(query, Referee.class);
 	}
 
+
+	public List<Referee> getAccepted(String application) {
+
+		Query query=new Query();
+		query.addCriteria(Criteria.where("application").is("Accept"));
+		return mongoTemplate.find(query, Referee.class);
+	}
+
 	public Referee getByEmail(String email) {
 
 		Query query=new Query();
@@ -41,6 +49,15 @@ public class RefereeRepository {
 		query.addCriteria(Criteria.where("email").is(application.getEmail()));
 		Update update = new Update();
 		update.set("application", application.getApplication());
+		mongoTemplate.updateFirst(query, update, Referee.class);
+	}
+
+	public void updateStatusByEmail(String refereeEmail) {
+
+		Query query=new Query();
+		query.addCriteria(Criteria.where("email").is(refereeEmail));
+		Update update = new Update();
+		update.set("isAssigned", "True");
 		mongoTemplate.updateFirst(query, update, Referee.class);
 	}
     
