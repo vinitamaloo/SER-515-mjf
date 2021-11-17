@@ -1,0 +1,46 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x000000010aafc93c, pid=6425, tid=24579
+#
+# JRE version: Java(TM) SE Runtime Environment 18.9 (11.0.12+8) (build 11.0.12+8-LTS-237)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM 18.9 (11.0.12+8-LTS-237, mixed mode, tiered, compressed oops, g1 gc, bsd-amd64)
+# Problematic frame:
+# C  [libjimage.dylib+0x193c]  _ZN12ImageStrings4findEP6EndianPKcPij+0x52
+#
+# No core dump will be written. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:61713 -javaagent:/Applications/Eclipse.app/Contents/Eclipse/configuration/org.eclipse.osgi/641/0/.cp/lib/javaagent-shaded.jar -Dfile.encoding=UTF-8 com.ser.soccer.tournament.SoccerprojectServerApplication
+
+Host: MacBookAir10,1 x86_64 2400 MHz, 8 cores, 8G, Darwin 21.1.0
+Time: Sat Nov  6 21:38:59 2021 MST elapsed time: 712.750699 seconds (0d 0h 11m 52s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007fe4508b3000):  JavaThread "Signal Dispatcher" daemon [_thread_in_vm, id=24579, stack(0x000000030986f000,0x000000030996f000)]
+
+Stack: [0x000000030986f000,0x000000030996f000],  sp=0x000000030996d340,  free space=1016k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [libjimage.dylib+0x193c]  _ZN12ImageStrings4findEP6EndianPKcPij+0x52
+C  [libjimage.dylib+0x25cc]  _ZNK15ImageFileReader19find_location_indexEPKcPy+0x3e
+C  [libjimage.dylib+0x290c]  JIMAGE_FindResource+0xcf
+V  [libjvm.dylib+0x1e82b3]  _ZN19ClassPathImageEntry11open_streamEPKcP6Thread+0x45
+V  [libjvm.dylib+0x1ea81e]  _ZN11ClassLoader10load_classEP6SymbolbP6Thread+0x13e
+V  [libjvm.dylib+0x71cfe8]  _ZN16SystemDictionary19load_instance_classEP6Symbol6HandleP6Thread+0x2f6
+V  [libjvm.dylib+0x71c0bf]  _ZN16SystemDictionary30resolve_instance_class_or_nullEP6Symbol6HandleS2_P6Thread+0x421
+V  [libjvm.dylib+0x71b8f9]  _ZN16SystemDictionary15resolve_or_failEP6Symbol6HandleS2_bP6Thread+0x1b
+V  [libjvm.dylib+0x258f30]  _ZN12ConstantPool13klass_at_implERK18constantPoolHandleibP6Thread+0x10a
+V  [libjvm.dylib+0x3819a9]  _ZN12ConstantPool8klass_atEiP6Thread+0x4d
+V  [libjvm.dylib+0x393caf]  _ZN18InterpreterRuntime4_newEP10JavaThreadP12ConstantPooli+0x29
+j  jdk.internal.misc.Signal.dispatch(I)V+25 java.base@11.0.12
+v  ~StubRoutines::call_stub
+V  [libjvm.dylib+0x39b3e7]  _ZN9JavaCalls11call_helperEP9JavaValueRK12methodHandleP17JavaCallArgumentsP6Thread+0x21d
+V  [libjvm.dylib+0x39ad7e]  _ZN9JavaCalls11call_staticEP9JavaValueP5KlassP6SymbolS5_P17JavaCallArgumentsP6Thread+0xaa
+V  [libjvm.dylib+0x642a55]  _ZL19signal_thread_entryP10JavaThreadP6Thread+0x304
+V
