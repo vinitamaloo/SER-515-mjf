@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class RefereeUsecase {
     
     /**
-	 *
+	 *Harshita Jain
 	 */
 	private static final String ACCEPT = "Accept";
 	@Autowired
@@ -24,15 +24,20 @@ public class RefereeUsecase {
 		return refereeRepo.getByApplication(application);
 	}
 
-	public List<Referee> getRefereeByApplicationd(String application) {
-		return refereeRepo.getByApplication(ACCEPT);
+	public List<Referee> getAccepted(String application) {
+		return refereeRepo.getAccepted(application);
 	}
+
 	public Referee getRefereeByEmail(String email) {
 		return refereeRepo.getByEmail(email);
 	}
 
 	public void UpdateRefereeByEmail(ApplicationStatus application) {
 		refereeRepo.updateByEmail(application);
+	}
+
+	public void UpdateStatusByEmail(String refereeEmail) {
+		refereeRepo.updateStatusByEmail(refereeEmail);
 	}
 }
 
