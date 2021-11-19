@@ -26,7 +26,7 @@ Instructions on running the Project
 
 2. You need to clone the project into a specified directory.
 
-3. From the command prompt go the directory in which the project is cloned, and then run npm install.
+3. From the command prompt go the directory in which the project is cloned, and then run npm install, and run npm i @react-google-maps/api.
 
 4. Run "npm start" on the cmd to run the client side.
 
