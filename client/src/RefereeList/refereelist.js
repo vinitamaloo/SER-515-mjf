@@ -3,6 +3,7 @@ import { getRefereeList } from '../api/services.js';
 import React, { useState } from 'react';
 import {Table} from 'react-bootstrap';
 import { Link ,useHistory} from "react-router-dom";
+import "./refereelist.css";
 
 
 export const referee = {};
@@ -31,8 +32,8 @@ export default function RefereeList() {
     }
     
     return (
-        <div className="users">
-            <Table striped bordered hover size="sm">
+        <div>
+            <table id="referee">
                 <thead>
                     <tr>
                     <th>ID</th>
@@ -57,7 +58,7 @@ export default function RefereeList() {
                         </tr>
                     ))}
                 </tbody>
-            </Table>
+            </table>
         </div>
         
     );
