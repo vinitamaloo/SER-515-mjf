@@ -18,24 +18,21 @@ public class SetScoresController {
 
     @PostMapping("/add_set_scores")
     public SetScores addSetScores(@RequestBody SetScores setScores) {
+        if (setScores.getDate() != null) {
+            DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+            setScores.setMatchDate(formatter.format(setScores.getDate()));
+        }
         return setScoresUsecase.addSetScores(setScores);
     }
 
     @PostMapping("/getAll")
     public List<SetScores> getAll(@RequestBody FilterPojo filter) {
         if (filter.getDate() != null) {
-            filter.getDate().setTime(0);
+            DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+            filter.setMatchDate(formatter.format(filter.getDate()));
+            System.out.println(filter.getMatchDate());
         }
 
-        System.out.println(filter.getDate());
-        List<SetScores> scores = setScoresUsecase.getAll(filter);
-        DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-        for (SetScores score : scores) {
-            if (score.getDate() == null)
-                continue;
-
-            score.setMatchDate(formatter.format(score.getDate()));
-        }
-        return scores;
+        return setScoresUsecase.getAll(filter);
     }
 }

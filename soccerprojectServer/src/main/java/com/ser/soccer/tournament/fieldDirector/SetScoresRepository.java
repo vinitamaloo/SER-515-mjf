@@ -26,8 +26,10 @@ public class SetScoresRepository {
             return null;
 
         Query query = new Query();
-        if (filter.getDate() != null)
-            query.addCriteria(Criteria.where("date").is(filter.getDate()));
+        if (filter.getMatchDate() != null) {
+            query.addCriteria(Criteria.where("matchDate").is(filter.getMatchDate()));
+        }
+
         return mongoTemplate.find(query, SetScores.class);
     }
 

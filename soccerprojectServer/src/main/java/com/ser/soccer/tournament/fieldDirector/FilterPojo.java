@@ -7,6 +7,7 @@ import java.util.Date;
  */
 public class FilterPojo {
     private Date date;
+    private String matchDate;
 
     public Date getDate() {
         return date;
@@ -14,5 +15,13 @@ public class FilterPojo {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getMatchDate() {
+        return matchDate;
+    }
+
+    public void setMatchDate(String matchDate) {
+        this.matchDate = matchDate;
     }
 }
