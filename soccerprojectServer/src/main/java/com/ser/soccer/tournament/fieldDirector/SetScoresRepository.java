@@ -21,16 +21,14 @@ public class SetScoresRepository {
         return mongoTemplate.save(setScores);
     }
 
-    public List<Match> getAll(FilterPojo filter) {
+    public List<SetScores> getAll(FilterPojo filter) {
         if(filter == null)
             return null;
 
         Query query = new Query();
-        query.addCriteria(Criteria.where("played").is(true));
-
         if (filter.getDate() != null)
-            query.addCriteria(Criteria.where("matchDate").is(filter.getDate()));
-        return mongoTemplate.find(query, Match.class);
+            query.addCriteria(Criteria.where("date").is(filter.getDate()));
+        return mongoTemplate.find(query, SetScores.class);
     }
 
 }

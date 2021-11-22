@@ -16,7 +16,7 @@ public class SetScoresUsecase {
         return setScoresRepository.add(setScores);
     }
 
-    public List<Match> getAll(FilterPojo filter) {
+    public List<SetScores> getAll(FilterPojo filter) {
         return setScoresRepository.getAll(filter);
     }
 }

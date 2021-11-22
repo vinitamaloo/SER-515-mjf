@@ -4,6 +4,9 @@ import com.ser.soccer.tournament.schedular.Match;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -19,7 +22,20 @@ public class SetScoresController {
     }
 
     @PostMapping("/getAll")
-    public List<Match> getAll(@RequestBody FilterPojo filter) {
-        return setScoresUsecase.getAll(filter);
+    public List<SetScores> getAll(@RequestBody FilterPojo filter) {
+        if (filter.getDate() != null) {
+            filter.getDate().setTime(0);
+        }
+
+        System.out.println(filter.getDate());
+        List<SetScores> scores = setScoresUsecase.getAll(filter);
+        DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        for (SetScores score : scores) {
+            if (score.getDate() == null)
+                continue;
+
+            score.setMatchDate(formatter.format(score.getDate()));
+        }
+        return scores;
     }
 }
