@@ -29,7 +29,7 @@ a:hover {
   .nav-wrapper {
     margin: auto;
     text-align: center;
-    width: 70%;
+    width: calc(100% - 40px );
   } @media(max-width: 1180px) {
       .nav-wrapper {
         width: 90%;
