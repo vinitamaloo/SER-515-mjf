@@ -19,6 +19,7 @@ export const changeTeamStatus = (teamRegister) => {return axios.post(serverUrl+'
 export const postSetScores = (setScores) => {
         return axios.post(serverUrl + 'setScores/add_set_scores',setScores);
 }
+
 export const getAcceptedList = () => {return axios.get(serverUrl + 'referee/get_accepted');}
 export const getUnassignedFields = () => {return axios.get(serverUrl + 'field/get_unassigned_field');}
 export const updateRefNameandEmail = (fields) => {
@@ -33,3 +34,5 @@ export const removeAdmin = (email) => {return axios.post(serverUrl + 'admin/remo
 export const getAllTeams = (teamRegister) => {return axios.get(serverUrl + 'teamRegistration/get_all_data', teamRegister);}
 
 export const getSchedule = () =>{ return axios.get(serverUrl+ 'getSchedule');}
+export const getStandings = (category) => {return axios.post(serverUrl + 'standings/get_standings',category);}
+
