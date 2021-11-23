@@ -3,14 +3,16 @@ import { getStandings } from '../api/services.js';
 import React, { useState } from 'react';
 import {Table} from 'react-bootstrap';
 import { Link ,useHistory} from "react-router-dom";
+import "./standings.css";
 
 
 export const standings = {};
 
 export default function Standings() {
 
-    const [category, setCategory] = useState({"category": "U16"});
     const [tableData, setTableData] = useState([{}]);
+    const [category, setCategory] = useState({"category": "U16"});
+    const [flag, setFlag] = useState(true);
 
     if(flag) {
         localStorage.setItem('category',category);
@@ -25,7 +27,8 @@ export default function Standings() {
 
     return (
         <div className="users">
-            <Table striped bordered hover size="sm">
+        <h2 className="title">Standings for {category}</h2>
+            <Table id="customers">
                 <thead>
                     <tr>
                     <th>Standing</th>
