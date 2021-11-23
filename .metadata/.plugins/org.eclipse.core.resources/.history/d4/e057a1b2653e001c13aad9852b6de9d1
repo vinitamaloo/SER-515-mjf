@@ -1,0 +1,46 @@
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+import java.util.List;
+
+/**
+ * @author Vinita Maloo(vmaloo@asu.edu)
+ */
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Project {
+    private String name;
+    private List<Member> members;
+    private List<Milestones> milestones;
+    private String description;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Member> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<Member> members) {
+        this.members = members;
+    }
+
+    public List<Milestones> getMilestones() {
+        return milestones;
+    }
+
+    public void setMilestones(List<Milestones> milestones) {
+        this.milestones = milestones;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+}

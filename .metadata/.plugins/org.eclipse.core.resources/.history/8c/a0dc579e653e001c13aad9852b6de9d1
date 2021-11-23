@@ -1,0 +1,90 @@
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+
+/**
+ * @author Vinita Maloo(vmaloo@asu.edu)
+ */
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Milestones {
+    private int id;
+    private String name;
+    private Integer total_points;
+    private Integer closed_points;
+    private String sprintName;
+    private boolean closed;
+    private String slug;
+    private String estimated_start;
+    private String estimated_finish;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getSprintName() {
+        return sprintName;
+    }
+
+    public void setSprintName(String sprintName) {
+        this.sprintName = sprintName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getTotal_points() {
+        return total_points;
+    }
+
+    public void setTotal_points(Integer total_points) {
+        this.total_points = total_points;
+    }
+
+    public String getEstimated_start() {
+        return estimated_start;
+    }
+
+    public void setEstimated_start(String estimated_start) {
+        this.estimated_start = estimated_start;
+    }
+
+    public String getEstimated_finish() {
+        return estimated_finish;
+    }
+
+    public void setEstimated_finish(String estimated_finish) {
+        this.estimated_finish = estimated_finish;
+    }
+
+    public Integer getClosed_points() {
+        return closed_points;
+    }
+
+    public void setClosed_points(Integer closed_points) {
+        this.closed_points = closed_points;
+    }
+
+    public boolean isClosed() {
+        return closed;
+    }
+
+    public void setClosed(boolean closed) {
+        this.closed = closed;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
+    }
+}

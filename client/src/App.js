@@ -12,14 +12,47 @@ import PostTeamRegistration from './Team_registration/post_team_registration';
 import RefereeList from './RefereeList/refereelist.js';
 import RefereeInfo from './RefereeList/refereeinfo.js';
 import SetScores from './Scores/set_scores'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import assignFields from './Fields/assignfields';
+
 import Standings from './standings/standings'
+
+
+import AddUsers from './Users/AddUsers';
+import Adduserform from './Users/AddUserForm.js';
+import Schedule from './schedule/schedule.js';
+import logo from './Home/logo-t-bg.png'
 
 
 
 function App() {
     const [role, setRole] = useState("")
+
+    useEffect(() => {
+      let menuIcon = document.querySelector('.menuIcon');
+      let nav = document.querySelector('.overlay-menu');
+  
+      menuIcon.addEventListener('click', () => {
+        if (nav.style.transform != 'translateX(0%)') {
+          nav.style.transform = 'translateX(0%)';
+          nav.style.transition = 'transform 0.2s ease-out';
+        } else {
+          nav.style.transform = 'translateX(-100%)';
+          nav.style.transition = 'transform 0.2s ease-out';
+        }
+      });
+      let toggleIcon = document.querySelector('.menuIcon');
+  
+      toggleIcon.addEventListener('click', () => {
+        if (toggleIcon.className != 'menuIcon toggle') {
+          toggleIcon.className += ' toggle';
+        } else {
+          toggleIcon.className = 'menuIcon';
+        }
+      });
+    }, []);
+
+
     if (localStorage.getItem('userRole') != null && role === "")
         setRole(localStorage.getItem('userRole'))
 
@@ -29,85 +62,140 @@ function App() {
     }
   return (
     <Router>
-    <div className="App">
-      <nav className="navbar navbar-expand-lg sticky">
-        <div className="container">
-          {/* <Link className="navbar-brand" to={"/sign-in"}>xyz</Link> */}
-         
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul className="navbar-nav ml-auto">
+      <nav id="navbar" className="">
+        <div className="nav-wrapper">
+          <div className="logo">
+          <Link className="nav-link logo" to={"/"}><img src={logo} /></Link>
+          </div>
+          <ul id="menu">
             <li className="nav-item">
-                <Link className="nav-link" to={"/"}>Home</Link>
-              </li>
+              <Link className="nav-link" to={"/"}>Home</Link>
+            </li>
             <li className="nav-item">
-                <Link className="nav-link" to={"/team-registration"}>Team registration</Link>
-              </li>
-              {role === "" &&
-                  <li className="nav-item">
-                    <Link className="nav-link" to={"/sign-in"}>Login</Link>
-                  </li>
-              }
+              <Link className="nav-link" to={"/team-registration"}>Team registration</Link>
+            </li>
+            {role === "" &&
               <li className="nav-item">
-                <Link className="nav-link" to={"/sign-up"}>Referee</Link>
+                <Link className="nav-link" to={"/sign-in"}>Login</Link>
               </li>
-              {/* <li className="nav-item">
+            }
+            <li className="nav-item">
+              <Link className="nav-link" to={"/sign-up"}>Referee</Link>
+            </li>
+            {/* <li className="nav-item">
                 <Link className="nav-link" to={"/sign-up"}>View Schedule </Link>
               </li> */}
+            <li className="nav-item">
+              <Link className="nav-link" to={"/tournament"}>Tournaments</Link>
+            </li>
+            {role === 'Admin' &&
               <li className="nav-item">
-                <Link className="nav-link" to={"/tournament"}>Tournaments</Link>
+                <Link className="nav-link" to={"/add-users"}>Add users</Link>
               </li>
-              {role === 'Admin' &&
-                <li className="nav-item">
-                  <Link className="nav-link" to={"/add-users"}>Add users</Link>
-                </li>
-              }
-              {role === 'Referee Director' &&
-                  <li className="nav-item">
-                    <Link className="nav-link" to={"/refereelist"}>View Referee Applications</Link>
-                  </li>
-              }
-              {role === 'Field Director' &&
-                  <li className="nav-item">
-                    <Link className="nav-link" to={"/fields"}>Assign Fields</Link>
-                  </li>
-              }
-              {role === 'Field Director' &&
-                <li className="nav-item">
-                    <Link className="nav-link" to={"/set-scores"}>Publish scores</Link>
-                </li>
-              }
-              {role != "" &&
-                <li className="nav-item">
-                    <Link onClick={logout} className="nav-link" to={"/"}>Logout</Link>
-                </li>
-              }
-            </ul>
-          </div>
+            }
+            {role === 'Referee Director' &&
+              <li className="nav-item">
+                <Link className="nav-link" to={"/refereelist"}>View Referee Applications</Link>
+              </li>
+            }
+            {role === 'Field Director' &&
+              <li className="nav-item">
+                <Link className="nav-link" to={"/fields"}>Assign Fields</Link>
+              </li>
+            }
+            {role === 'Field Director' &&
+              <li className="nav-item">
+                <Link className="nav-link" to={"/set-scores"}>Publish scores</Link>
+              </li>
+            }
+            {role != "" &&
+              <li className="nav-item">
+                <Link onClick={logout} className="nav-link" to={"/"}>Logout</Link>
+              </li>
+            }
+          </ul>
         </div>
       </nav>
-      {/* <div className="auth-wrapper">
+      <div className="menuIcon">
+        <span className="icon icon-bars"></span>
+        <span className="icon icon-bars overlay"></span>
+      </div>
+      <div className="overlay-menu">
+      <ul id="menu">
+            <li className="nav-item">
+              <Link className="nav-link" to={"/"}>Home</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to={"/team-registration"}>Team registration</Link>
+            </li>
+            {role === "" &&
+              <li className="nav-item">
+                <Link className="nav-link" to={"/sign-in"}>Login</Link>
+              </li>
+            }
+            <li className="nav-item">
+              <Link className="nav-link" to={"/sign-up"}>Referee</Link>
+            </li>
+            {/* <li className="nav-item">
+                <Link className="nav-link" to={"/sign-up"}>View Schedule </Link>
+              </li> */}
+            <li className="nav-item">
+              <Link className="nav-link" to={"/tournament"}>Tournaments</Link>
+            </li>
+            {role === 'Admin' &&
+              <li className="nav-item">
+                <Link className="nav-link" to={"/add-users"}>Add users</Link>
+              </li>
+            }
+            {role === 'Referee Director' &&
+              <li className="nav-item">
+                <Link className="nav-link" to={"/refereelist"}>View Referee Applications</Link>
+              </li>
+            }
+            {role === 'Field Director' &&
+              <li className="nav-item">
+                <Link className="nav-link" to={"/fields"}>Assign Fields</Link>
+              </li>
+            }
+            {role === 'Field Director' &&
+              <li className="nav-item">
+                <Link className="nav-link" to={"/set-scores"}>Publish scores</Link>
+              </li>
+            }
+            {role != "" &&
+              <li className="nav-item">
+                <Link onClick={logout} className="nav-link" to={"/"}>Logout</Link>
+              </li>
+            }
+          </ul>
+      </div>
+      <div className="App">
+        {/* <div className="auth-wrapper">
         <div className="auth-inner"> */}
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route path="/sign-in" component={Login} />
-            <Route path="/sign-up" component={Register} />
-            <Route path="/tournament" component={Tournament} />
-            <Route path="/team-registration" component={TeamRegister} />
-            <Route path="/terms_conditions" component={TermsConditions} />
-            <Route path="/team" component={PostTeamRegistration} />
-            <Route path="/refereelist" component={RefereeList} />
-            <Route path="/refereeinfo" component={RefereeInfo} />
-            <Route path="/publish-scores" component={PostTeamRegistration} />
-            <Route path="/assign-fields" component={PostTeamRegistration} />
-            <Route path="/set-scores" component={SetScores}/>
-            <Route path="/publish-scores" component={PostTeamRegistration} />
-            <Route path="/fields" component={assignFields} />
-            <Route path="/standings" component={Standings}/>
+
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path="/sign-in" component={Login} />
+          <Route path="/sign-up" component={Register} />
+          <Route path="/tournament" component={Tournament} />
+          <Route path="/team-registration" component={TeamRegister} />
+          <Route path="/terms_conditions" component={TermsConditions} />
+          <Route path="/team" component={PostTeamRegistration} />
+          <Route path="/refereelist" component={RefereeList} />
+          <Route path="/refereeinfo" component={RefereeInfo} />
+          <Route path="/publish-scores" component={PostTeamRegistration} />
+          <Route path="/assign-fields" component={PostTeamRegistration} />
+          <Route path="/set-scores" component={SetScores} />
+          <Route path="/publish-scores" component={PostTeamRegistration} />
+          <Route path="/fields" component={assignFields} />
+          <Route path="/add-users" component={AddUsers} />
+          <Route path="/adduserform" component={Adduserform} />
+          <Route path="/schedule" component={Schedule} />
+          <Route path="/standings" component={Standings}/>
 
 
-
-          </Switch>
-    </div>
+        </Switch>
+      </div>
     </Router>
   );
 }
