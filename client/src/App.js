@@ -11,6 +11,7 @@ import TermsConditions from './Team_registration/terms_conditions';
 import PostTeamRegistration from './Team_registration/post_team_registration';
 import { useState } from 'react'
 import assignFields from './Fields/assignfields';
+import MapContainer from './Fields/MapContainer.js';
 
 
 function App() {
@@ -76,6 +77,9 @@ function App() {
                     <Link onClick={logout} className="nav-link" to={"/"}>Logout</Link>
                 </li>
               }
+              <li className="nav-item">
+                <Link className="nav-link" to={"/Map"}>Map</Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -95,7 +99,7 @@ function App() {
             <Route path="/referee-applications" component={PostTeamRegistration} />
 
             <Route path="/fields" component={assignFields} />
-
+            <Route path="/Map" component={MapContainer}/>
 
           </Switch>
     </div>
