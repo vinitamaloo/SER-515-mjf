@@ -27,7 +27,7 @@ export default function Standings() {
 
     return (
         <div className="users">
-        <h2 className="title">Standings for {category}</h2>
+        <h2 className="title">Standings for </h2>
             <Table id="customers">
                 <thead>
                     <tr>
