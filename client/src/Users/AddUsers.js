@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import {Table} from 'react-bootstrap';
 import { Link ,useHistory} from "react-router-dom";
 import { removeAdmin } from '../api/services.js';
+import "./AddUsers.css";
 
 
 export default function Login() {
@@ -34,7 +35,7 @@ export default function Login() {
     
     return (
         <div className="users">
-        <Table striped bordered hover size="sm">
+        <table id="users">
             <thead>
                 <tr>
                 <th>ID</th>
@@ -53,8 +54,8 @@ export default function Login() {
                     </tr>
                 ))}
             </tbody>
-        </Table>
-        <Button className="btn-primary" onClick={() => handleClick()}>Add User</Button>
+            <Button className="btn-primary" onClick={() => handleClick()}>Add User</Button>
+        </table>
     </div>
   );
 }

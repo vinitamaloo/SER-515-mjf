@@ -26,7 +26,7 @@ export default function Schedule() {
                 <td key={index}>{d.team1.teamName}</td>
                 <td key={index}>{d.team2.teamName}</td>
                 <td key={index}>{d.venue.venueName}</td>
-                <td key={index}>{d.matchDate}</td>
+                <td key={index}>{d.matchDate.substring(0, 10)}</td>
                 </tr>
             ))}
         </tbody>

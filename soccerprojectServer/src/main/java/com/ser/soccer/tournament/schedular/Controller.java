@@ -55,7 +55,9 @@ public class Controller {
         List<TeamByCategory> list = teamsService.getTeamsByCategory();
 
         for (TeamByCategory tp : list) {
-            List<Field> fields = venueService.getFields();
+            List<Field> fields = venueService.getFields(tp.getId());
+            if (fields.size() == 0)
+                continue;
             Tournament tournament = new Tournament(tournamentName, tp.getTeams().size(), fields.size(), date);
             for (Field f : fields) {
                 tournament.addVenue(f.getField());
