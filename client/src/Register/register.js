@@ -25,7 +25,6 @@ export default function Login() {
     const [Availability, setAvailability] = useState("");
     const [Time, setTime] = useState("");
     const [Profile, setProfile] = useState("");
-    const [Gender, setGender] = useState("");
     const [AgeGroup, setAgeGroup] = useState("");
     const [Phoneerror, setPhoneError] = useState("");
     const [Ageerror, setAgeError] = useState("");
@@ -52,7 +51,6 @@ export default function Login() {
                 "availability" : Availability,
                 "time" : Time,
                 "profile" :Profile,
-                "gender" : Gender,
                 "agegroup" : AgeGroup
             }
             let x=await postReferee(referee);
@@ -252,30 +250,34 @@ export default function Login() {
                     onChange={(e) => setProfile(e.target.value)}/>
                 <Form.Text className="text-muted">Include your past experience about how many games you have officiated and when, any trainings that you might have done, your comfort level with certain ages, etc. The more we know about you, the more accurately we can assign you to games.</Form.Text>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="Gender">
-                <Form.Label>Gender<label className="text-danger">*</label></Form.Label>
-                <Form.Select aria-label="available" required value={Gender} onChange={(e) => setGender(e.target.value)}  >
-                <option value="Select an option">Select an option</option>
-                <option value="Female">Female</option>
-                <option value="Male">Male</option>
-            </Form.Select>
-            </Form.Group>
             <Form.Group className="mb-3" controlId="AgeGroup">
                 <Form.Label>Age Group<label className="text-danger">*</label></Form.Label>
                 <Form.Select aria-label="available" required value={AgeGroup} onChange={(e) => setAgeGroup(e.target.value)}  >
                 <option value="Select an option">Select an option</option>
-                <option value="U08">U08</option>
-                <option value="U09">U09</option>
-                <option value="U10">U10</option>
-                <option value="U11">U11</option>
-                <option value="U12">U12</option>
-                <option value="U13">U13</option>
-                <option value="U14">U14</option>
-                <option value="U15">U15</option>
-                <option value="U16">U16</option>
-                <option value="U17">U17</option>
-                <option value="U18">U18</option>
-                <option value="U19">U19</option>
+                <option value="boysU08">boysU08</option>
+                <option value="boysU09">boysU09</option>
+                <option value="boysU10">boysU10</option>
+                <option value="boysU11">boysU11</option>
+                <option value="boysU12">boysU12</option>
+                <option value="boysU13">boysU13</option>
+                <option value="boysU14">boysU14</option>
+                <option value="boysU15">boysU15</option>
+                <option value="boysU16">boysU16</option>
+                <option value="boysU17">boysU17</option>
+                <option value="boysU18">boysU18</option>
+                <option value="boysU19">boysU19</option>
+                <option value="girlsU08">girlsU08</option>
+                <option value="girlsU09">girlsU09</option>
+                <option value="girlsU10">girlsU10</option>
+                <option value="girlsU11">girlsU11</option>
+                <option value="girlsU12">girlsU12</option>
+                <option value="girlsU13">girlsU13</option>
+                <option value="girlsU14">girlsU14</option>
+                <option value="girlsU15">girlsU15</option>
+                <option value="girlsU16">girlsU16</option>
+                <option value="girlsU17">girlsU17</option>
+                <option value="girlsU18">girlsU18</option>
+                <option value="girlsU19">girlsU19</option>
             </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3" controlId="Terms and Condition">

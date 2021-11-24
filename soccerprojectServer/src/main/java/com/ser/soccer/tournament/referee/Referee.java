@@ -26,14 +26,13 @@ public class Referee {
     private String availability;
     private String time;
     private String profile;
-    private String gender;
     private String agegroup;
 	private String application;
 	private String isAssigned;
 
     public Referee(String firstname, String lastname, String email, String ussf, String address, String country,
 			String city, String state, String zipcode, String phone, String grade, String experience, int age,
-			String availability, String time, String profile, String gender, String agegroup, String application, String isAssigned) {
+			String availability, String time, String profile, String agegroup, String application, String isAssigned) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -51,7 +50,6 @@ public class Referee {
 		this.availability = availability;
 		this.time = time;
 		this.profile = profile;
-		this.gender = gender;
 		this.agegroup = agegroup;
 		this.application = application;
 		this.isAssigned = isAssigned;
@@ -225,17 +223,6 @@ public class Referee {
 	public void setProfile(String profile) {
 		this.profile = profile;
 	}
-
-
-	public String getGender() {
-		return gender;
-	}
-
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
 
 	public String getAgegroup() {
 		return agegroup;
