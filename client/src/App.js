@@ -17,8 +17,7 @@ import assignFields from './Fields/assignfields';
 import AddUsers from './Users/AddUsers';
 import Adduserform from './Users/AddUserForm.js';
 import Schedule from './schedule/schedule.js';
-
-
+import Map from './Fields/MapContainer.js'
 
 function App() {
     const [role, setRole] = useState("")
@@ -83,6 +82,9 @@ function App() {
                     <Link onClick={logout} className="nav-link" to={"/"}>Logout</Link>
                 </li>
               }
+              <li className="nav-item">
+                    <Link className="nav-link" to={"/map"}>Map</Link>
+                </li>
             </ul>
           </div>
         </div>
@@ -107,6 +109,7 @@ function App() {
             <Route path="/add-users" component={AddUsers} />
             <Route path="/adduserform" component = {Adduserform} />
             <Route path="/schedule" component={Schedule}/>
+            <Route path="/map" component={Map}/>
 
 
           </Switch>

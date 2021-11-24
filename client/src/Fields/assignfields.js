@@ -2,7 +2,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Col, Row } from "react-bootstrap";
 import "./assignfields.css";
-import MapContainer from "./MapContainer";
+
 import { getAcceptedList, getUnassignedFields, updateRefNameandEmail,updateRefStatus } from '../api/services.js';
 import React, { useEffect, useState } from 'react';
 import {Table} from 'react-bootstrap';
@@ -113,7 +113,7 @@ export default function AssignFields() {
                 </Form>
                 <br/>
                 <br/>                    
-                <MapContainer /> 
+                
 
 
 
