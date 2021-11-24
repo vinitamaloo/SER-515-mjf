@@ -39,7 +39,7 @@ export default function Standings() {
                 <tbody>
                     {tableData.map((d,index) => (
                         <tr key={index}>
-                        <td key={index}>{index}</td>
+                        <td key={index}>{index+1}</td>
                         <td key={index}>{d.teamName}</td>
                         <td key={index}>{d.points}</td>
                         </tr>
