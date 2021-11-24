@@ -21,8 +21,8 @@ import Standings from './standings/standings'
 import AddUsers from './Users/AddUsers';
 import Adduserform from './Users/AddUserForm.js';
 import Schedule from './schedule/schedule.js';
+import Results from './Results/results';
 import logo from './Home/logo-t-bg.png'
-
 
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
     useEffect(() => {
       let menuIcon = document.querySelector('.menuIcon');
       let nav = document.querySelector('.overlay-menu');
-  
+
       menuIcon.addEventListener('click', () => {
         if (nav.style.transform != 'translateX(0%)') {
           nav.style.transform = 'translateX(0%)';
@@ -42,7 +42,7 @@ function App() {
         }
       });
       let toggleIcon = document.querySelector('.menuIcon');
-  
+
       toggleIcon.addEventListener('click', () => {
         if (toggleIcon.className != 'menuIcon toggle') {
           toggleIcon.className += ' toggle';
@@ -62,6 +62,7 @@ function App() {
     }
   return (
     <Router>
+
       <nav id="navbar" className="">
         <div className="nav-wrapper">
           <div className="logo">
@@ -172,7 +173,6 @@ function App() {
       <div className="App">
         {/* <div className="auth-wrapper">
         <div className="auth-inner"> */}
-
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path="/sign-in" component={Login} />
@@ -192,8 +192,7 @@ function App() {
           <Route path="/adduserform" component={Adduserform} />
           <Route path="/schedule" component={Schedule} />
           <Route path="/standings" component={Standings}/>
-
-
+          <Route path="/results" component={Results} />
         </Switch>
       </div>
     </Router>
