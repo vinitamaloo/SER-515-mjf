@@ -113,7 +113,7 @@ export default function AssignFields() {
                 </Form>
                 <br/>
                 <br/>                    
-                <MapContainer /> 
+                 
 
 
 

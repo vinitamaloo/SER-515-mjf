@@ -22,7 +22,7 @@ import AddUsers from './Users/AddUsers';
 import Adduserform from './Users/AddUserForm.js';
 import Schedule from './schedule/schedule.js';
 import logo from './Home/logo-t-bg.png'
-
+import Map from './Fields/MapContainer.js'
 
 
 function App() {
@@ -113,6 +113,9 @@ function App() {
                 <Link onClick={logout} className="nav-link" to={"/"}>Logout</Link>
               </li>
             }
+            <li className="nav-item">
+                <Link onClick={Map} className="nav-link" to={"/Map"}>Field Locations</Link>
+              </li>
           </ul>
         </div>
       </nav>
@@ -162,6 +165,7 @@ function App() {
                 <Link className="nav-link" to={"/set-scores"}>Publish scores</Link>
               </li>
             }
+            
             {role != "" &&
               <li className="nav-item">
                 <Link onClick={logout} className="nav-link" to={"/"}>Logout</Link>
@@ -192,6 +196,8 @@ function App() {
           <Route path="/adduserform" component={Adduserform} />
           <Route path="/schedule" component={Schedule} />
           <Route path="/standings" component={Standings}/>
+          <Route path="/Map" component={Map}/>
+
 
 
         </Switch>
