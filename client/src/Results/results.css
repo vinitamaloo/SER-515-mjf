@@ -1,0 +1,16 @@
+
+.title{
+    background-image: linear-gradient(to right,#d32c30, #3671b6);
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    text-align: center;
+    height: 35px;
+    margin: 10px 10px 10px 0px;
+}
+
+
+.center{
+    align-items: center;
+    display:flex;
+}

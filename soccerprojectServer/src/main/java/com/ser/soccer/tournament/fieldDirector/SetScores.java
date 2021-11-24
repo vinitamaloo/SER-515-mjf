@@ -16,35 +16,36 @@ import java.util.Date;
 public class SetScores {
     String teamA;
     String teamB;
-    int teamAGoals;
-    int teamBGoals;
-    int teamAPossession;
-    int teamBPossession;
-    int teamAFouls;
-    int teamBFouls;
-    int teamAYellowCards;
-    int teamBYellowCards;
-    int teamARedCards;
-    int teamBRedCards;
-    int teamAOffSides;
-    int teamBOffSides;
-    int teamACornerKicks;
-    int teamBCornerKicks;
-    int teamASaves;
-    int teamBSaves;
+    Integer teamAGoals;
+    Integer teamBGoals;
+    Integer teamAPossession;
+    Integer teamBPossession;
+    Integer teamAFouls;
+    Integer teamBFouls;
+    Integer teamAYellowCards;
+    Integer teamBYellowCards;
+    Integer teamARedCards;
+    Integer teamBRedCards;
+    Integer teamAOffSides;
+    Integer teamBOffSides;
+    Integer teamACornerKicks;
+    Integer teamBCornerKicks;
+    Integer teamASaves;
+    Integer teamBSaves;
     String teamAResult;
     String teamBResult;
     Date date;
-    int gameTime;
+    Integer gameTime;
+    String matchDate;
 
-    public SetScores(String teamA, String teamB, int teamAGoals,
-            int teamBGoals, int teamAPossession, int teamBPossession,
-            int teamAFouls, int teamBFouls, int teamAYellowCards,
-            int teamBYellowCards, int teamARedCards, int teamBRedCards,
-            int teamAOffSides, int teamBOffSides, int teamACornerKicks,
-            int teamBCornerKicks, int teamASaves, int teamBSaves,
-            String teamAResult, String teamBResult, Date date,
-            int gameTime) {
+    public SetScores(String teamA, String teamB, Integer teamAGoals,
+                     Integer teamBGoals, Integer teamAPossession, Integer teamBPossession,
+                     Integer teamAFouls, Integer teamBFouls, Integer teamAYellowCards,
+                     Integer teamBYellowCards, Integer teamARedCards, Integer teamBRedCards,
+                     Integer teamAOffSides, Integer teamBOffSides, Integer teamACornerKicks,
+                     Integer teamBCornerKicks, Integer teamASaves, Integer teamBSaves,
+                     String teamAResult, String teamBResult, Date date,
+                     Integer gameTime, String matchDate) {
         super();
         this.teamA = teamA;
         this.teamB = teamB;
@@ -68,6 +69,7 @@ public class SetScores {
         this.teamBResult = teamBResult;
         this.date = date;
         this.gameTime = gameTime;
+        this.matchDate = matchDate;
     }
 
     public String getTeamA() {
@@ -86,131 +88,131 @@ public class SetScores {
         this.teamB = teamB;
     }
 
-    public int getTeamAGoals() {
+    public Integer getTeamAGoals() {
         return teamAGoals;
     }
 
-    public void setTeamAGoals(int teamAGoals) {
+    public void setTeamAGoals(Integer teamAGoals) {
         this.teamAGoals = teamAGoals;
     }
 
-    public int getTeamBGoals() {
+    public Integer getTeamBGoals() {
         return teamBGoals;
     }
 
-    public void setTeamBGoals(int teamBGoals) {
+    public void setTeamBGoals(Integer teamBGoals) {
         this.teamBGoals = teamBGoals;
     }
 
-    public int getTeamAPossession() {
+    public Integer getTeamAPossession() {
         return teamAPossession;
     }
 
-    public void setTeamAPossession(int teamAPossession) {
+    public void setTeamAPossession(Integer teamAPossession) {
         this.teamAPossession = teamAPossession;
     }
 
-    public int getTeamBPossession() {
+    public Integer getTeamBPossession() {
         return teamBPossession;
     }
 
-    public void setTeamBPossession(int teamBPossession) {
+    public void setTeamBPossession(Integer teamBPossession) {
         this.teamBPossession = teamBPossession;
     }
 
-    public int getTeamAFouls() {
+    public Integer getTeamAFouls() {
         return teamAFouls;
     }
 
-    public void setTeamAFouls(int teamAFouls) {
+    public void setTeamAFouls(Integer teamAFouls) {
         this.teamAFouls = teamAFouls;
     }
 
-    public int getTeamBFouls() {
+    public Integer getTeamBFouls() {
         return teamBFouls;
     }
 
-    public void setTeamBFouls(int teamBFouls) {
+    public void setTeamBFouls(Integer teamBFouls) {
         this.teamBFouls = teamBFouls;
     }
 
-    public int getTeamAYellowCards() {
+    public Integer getTeamAYellowCards() {
         return teamAYellowCards;
     }
 
-    public void setTeamAYellowCards(int teamAYellowCards) {
+    public void setTeamAYellowCards(Integer teamAYellowCards) {
         this.teamAYellowCards = teamAYellowCards;
     }
 
-    public int getTeamBYellowCards() {
+    public Integer getTeamBYellowCards() {
         return teamBYellowCards;
     }
 
-    public void setTeamBYellowCards(int teamBYellowCards) {
+    public void setTeamBYellowCards(Integer teamBYellowCards) {
         this.teamBYellowCards = teamBYellowCards;
     }
 
-    public int getTeamARedCards() {
+    public Integer getTeamARedCards() {
         return teamARedCards;
     }
 
-    public void setTeamARedCards(int teamARedCards) {
+    public void setTeamARedCards(Integer teamARedCards) {
         this.teamARedCards = teamARedCards;
     }
 
-    public int getTeamBRedCards() {
+    public Integer getTeamBRedCards() {
         return teamBRedCards;
     }
 
-    public void setTeamBRedCards(int teamBRedCards) {
+    public void setTeamBRedCards(Integer teamBRedCards) {
         this.teamBRedCards = teamBRedCards;
     }
 
-    public int getTeamAOffSides() {
+    public Integer getTeamAOffSides() {
         return teamAOffSides;
     }
 
-    public void setTeamAOffSides(int teamAOffSides) {
+    public void setTeamAOffSides(Integer teamAOffSides) {
         this.teamAOffSides = teamAOffSides;
     }
 
-    public int getTeamBOffSides() {
+    public Integer getTeamBOffSides() {
         return teamBOffSides;
     }
 
-    public void setTeamBOffSides(int teamBOffSides) {
+    public void setTeamBOffSides(Integer teamBOffSides) {
         this.teamBOffSides = teamBOffSides;
     }
 
-    public int getTeamACornerKicks() {
+    public Integer getTeamACornerKicks() {
         return teamACornerKicks;
     }
 
-    public void setTeamACornerKicks(int teamACornerKicks) {
+    public void setTeamACornerKicks(Integer teamACornerKicks) {
         this.teamACornerKicks = teamACornerKicks;
     }
 
-    public int getTeamBCornerKicks() {
+    public Integer getTeamBCornerKicks() {
         return teamBCornerKicks;
     }
 
-    public void setTeamBCornerKicks(int teamBCornerKicks) {
+    public void setTeamBCornerKicks(Integer teamBCornerKicks) {
         this.teamBCornerKicks = teamBCornerKicks;
     }
 
-    public int getTeamASaves() {
+    public Integer getTeamASaves() {
         return teamASaves;
     }
 
-    public void setTeamASaves(int teamASaves) {
+    public void setTeamASaves(Integer teamASaves) {
         this.teamASaves = teamASaves;
     }
 
-    public int getTeamBSaves() {
+    public Integer getTeamBSaves() {
         return teamBSaves;
     }
 
-    public void setTeamBSaves(int teamBSaves) {
+    public void setTeamBSaves(Integer teamBSaves) {
         this.teamBSaves = teamBSaves;
     }
 
@@ -238,11 +240,19 @@ public class SetScores {
         this.date = date;
     }
 
-    public int getGameTime() {
+    public Integer getGameTime() {
         return gameTime;
     }
 
-    public void setGameTime(int gameTime) {
+    public String getMatchDate() {
+        return matchDate;
+    }
+
+    public void setMatchDate(String matchDate) {
+        this.matchDate = matchDate;
+    }
+
+    public void setGameTime(Integer gameTime) {
         this.gameTime = gameTime;
     }
 }

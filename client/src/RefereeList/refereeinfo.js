@@ -195,12 +195,6 @@ export default function RefereeList() {
                     placeholder= {referee.profile}  
                     readOnly />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="Gender">
-                <Form.Label>Gender</Form.Label>
-                <Form.Control 
-                    placeholder= {referee.gender}  
-                    readOnly />
-            </Form.Group>
             <Form.Group className="mb-3" controlId="AgeGroup">
                 <Form.Label>Age Group</Form.Label>
                 <Form.Control 

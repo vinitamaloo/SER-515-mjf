@@ -62,6 +62,7 @@ function deleteOut(txtArr, curChar = 0) {
   setTimeout(
         () => {
           const el = getEle("text");
+          if(el){
           let elTxt = el.innerHTML;
           //remove
           const elTxtArr = elTxt.split("");
@@ -73,6 +74,7 @@ function deleteOut(txtArr, curChar = 0) {
             return writeOut(txtArr, 0);
           }
           return deleteOut(txtArr, elTxtArrLen - 1);
+        }
         },
 
         randomTime * 1000
