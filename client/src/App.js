@@ -44,14 +44,9 @@ function App() {
             <li className="nav-item">
                 <Link className="nav-link" to={"/team-registration"}>Team registration</Link>
             </li>
-            <li className="nav-item">
-                <Link className="nav-link" to={"/results"}>Results</Link>
-            </li>
-              {role === "" &&
-                  <li className="nav-item">
+              <li className="nav-item">
                     <Link className="nav-link" to={"/sign-in"}>Login</Link>
-                  </li>
-              }
+              </li>
               <li className="nav-item">
                 <Link className="nav-link" to={"/sign-up"}>Referee</Link>
               </li>
