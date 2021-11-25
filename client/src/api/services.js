@@ -36,3 +36,4 @@ export const getAllTeams = (teamRegister) => {return axios.get(serverUrl + 'team
 export const getSchedule = () =>{ return axios.get(serverUrl+ 'getSchedule');}
 export const getResults = (filter) =>{ return axios.post(serverUrl + 'setScores/getAll', filter);}
 export const getStandings = (category) => {return axios.post(serverUrl + 'standings/get_standings',category);}
+export const startScheduler = () => {return axios.get(serverUrl + 'run');}

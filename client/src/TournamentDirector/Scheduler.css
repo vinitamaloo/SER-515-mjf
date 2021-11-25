@@ -1,0 +1,11 @@
+  * {
+    box-sizing: border-box;
+ }
+
+  .btn-primary {
+    font-size: 15px;
+  	background-color: rgba(13,49,95,255);
+  	border-color: rgba(13,49,95,255);
+  }
+
+
