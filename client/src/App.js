@@ -14,10 +14,8 @@ import RefereeInfo from './RefereeList/refereeinfo.js';
 import SetScores from './Scores/set_scores'
 import { useState, useEffect } from 'react'
 import assignFields from './Fields/assignfields';
-
 import Standings from './standings/standings'
-
-
+import Scheduler from './TournamentDirector/Scheduler.js';
 import AddUsers from './Users/AddUsers';
 import Adduserform from './Users/AddUserForm.js';
 import Schedule from './schedule/schedule.js';
@@ -109,6 +107,11 @@ function App() {
                 <Link className="nav-link" to={"/set-scores"}>Publish scores</Link>
               </li>
             }
+            {role === "Tournament Director" &&
+              <li className="nav-item">
+                <Link className="nav-link" to={"/start-scheduler"}>Start Scheduler</Link>
+              </li>
+            }
             {role != "" &&
               <li className="nav-item">
                 <Link onClick={logout} className="nav-link" to={"/"}>Logout</Link>
@@ -166,7 +169,13 @@ function App() {
                 <Link className="nav-link" to={"/set-scores"}>Publish scores</Link>
               </li>
             }
-            
+
+            {role === "Tournament Director" &&
+              <li className="nav-item">
+                <Link className="nav-link" to={"/start-scheduler"}>Start Scheduler</Link>
+              </li>
+            }
+
             {role != "" &&
               <li className="nav-item">
                 <Link onClick={logout} className="nav-link" to={"/"}>Logout</Link>
@@ -203,6 +212,10 @@ function App() {
 
 
           <Route path="/results" component={Results} />
+
+          <Route path="/start-scheduler" component={Scheduler} />
+
+
 
         </Switch>
       </div>
