@@ -4,14 +4,16 @@ import React, { useState } from 'react';
 import {Table} from 'react-bootstrap';
 import { Link ,useHistory} from "react-router-dom";
 import "./standings.css";
+import { useLocation } from "react-router-dom";
 
 
 export const standings = {};
 
 export default function Standings() {
-
+    const location = useLocation()
+    const title = location.state?.title;
     const [tableData, setTableData] = useState([{}]);
-    const [category, setCategory] = useState({"category": "U16"});
+    const [category, setCategory] = useState({"category": title});
     const [flag, setFlag] = useState(true);
 
     if(flag) {
@@ -27,7 +29,7 @@ export default function Standings() {
 
     return (
         <div className="users">
-        <h2 className="title">Standings for </h2>
+        <h2 className="title">Standings for {title}</h2>
             <Table id="customers">
                 <thead>
                     <tr>

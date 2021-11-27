@@ -34,5 +34,5 @@ export const removeAdmin = (email) => {return axios.post(serverUrl + 'admin/remo
 export const getAllTeams = (teamRegister) => {return axios.get(serverUrl + 'teamRegistration/get_all_data', teamRegister);}
 
 export const getSchedule = () =>{ return axios.get(serverUrl+ 'getSchedule');}
+export const getResults = (filter) =>{ return axios.post(serverUrl + 'setScores/getAll', filter);}
 export const getStandings = (category) => {return axios.post(serverUrl + 'standings/get_standings',category);}
-

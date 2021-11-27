@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 import "./match-card.css";
 
 export default function MatchCard({ title, matches }) {
-    
+
     return (
 
         <Card className="card">
@@ -21,8 +21,16 @@ export default function MatchCard({ title, matches }) {
                             state: { matches: matches , title: title},
                         }}
                     >Schedule</Link></Card.Link>
-                    <Card.Link><Link to={"/sign-in"}>Standing</Link></Card.Link>
-                    <Card.Link><Link to={"/sign-in"}>Results</Link></Card.Link>
+
+                    <Card.Link><Link to={"/standings"}
+                    to={{
+                        pathname: "/standings",
+                        state: { title: title },
+                    }}
+                    >Standing</Link></Card.Link>
+
+                    <Card.Link><Link to={"/results"}>Results</Link></Card.Link>
+
                 </div>
             </Card.Body>
         </Card>
