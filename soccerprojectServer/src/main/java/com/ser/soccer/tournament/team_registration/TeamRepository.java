@@ -22,11 +22,10 @@ public class TeamRepository {
         return mongoTemplate.save(teamRegister);
     }
 
-    public List<TeamRegister> getTeamById(TeamRegister teamRegister) {
+    public TeamRegister getTeamById(String teamId) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("teamId").is(teamRegister.getTeamId()));
-        System.out.println(teamRegister.getTeamId());
-        return mongoTemplate.find(query, TeamRegister.class);
+        query.addCriteria(Criteria.where("teamId").is(teamId));
+        return mongoTemplate.findOne(query, TeamRegister.class);
     }
 
     public List<TeamRegister> getAllTeams(TeamStatus teamStatus) {

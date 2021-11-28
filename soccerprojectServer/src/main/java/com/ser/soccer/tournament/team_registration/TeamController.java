@@ -18,10 +18,9 @@ public class TeamController {
         return teamUsecase.addTeam(teamRegister);
     }
 
-    @GetMapping("/get_team_data")
-    public List<TeamRegister> getTeamById(@RequestBody TeamRegister teamRegister) {
-        System.out.println("Team Name: " + teamRegister.getTeamName());
-        return teamUsecase.getTeamById(teamRegister);
+    @GetMapping("/get_team_data/{teamId}")
+    public TeamRegister getTeamById(@PathVariable String teamId) {
+        return teamUsecase.getTeamById(teamId);
     }
 
     @PostMapping("/change_team_status")
@@ -31,7 +30,6 @@ public class TeamController {
 
     @GetMapping("/get_all_data")
     public List<TeamRegister> getAllTeams(@RequestBody TeamStatus teamStatus) {
-        System.out.println("Status: "+teamStatus.getStatus());
         return teamUsecase.getAllTeams(teamStatus);
     }
 

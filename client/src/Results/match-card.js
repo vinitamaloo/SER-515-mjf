@@ -7,7 +7,7 @@ import { FaFootballBall } from "react-icons/fa";
 export default function MatchCard( {date, team1, team2, time, goals1, goals2, playerGoals1, playerGoals2}) {
     return(
     <div className ="center">
-        <Card className="card">
+        <Card className="cards">
             <Card.Body>
                 <Card.Title className="title">
                     <div className="TeamTitle">{team1}  vs   {team2}</div>

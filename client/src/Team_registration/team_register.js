@@ -152,6 +152,15 @@ export default function TeamRegistration() {
                         <option value="U08">U08</option>
                         <option value="U09">U09</option>
                         <option value="U10">U10</option>
+                        <option value="U11">U11</option>
+                        <option value="U12">U12</option>
+                        <option value="U13">U13</option>
+                        <option value="U14">U14</option>
+                        <option value="U15">U15</option>
+                        <option value="U16">U16</option>
+                        <option value="U17">U17</option>
+                        <option value="U18">U18</option>
+                        <option value="U19">U19</option>
                     </Form.Select>
 
                     <Form.Label className='formLabelDouble'>Gender*</Form.Label>
@@ -233,8 +242,20 @@ export default function TeamRegistration() {
                         className='formControl'
                         onChange={(e) => setPriJerseyClr(e.target.value)}>
                         <option value=""></option>
-                        <option value="red">Red</option>
-                        <option value="orange">Orange</option>
+                        <option value="Red">Red</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Green">Green</option>
+                        <option value="Black">Black</option>
+                        <option value="White">White</option>
+                        <option value="Gray">Gray</option>
+                        <option value="Pink">Pink</option>
+                        <option value="Maroon">Maroon</option>
+                        <option value="Yellow">Maroon</option>
+                        <option value="Brown">Maroon</option>
+                        <option value="Dark Green">Dark Green</option>
+                        <option value="Sky blue">Sky blue</option>
+                        <option value="Random">Random</option>
                     </Form.Select>
 
                     <Form.Label className='formLabelDouble'>Alt jersey Color*</Form.Label>
@@ -244,8 +265,20 @@ export default function TeamRegistration() {
                             className='formControl'
                             onChange={(e) => setAltJerseyClr(e.target.value)}>
                             <option value=""></option>
-                            <option value="red">Red</option>
-                            <option value="orange">Orange</option>
+                            <option value="Red">Red</option>
+                            <option value="Orange">Orange</option>
+                            <option value="Blue">Blue</option>
+                            <option value="Green">Green</option>
+                            <option value="Black">Black</option>
+                            <option value="White">White</option>
+                            <option value="Gray">Gray</option>
+                            <option value="Pink">Pink</option>
+                            <option value="Maroon">Maroon</option>
+                            <option value="Yellow">Maroon</option>
+                            <option value="Brown">Maroon</option>
+                            <option value="Dark Green">Dark Green</option>
+                            <option value="Sky blue">Sky blue</option>
+                            <option value="Random">Random</option>
                         </Form.Select>
                 </Form.Group>
                 <div className='central_heading'><h6>Primary contact information</h6></div>

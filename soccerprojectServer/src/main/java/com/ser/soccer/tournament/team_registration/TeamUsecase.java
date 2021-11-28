@@ -14,9 +14,8 @@ public class TeamUsecase {
         return teamRepo.add(teamRegister);
     }
 
-    public List<TeamRegister> getTeamById(TeamRegister teamRegister) {
-        System.out.println("Team Name: "+teamRegister.getTeamName());
-        return teamRepo.getTeamById(teamRegister);
+    public TeamRegister getTeamById(String teamId) {
+        return teamRepo.getTeamById(teamId);
     }
 
     public List<TeamRegister> getAllTeams(TeamStatus teamStatus) {

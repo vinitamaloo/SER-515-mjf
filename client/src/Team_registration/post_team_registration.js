@@ -6,19 +6,25 @@ import "./post_team_registration.css";
 import { getTeamDateById, changeTeamStatus} from '../api/services';
 
 export default function PostTeamRegistration() {
-    const [teamName, setTeamName] = useState("TEAM 1");
-    const [teamStatus, setTeamStatus] = useState("APPLIED");
-    const [email, setEmail] = useState("email@example.com");
-    const [phone, setPhone] = useState("234-232-2323");
-    const [fullName, setFullName] = useState("Mark M. Hennings");
-    const [teamId, setTeamId] = useState(localStorage.getItem('teamId'));
+    const [teamName, setTeamName] = useState('Calm Dolphin');
+    const [teamStatus, setTeamStatus] = useState('Not Registered');
+    const [email, setEmail] = useState('calmdopphins@gmail.com');
+    const [phone, setPhone] = useState('+1-480-760-8898');
+    const [fullName, setFullName] = useState('Calmin D. Hars');
+    const [teamData, setTeamDataa] = useState();
+    const [flag, setFlag] = useState();
+    const [teamId, setTeamId] = useState(localStorage.getItem('teamId'))
+//
+//    if (flag) {
+//        console.log(flag)
+//        get_team_data()
+//    }
 
-
-    async function get_team_data() {
-        const team_data = await getTeamDateById(teamId);
-        //  if (teamStatus === 'REGISTERED')
-        //      TODO: redirect to team home page
-    }
+//    async function get_team_data() {
+//        const team_data = await getTeamDateById(teamId)
+//        setFlag(0)
+//        setTeamDataa(team_data.data)
+//    }
 
     async function handlePayment() {
         let applicationStatus = {
@@ -85,7 +91,7 @@ export default function PostTeamRegistration() {
         )
     }
 
-    if (teamStatus === 'APPLIED')
+    if (teamStatus === 'Not Registered')
         return postTeamSuccessfulRegistrationView();
     else
         return postTeamSuccessfulPaymentView();
