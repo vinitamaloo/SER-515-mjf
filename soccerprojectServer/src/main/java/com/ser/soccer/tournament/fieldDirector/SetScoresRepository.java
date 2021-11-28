@@ -1,6 +1,5 @@
 package com.ser.soccer.tournament.fieldDirector;
 
-import com.ser.soccer.tournament.schedular.Match;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -30,8 +29,8 @@ public class SetScoresRepository {
             query.addCriteria(Criteria.where("matchDate").is(filter.getMatchDate()));
         }
 
-        if (filter.getApplicationGroup() != null) {
-            query.addCriteria(Criteria.where("applicationGroup").is(filter.getApplicationGroup()));
+        if (filter.getCategory() != null) {
+            query.addCriteria(Criteria.where("category").is(filter.getCategory()));
         }
 
         return mongoTemplate.find(query, SetScores.class);

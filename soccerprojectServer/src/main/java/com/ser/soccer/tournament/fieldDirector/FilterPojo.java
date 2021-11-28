@@ -8,7 +8,7 @@ import java.util.Date;
 public class FilterPojo {
     private Date date;
     private String matchDate;
-    private String applicationGroup;
+    private String category;
 
     public Date getDate() {
         return date;
@@ -26,11 +26,11 @@ public class FilterPojo {
         this.matchDate = matchDate;
     }
 
-    public String getApplicationGroup() {
-        return applicationGroup;
+    public String getCategory() {
+        return category;
     }
 
-    public void setApplicationGroup(String applicationGroup) {
-        this.applicationGroup = applicationGroup;
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

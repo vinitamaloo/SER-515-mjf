@@ -4,10 +4,6 @@ import "./match-card.css";
 
 export default function MatchCard({ title, matches }) {
 
-    function getResults(category) {
-        localStorage.setItem('result_category',category);
-    }
-
     return (
 
         <Card className="card">
@@ -33,7 +29,11 @@ export default function MatchCard({ title, matches }) {
                     }}
                     >Standing</Link></Card.Link>
 
-                    <Card.Link><Link to={"/results"} onClick={getResults(this.title)}>Results</Link></Card.Link>
+                    <Card.Link><Link to={
+                        {
+                            pathname: "/results",
+                            state: {title:title},
+                        }}>Results</Link></Card.Link>
                 </div>
             </Card.Body>
         </Card>

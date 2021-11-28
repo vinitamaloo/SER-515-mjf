@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import React, { useState } from "react";
 import { Row, Col, Card, Container} from "react-bootstrap";
 import "./results.css";
@@ -7,15 +7,16 @@ import { getResults } from '../api/services.js';
 import DatePicker from 'react-date-picker';
 
 export default function Tournament() {
-    const [resultsData, setResultsData] = useState([{a:'ge'}, {b: 'g'}]);
+    const [resultsData, setResultsData] = useState([{a:'ge'}]);
     const [value, setValue] = useState(new Date());
     const [flagGetData, setFlagGetData] = useState(true);
-    const [category, setCategory] = useState(localStorage.getItem('result_category'));
+    const location = useLocation()
+    const category = location.state?.title
 
     function handleDateChange(date) {
         console.log('date changes')
         setValue(date);
-        getResultsFromServer(date);
+        getResultsFromServer(date, category);
     }
 
     if(flagGetData) {
