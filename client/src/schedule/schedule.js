@@ -9,7 +9,7 @@ export default function Schedule() {
     console.log(matches);
     return(
         <div>
-            <h2 className="title">Schedule for {title}</h2>
+            <h2 className="title" style={{justifyContent:"center", marginTop:0}}>Schedule for {title}</h2>
         <table id="customers">
         <thead >
             <tr>
