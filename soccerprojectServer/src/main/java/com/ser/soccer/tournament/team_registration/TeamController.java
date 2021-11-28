@@ -33,4 +33,9 @@ public class TeamController {
         return teamUsecase.getAllTeams(teamStatus);
     }
 
+    @GetMapping("/create_all_teams")
+    public void createTeams() {
+        teamUsecase.createTeamPerGender();
+    }
+
 }

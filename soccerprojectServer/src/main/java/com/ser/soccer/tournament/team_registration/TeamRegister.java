@@ -11,30 +11,30 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "teams")
 public class TeamRegister {
 
-    private String teamId;
+    public String teamId;
 
-    private String applicationGroup;
-    private String teamName;
-    private String teamCity;
-    private String teamState;
-    private String leagueAge;
-    private String leagueGender;
-    private String coachName;
-    private String clubName;
-    private String association;
-    private String league;
-    private String level;
-    private String priJerseyClr;
-    private String altJerseyClr;
-    private String firstName;
-    private String lastName;
-    private String phone;
-    private String email;
-    private String address;
-    private String city;
-    private String state;
-    private String zip;
-    private String teamStatus;
+    public String applicationGroup;
+    public String teamName;
+    public String teamCity;
+    public String teamState;
+    public String leagueAge;
+    public String leagueGender;
+    public String coachName;
+    public String clubName;
+    public String association;
+    public String league;
+    public String level;
+    public String priJerseyClr;
+    public String altJerseyClr;
+    public String firstName;
+    public String lastName;
+    public String phone;
+    public String email;
+    public String address;
+    public String city;
+    public String state;
+    public String zip;
+    public String teamStatus;
 
     public TeamRegister(String teamId, String applicationGroup, String teamName, String teamCity,
                         String teamState, String leagueAge, String leagueGender,
@@ -66,6 +66,10 @@ public class TeamRegister {
         this.state = state;
         this.zip = zip;
         this.teamStatus = "Not Registered";
+    }
+
+    public TeamRegister() {
+
     }
 
     public String getTeamId() {
