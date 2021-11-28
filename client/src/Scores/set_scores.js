@@ -34,6 +34,7 @@ export default function Login() {
     const [TeamBScore, setTeamBScore] = useState("");
     const [Date, setDate] = useState("");
     const [GameTime, setGameTime] = useState("");
+    const [Category, setCategory] = useState("");
     const [status, setStatus] = useState({"Team Status": "Registered"})
     const [tableData, setTableData] = useState([{}]);
     const [flag, setFlag] = useState(true);
@@ -77,7 +78,8 @@ export default function Login() {
                 "teamAScore": TeamAScore,
                 "teamBScore": TeamBScore,
                 "date": Date,
-                "gameTime": GameTime
+                "gameTime": GameTime,
+                "category": Category
             }
             let x=await postSetScores(statistics);
             console.log(x);
@@ -179,6 +181,13 @@ export default function Login() {
                                 <option value="Team AZ">Team AZ</option>
                                 <option value="Sun Devils">Sun Devils</option>
                                 <option value="Sparky">Sparky</option>
+                                <option value="Monarchy">Monarchy</option>
+                                <option value="Salsa">Salsa</option>
+                                <option value="Queens">Queens</option>
+                                <option value="Maniacs">Maniacs</option>
+                                <option value="Rebels">Rebels</option>
+                                <option value="Lightning">Lightning</option>
+
 
                             </Form.Select>
                         </Form.Group>
@@ -191,6 +200,12 @@ export default function Login() {
                                 <option value="Team AZ">Team AZ</option>
                                 <option value="Sun Devils">Sun Devils</option>
                                 <option value="Sparky">Sparky</option>
+                                <option value="Monarchy">Monarchy</option>
+                                <option value="Salsa">Salsa</option>
+                                <option value="Queens">Queens</option>
+                                <option value="Maniacs">Maniacs</option>
+                                <option value="Rebels">Rebels</option>
+                                <option value="Lightning">Lightning</option>
 
                             </Form.Select>
                         </Form.Group>
@@ -393,6 +408,38 @@ export default function Login() {
                                 <option value="Win">Win</option>
                                 <option value="Lose">Lose</option>
                                 <option value="Draw">Draw</option>
+                            </Form.Select>
+                        </Form.Group>
+                    </Row>
+                    <Row>
+                        <Form.Group as={Col} className="mb-3" controlId="teamBResult">
+                            <Form.Label>Category<label className="text-danger">*</label></Form.Label>
+                            <Form.Select aria-label="grade" required value={Category} onChange={(e) => setCategory(e.target.value)}  >
+                                <option value="Select an option">Select an option</option>
+                                <option value="boysU08">boysU08</option>
+                                <option value="boysU09">boysU09</option>
+                                <option value="boysU10">boysU10</option>
+                                <option value="boysU11">boysU11</option>
+                                <option value="boysU12">boysU12</option>
+                                <option value="boysU13">boysU13</option>
+                                <option value="boysU14">boysU14</option>
+                                <option value="boysU15">boysU15</option>
+                                <option value="boysU16">boysU16</option>
+                                <option value="boysU17">boysU17</option>
+                                <option value="boysU18">boysU18</option>
+                                <option value="boysU19">boysU19</option>
+                                <option value="girlsU08">girlsU08</option>
+                                <option value="girlsU09">girlsU09</option>
+                                <option value="girlsU10">girlsU10</option>
+                                <option value="girlsU11">girlsU11</option>
+                                <option value="girlsU12">girlsU12</option>
+                                <option value="girlsU13">girlsU13</option>
+                                <option value="girlsU14">girlsU14</option>
+                                <option value="girlsU15">girlsU15</option>
+                                <option value="girlsU16">girlsU16</option>
+                                <option value="girlsU17">girlsU17</option>
+                                <option value="girlsU18">girlsU18</option>
+                                <option value="girlsU19">girlsU19</option>
                             </Form.Select>
                         </Form.Group>
                     </Row>
