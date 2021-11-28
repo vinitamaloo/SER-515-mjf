@@ -8,6 +8,7 @@ import java.util.Date;
 public class FilterPojo {
     private Date date;
     private String matchDate;
+    private String applicationGroup;
 
     public Date getDate() {
         return date;
@@ -23,5 +24,13 @@ public class FilterPojo {
 
     public void setMatchDate(String matchDate) {
         this.matchDate = matchDate;
+    }
+
+    public String getApplicationGroup() {
+        return applicationGroup;
+    }
+
+    public void setApplicationGroup(String applicationGroup) {
+        this.applicationGroup = applicationGroup;
     }
 }

@@ -16,6 +16,7 @@ import java.util.Date;
 public class SetScores {
     String teamA;
     String teamB;
+    String applicationGroup;
     Integer teamAGoals;
     Integer teamBGoals;
     Integer teamAPossession;
@@ -38,6 +39,14 @@ public class SetScores {
     Integer gameTime;
     String matchDate;
 
+    public String getApplicationGroup() {
+        return applicationGroup;
+    }
+
+    public void setApplicationGroup(String applicationGroup) {
+        this.applicationGroup = applicationGroup;
+    }
+
     public SetScores(String teamA, String teamB, Integer teamAGoals,
                      Integer teamBGoals, Integer teamAPossession, Integer teamBPossession,
                      Integer teamAFouls, Integer teamBFouls, Integer teamAYellowCards,
@@ -45,7 +54,7 @@ public class SetScores {
                      Integer teamAOffSides, Integer teamBOffSides, Integer teamACornerKicks,
                      Integer teamBCornerKicks, Integer teamASaves, Integer teamBSaves,
                      String teamAResult, String teamBResult, Date date,
-                     Integer gameTime, String matchDate) {
+                     Integer gameTime, String matchDate, String applicationGroup) {
         super();
         this.teamA = teamA;
         this.teamB = teamB;
@@ -70,6 +79,7 @@ public class SetScores {
         this.date = date;
         this.gameTime = gameTime;
         this.matchDate = matchDate;
+        this.applicationGroup = applicationGroup;
     }
 
     public String getTeamA() {

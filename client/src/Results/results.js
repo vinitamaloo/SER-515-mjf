@@ -10,6 +10,7 @@ export default function Tournament() {
     const [resultsData, setResultsData] = useState([{a:'ge'}, {b: 'g'}]);
     const [value, setValue] = useState(new Date());
     const [flagGetData, setFlagGetData] = useState(true);
+    const [category, setCategory] = useState(localStorage.getItem('result_category'));
 
     function handleDateChange(date) {
         console.log('date changes')
@@ -18,13 +19,14 @@ export default function Tournament() {
     }
 
     if(flagGetData) {
-        getResultsFromServer(null);
+        getResultsFromServer(null, category);
         setFlagGetData(false)
     }
 
-     async function getResultsFromServer(date) {
+     async function getResultsFromServer(date, category) {
         const resultsPojo = {
-            "date": date
+            "date": date,
+            "category": category
         }
 
         let x = await getResults(resultsPojo)

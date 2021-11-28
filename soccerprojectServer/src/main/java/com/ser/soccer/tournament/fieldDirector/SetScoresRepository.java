@@ -30,6 +30,10 @@ public class SetScoresRepository {
             query.addCriteria(Criteria.where("matchDate").is(filter.getMatchDate()));
         }
 
+        if (filter.getApplicationGroup() != null) {
+            query.addCriteria(Criteria.where("applicationGroup").is(filter.getApplicationGroup()));
+        }
+
         return mongoTemplate.find(query, SetScores.class);
     }
 
