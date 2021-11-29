@@ -8,11 +8,10 @@ export default function MatchCard({ title, matches }) {
 
         <Card className="card">
             <Card.Body>
-                <Card.Title className="title">{title}</Card.Title>
+                <Card.Title className="title" style={{justifyContent:"center"}}>{title}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
                 <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
+                    Click on the below links for more info.
                 </Card.Text>
                 <div className="cardLink">
                     <Card.Link><Link
